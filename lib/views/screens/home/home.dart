@@ -1,4 +1,5 @@
 import 'package:create11/constants/strings.dart';
+import 'package:create11/views/screens/home/drawer.dart';
 import 'package:create11/views/screens/home/mymatches_card.dart';
 import 'package:create11/views/screens/home/promo_card.dart';
 import 'package:create11/views/screens/home/upcomingmatches_card.dart';
@@ -18,42 +19,9 @@ class _HomePageState extends State<HomePage> {
     double? deviceWidth = MediaQuery.of(context).size.width / 100;
 
     return Scaffold(
-      drawer: Drawer(
-        child: ListView(children: [
-          DrawerHeader(
-            child: Row(
-              children: [
-                Row(children: [
-                  CircleAvatar(
-                  radius: deviceWidth*10,
-                  backgroundImage: const AssetImage("assets/images/aus.jpg"),
-                ),
-                SizedBox(width: deviceWidth*1,),
-                Column(
-                  children: const [
-                    Text("RadhaKrishna121"),
-                    Text("Level 53")
-                  ],
-                ),
-                ],),
-                Icon(Icons.arrow_forward_ios_rounded),
-              ],
-            ),
-            decoration: BoxDecoration(),
-          ),
-          ListTile(
-            title: Text('Item1'),
-            onTap: () {},
-          ),
-          ListTile(
-            title: Text('Item2'),
-            onTap: () {},
-          ),
-        ]),
-      ),
+      drawer: const HomeDrawer(),
       appBar: AppBar(
         backgroundColor: Colors.redAccent,
-
         centerTitle: true,
         title: const Text(Strings.appName),
         actions: [
