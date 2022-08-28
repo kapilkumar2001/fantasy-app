@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
           IconButton(
               onPressed: () {},
               icon: const Icon(Icons.account_balance_wallet_outlined)),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.notifications)),
+          IconButton(onPressed: () {}, icon: const Icon(Icons.notifications_outlined)),
         ],
       ),
       body: SingleChildScrollView(
