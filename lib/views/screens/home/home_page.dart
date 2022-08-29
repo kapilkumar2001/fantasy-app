@@ -62,7 +62,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           SizedBox(
-            height: deviceHeight * 2,
+            height: deviceHeight * 2, 
           ),
           SingleChildScrollView(
             padding: EdgeInsets.symmetric(horizontal: deviceWidth * 4),

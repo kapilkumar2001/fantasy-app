@@ -1,6 +1,6 @@
 import 'package:create11/constants/strings.dart';
 import 'package:create11/views/screens/account/account.dart';
-import 'package:create11/views/screens/home/home.dart';
+import 'package:create11/views/screens/home/home_page.dart';
 import 'package:create11/views/screens/more/more_page.dart';
 import 'package:create11/views/screens/my_contest/mycontest.dart';
 import 'package:flutter/material.dart';
