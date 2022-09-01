@@ -41,18 +41,26 @@ class _HomePageState extends State<HomePage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  Strings.myMatches,
-                  style: TextStyle(
-                    fontSize: deviceHeight * 2.5,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
+                Container(
+                  width: deviceWidth*50,
+                  child: Text(
+                    Strings.myMatches,
+                    style: TextStyle(
+                      fontSize: deviceHeight * 2.5,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
                   ),
                 ),
                 Row(children: [
-                  Text(Strings.viewAll,
-                      style: TextStyle(
-                          fontSize: deviceHeight * 2.3, color: Colors.black)),
+                  Container(
+                  
+                    width: deviceWidth*30,
+                    child: Text(Strings.viewAll,
+                    textAlign: TextAlign.end,
+                        style: TextStyle(
+                            fontSize: deviceHeight * 2.3, color: Colors.black)),
+                  ),
                   Icon(
                     Icons.arrow_forward_ios,
                     size: deviceHeight * 1.8,

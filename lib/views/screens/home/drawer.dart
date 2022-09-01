@@ -16,6 +16,7 @@ class _HomeDrawerState extends State<HomeDrawer> {
     return Drawer(
         child: ListView(children: [
           DrawerHeader(
+          
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -36,13 +37,19 @@ class _HomeDrawerState extends State<HomeDrawer> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                "RadhaKrishna121",
-                                style: TextStyle(fontSize: deviceWidth * 4),
+                              Container(
+                                width: deviceWidth*46,
+                                child: Text(
+                                  "RadhaKrishna121",
+                                  style: TextStyle(fontSize: deviceWidth * 4),
+                                ),
                               ),
-                              Text(
-                                "Level 53",
-                                style: TextStyle(fontSize: deviceWidth * 3),
+                              Container(
+                                width: deviceWidth*46,
+                                child: Text(
+                                  "Level 53",
+                                  style: TextStyle(fontSize: deviceWidth * 3),
+                                ),
                               )
                             ],
                           ),
@@ -51,42 +58,59 @@ class _HomeDrawerState extends State<HomeDrawer> {
                       const Icon(Icons.arrow_forward_ios_rounded),
                     ],
                   ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: deviceWidth * 3),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("₹5204.87",
-                                style: TextStyle(fontSize: deviceWidth * 7)),
-                            Text("Total Balance",
-                                style: TextStyle(fontSize: deviceWidth * 3))
-                          ],
-                        ),
-                        ElevatedButton(
-                            style: ButtonStyle(
-                                backgroundColor:
-                                    MaterialStateProperty.all<Color>(
-                                        Colors.green.shade700)),
-                            onPressed: () {},
-                            child: const Text("Add Cash")),
-                      ],
-                    ),
-                  )
+                  
                 ]),
           ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: deviceWidth * 3),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      width: deviceWidth* 40,
+                      child: Text("₹5204.87",
+                          style: TextStyle(fontSize: deviceWidth * 7)),
+                    ),
+                    Container(
+                      width: deviceWidth* 40,
+                      child: Text("Total Balance",
+                          style: TextStyle(fontSize: deviceWidth * 3)),
+                    )
+                  ],
+                ),
+                Container(
+                  width: deviceWidth*25,
+                  child: ElevatedButton(
+                      style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all<Color>(
+                                  Colors.green.shade700)),
+                      onPressed: () {},
+                      child: Center(child: const Text("Add Cash"))),
+                ),
+              ],
+            ),
+          ),
+          Divider(
+              height: deviceHeight * 1,
+              color: Colors.black12,
+            ),
           ListTile(
               title: const Text('Refer & Earn'),
               subtitle: const Text('You will get ₹100'),
               onTap: () {},
               leading: Icon(Icons.person_outline, size: deviceHeight*4,),
               trailing:
-                  ElevatedButton(
-                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.transparent)),
-                    child: const Text('INVITE'), 
-                    onPressed: () {}
+                  Container(
+                    width: deviceWidth*25,
+                    child: ElevatedButton(
+                      style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.transparent)),
+                      child: const Center(child: Text('INVITE')), 
+                      onPressed: () {}
+                    ),
                   )
           ),
           ListTile(

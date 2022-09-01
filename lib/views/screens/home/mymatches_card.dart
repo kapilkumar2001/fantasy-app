@@ -27,28 +27,26 @@ class _MyMatchesCardState extends State<MyMatchesCard> {
         ),
         child: Container(
           width: deviceWidth * 90,
-          height: deviceHeight * 19,
+         // height: deviceHeight * 19,
           decoration: BoxDecoration(
               color: Colors.white70,
               borderRadius: BorderRadius.circular(deviceWidth * 5)),
-          child: Column(children: [
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
             SizedBox(
               height: deviceHeight * 1.5,
             ),
-            Row(
-              children: [
-                SizedBox(
-                  width: deviceWidth * 5,
-                ),
-                Text(
-                  'Dresden T10 Cricket Series',
-                  style: TextStyle(
-                      fontSize: deviceWidth * 4.5,
-                      fontWeight: FontWeight.normal,
-                      color: Colors.black38),
-                  textAlign: TextAlign.start,
-                ),
-              ],
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: deviceWidth*5),
+              child: Text(
+                'Dresden T10 Cricket Series',
+                style: TextStyle(
+                    fontSize: deviceWidth * 4.5,
+                    fontWeight: FontWeight.normal,
+                    color: Colors.black38),
+                textAlign: TextAlign.start,
+              ),
             ),
             Divider(
               height: deviceHeight * 1.5,
@@ -63,83 +61,94 @@ class _MyMatchesCardState extends State<MyMatchesCard> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'RC Dresden',
-                          style: TextStyle(
-                            color: Colors.black38,
-                            fontWeight: FontWeight.normal,
-                            fontSize: deviceWidth * 4.3,
-                          ),
-                          textAlign: TextAlign.start,
-                        ),
-                        SizedBox(
-                          height: deviceHeight * 0.5,
-                        ),
-                        Row(children: [
-                          CircleAvatar(
-                            radius: deviceWidth * 5,
-                            backgroundColor: Colors.black87,
-                            backgroundImage:
-                                const AssetImage("assets/images/sl.jpg"),
-                          ),
-                          SizedBox(
-                            width: deviceWidth * 1,
-                          ),
+                    Container(
+                      width: deviceWidth*30,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
                           Text(
-                            "RCD",
+                            'RC Dresden',
                             style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: deviceWidth * 4.3,
-                            ),
-                          )
-                        ]),
-                      ],
-                    ),
-                    Text(
-                      "40m 50s",
-                      style: TextStyle(
-                          color: Colors.red,
-                          fontWeight: FontWeight.bold,
-                          fontSize: deviceWidth * 4.3),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Text(
-                          'FC Viktoria',
-                          overflow: TextOverflow.visible,
-                          style: TextStyle(
                               color: Colors.black38,
                               fontWeight: FontWeight.normal,
-                              fontSize: deviceWidth * 4.3),
-                        ),
-                        SizedBox(
-                          height: deviceHeight * 0.5,
-                        ),
-                        Row(children: [
-                          Text(
-                            "VIK",
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
                               fontSize: deviceWidth * 4.3,
                             ),
+                            textAlign: TextAlign.start,
                           ),
                           SizedBox(
-                            width: deviceWidth * 1,
+                            height: deviceHeight * 0.5,
                           ),
-                          CircleAvatar(
-                            radius: deviceWidth * 5,
-                            backgroundColor: Colors.black87,
-                            backgroundImage:
-                                const AssetImage("assets/images/aus.jpg"),
+                          Row(children: [
+                            CircleAvatar(
+                              radius: deviceWidth * 5,
+                              backgroundColor: Colors.black87,
+                              backgroundImage:
+                                  const AssetImage("assets/images/sl.jpg"),
+                            ),
+                            SizedBox(
+                              width: deviceWidth * 1,
+                            ),
+                            Text(
+                              "RCD",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: deviceWidth * 4.3,
+                              ),
+                            )
+                          ]),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: deviceWidth*20,
+                      child: Text(
+                        "40m 50s",
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontWeight: FontWeight.bold,
+                            fontSize: deviceWidth * 4.3),
+                      ),
+                    ),
+                    Container(
+                      width: deviceWidth*30,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            'FC Viktoria',
+                            overflow: TextOverflow.visible,
+                            style: TextStyle(
+                                color: Colors.black38,
+                                fontWeight: FontWeight.normal,
+                                fontSize: deviceWidth * 4.3),
                           ),
-                        ]),
-                      ],
+                          SizedBox(
+                            height: deviceHeight * 0.5,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                            Text(
+                              "VIK",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: deviceWidth * 4.3,
+                              ),
+                            ),
+                            SizedBox(
+                              width: deviceWidth * 1,
+                            ),
+                            CircleAvatar(
+                              radius: deviceWidth * 5,
+                              backgroundColor: Colors.black87,
+                              backgroundImage:
+                                  const AssetImage("assets/images/aus.jpg"),
+                            ),
+                          ]),
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -155,31 +164,36 @@ class _MyMatchesCardState extends State<MyMatchesCard> {
             SizedBox(
               height: deviceHeight * 0.5,
             ),
-            Row(
-              children: [
-                SizedBox(
-                  width: deviceWidth * 5,
-                ),
-                Text(
-                  '1 Team',
-                  style: TextStyle(
-                      fontSize: deviceWidth * 4.5,
-                      fontWeight: FontWeight.normal,
-                      color: Colors.black87),
-                  textAlign: TextAlign.start,
-                ),
-                SizedBox(
-                  width: deviceWidth * 4.5,
-                ),
-                Text(
-                  '1 Contests',
-                  style: TextStyle(
-                      fontSize: deviceWidth * 4.5,
-                      fontWeight: FontWeight.normal,
-                      color: Colors.black38),
-                  textAlign: TextAlign.start,
-                ),
-              ],
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: deviceWidth * 5),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Container(
+                    width: deviceWidth*38,
+                    child: Text(
+                      '1 Team',
+                      style: TextStyle(
+                          fontSize: deviceWidth * 4.5,
+                          fontWeight: FontWeight.normal,
+                          color: Colors.black87),
+                    ),
+                  ),
+                  SizedBox(
+                    width: deviceWidth * 4,
+                  ),
+                  Container(
+                    width: deviceWidth*38,
+                    child: Text(
+                      '1 Contests',
+                      style: TextStyle(
+                          fontSize: deviceWidth * 4.5,
+                          fontWeight: FontWeight.normal,
+                          color: Colors.black38),
+                    ),
+                  ),
+                ],
+              ),
             ),
             SizedBox(
               height: deviceHeight * 1.5,

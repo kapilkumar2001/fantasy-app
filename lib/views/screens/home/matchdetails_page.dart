@@ -27,64 +27,86 @@ class _MatchDetailsPageState extends State<MatchDetailsPage> with TickerProvider
         body: Column(
           children: [
             Container(
-              height: deviceHeight * 15,
+            //  height: deviceHeight * 15,
               color: Colors.red[900],
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+              child: Padding(
+                padding: EdgeInsets.all(deviceWidth*5),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(vertical: deviceHeight*1),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Text(
-                            "ZIM",
-                            style: TextStyle(
-                                color: Colors.white, fontSize: deviceHeight * 2),
+                          Container(
+                            width: deviceWidth * 30,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "ZIM",
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: deviceHeight * 2),
+                                ),
+                                Text("135/8 (20)",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: deviceHeight * 2.3))
+                              ],
+                            ),
                           ),
-                          Text("135/8 (20)",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: deviceHeight * 2.3))
+                          Row(children: [
+                            CircleAvatar(
+                              radius: deviceHeight * 0.7,
+                              backgroundColor: Colors.green,
+                            ),
+                            SizedBox(
+                              width: deviceWidth * 1,
+                            ),
+                            Container(
+                               width: deviceWidth * 15,
+                              child: Text(
+                                "Completed",
+                          
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: deviceHeight * 1.5,  overflow: TextOverflow.ellipsis,),
+                              ),
+                            ),
+                          ]),
+                          Container(
+                            width: deviceWidth * 30,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              
+                              children: [
+                                Text(
+                                  "BAN",
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: deviceHeight * 2),
+                                ),
+                                Text("136/3 (17.3)",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: deviceHeight * 2.3))
+                              ],
+                            ),
+                          )
                         ],
                       ),
-                      Row(children: [
-                        CircleAvatar(
-                          radius: deviceHeight * 0.7,
-                          backgroundColor: Colors.green,
-                        ),
-                        SizedBox(
-                          width: deviceWidth * 1,
-                        ),
-                        Text(
-                          "Completed",
+                    ),
+                    Container(
+                      width: deviceWidth*90,
+                      child: Center(
+                        child: Text(
+                          "Bangladesh won by 7 wickets",
                           style: TextStyle(
-                              color: Colors.white, fontSize: deviceHeight * 1.5),
+                              color: Colors.white, fontSize: deviceHeight * 2),
                         ),
-                      ]),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text(
-                            "BAN",
-                            style: TextStyle(
-                                color: Colors.white, fontSize: deviceHeight * 2),
-                          ),
-                          Text("136/3 (17.3)",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: deviceHeight * 2.3))
-                        ],
-                      )
-                    ],
-                  ),
-                  Text(
-                    "Bangladesh won by 7 wickets",
-                    style: TextStyle(
-                        color: Colors.white, fontSize: deviceHeight * 2),
-                  )
-                ],
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
     

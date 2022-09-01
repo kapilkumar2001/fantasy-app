@@ -27,7 +27,7 @@ class _UpcomingMatchesCardState extends State<UpcomingMatchesCard> {
         ),
         child: Container(
           width: deviceWidth * 90,
-          height: deviceHeight * 19,
+        // height: deviceHeight * 19,
           decoration: BoxDecoration(
               color: Colors.white38,
               borderRadius: BorderRadius.circular(deviceWidth * 5)),
@@ -40,17 +40,20 @@ class _UpcomingMatchesCardState extends State<UpcomingMatchesCard> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    'India Vs West Indies T20I',
-                    style: TextStyle(
-                        fontSize: deviceWidth * 4.5,
-                        fontWeight: FontWeight.normal,
-                        color: Colors.black38),
-                    textAlign: TextAlign.start,
+                  Container(
+                    width: deviceWidth*70,
+                    child: Text(
+                      'India Vs West Indies T20I',
+                      style: TextStyle(
+                          fontSize: deviceWidth * 4.5,
+                          fontWeight: FontWeight.normal,
+                          color: Colors.black38),
+                      textAlign: TextAlign.start,
+                    ),
                   ),
                   Icon(
                     Icons.notifications,
-                    size: deviceWidth * 4.5,
+                    size: deviceWidth * 5,
                   )
                 ],
               ),
@@ -68,82 +71,93 @@ class _UpcomingMatchesCardState extends State<UpcomingMatchesCard> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'West Indies',
-                          style: TextStyle(
-                            color: Colors.black38,
-                            fontWeight: FontWeight.normal,
-                            fontSize: deviceWidth * 4.3,
-                          ),
-                          textAlign: TextAlign.start,
-                        ),
-                        SizedBox(
-                          height: deviceHeight * 0.5,
-                        ),
-                        Row(children: [
-                          CircleAvatar(
-                            radius: deviceWidth * 5,
-                            backgroundColor: Colors.black87, 
-                            backgroundImage: const AssetImage("assets/images/wind.jpg"),
-                          ),
-                          SizedBox(
-                            width: deviceWidth * 1,
-                          ),
+                    Container(
+                      width: deviceWidth*30,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
                           Text(
-                            "WI",
+                            'West Indies',
                             style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: deviceWidth * 4.3,
-                            ),
-                          )
-                        ]),
-                      ],
-                    ),
-                    Text(
-                      "40m 50s",
-                      style: TextStyle(
-                          color: Colors.red,
-                          fontWeight: FontWeight.bold,
-                          fontSize: deviceWidth * 4.3),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Text(
-                          'India',
-                          overflow: TextOverflow.visible,
-                          style: TextStyle(
                               color: Colors.black38,
                               fontWeight: FontWeight.normal,
-                              fontSize: deviceWidth * 4.3),
-                        ),
-                        SizedBox(
-                          height: deviceHeight * 0.5,
-                        ),
-                        Row(children: [
-                          Text(
-                            "IND",
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
                               fontSize: deviceWidth * 4.3,
                             ),
+                            textAlign: TextAlign.start,
                           ),
                           SizedBox(
-                            width: deviceWidth * 1,
+                            height: deviceHeight * 0.5,
                           ),
-                          CircleAvatar(
-                            
-                            radius: deviceWidth * 5,
-                            backgroundColor: Colors.black87,
-                            backgroundImage: const AssetImage("assets/images/ind.jpg"),
+                          Row(children: [
+                            CircleAvatar(
+                              radius: deviceWidth * 5,
+                              backgroundColor: Colors.black87, 
+                              backgroundImage: const AssetImage("assets/images/wind.jpg"),
+                            ),
+                            SizedBox(
+                              width: deviceWidth * 1,
+                            ),
+                            Text(
+                              "WI",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: deviceWidth * 4.3,
+                              ),
+                            )
+                          ]),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: deviceWidth*19,
+                      child: Text(
+                        "40m 50s",
+                        style: TextStyle(
+                            color: Colors.red,
+                            fontWeight: FontWeight.bold,
+                            fontSize: deviceWidth * 4.3),
+                      ),
+                    ),
+                    Container(
+                      width: deviceWidth*30,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            'India',
+                            overflow: TextOverflow.visible,
+                            style: TextStyle(
+                                color: Colors.black38,
+                                fontWeight: FontWeight.normal,
+                                fontSize: deviceWidth * 4.3),
                           ),
-                        ]),
-                      ],
+                          SizedBox(
+                            height: deviceHeight * 0.5,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                            Text(
+                              "IND",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: deviceWidth * 4.3,
+                              ),
+                            ),
+                            SizedBox(
+                              width: deviceWidth * 1,
+                            ),
+                            CircleAvatar(
+                              
+                              radius: deviceWidth * 5,
+                              backgroundColor: Colors.black87,
+                              backgroundImage: const AssetImage("assets/images/ind.jpg"),
+                            ),
+                          ]),
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -160,34 +174,37 @@ class _UpcomingMatchesCardState extends State<UpcomingMatchesCard> {
             SizedBox(
               height: deviceHeight * 0.5,
             ),
-            Row(
-              children: [
-                SizedBox(
-                  width: deviceWidth * 5,
-                ),
-                CircleAvatar(
-                  radius: deviceWidth * 2.2,
-                  backgroundColor: Colors.green,
-                  child: Text(
-                    'M',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: deviceWidth * 3),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: deviceWidth * 5),
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    radius: deviceWidth * 2.2,
+                    backgroundColor: Colors.green,
+                    child: Text(
+                      'M',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: deviceWidth * 3),
+                    ),
                   ),
-                ),
-                SizedBox(
-                  width: deviceWidth * 2,
-                ),
-                Text(
-                  '₹ 20 LAKH',
-                  style: TextStyle(
-                      fontSize: deviceWidth * 4.3,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.green),
-                  textAlign: TextAlign.start,
-                ),
-              ],
+                  SizedBox(
+                    width: deviceWidth * 2,
+                  ),
+                  Container(
+                    width: deviceWidth*40,
+                    child: Text(
+                      '₹ 20 LAKH',
+                      style: TextStyle(
+                          fontSize: deviceWidth * 4.3,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.green),
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                ],
+              ),
             ),
             SizedBox(
               height: deviceHeight * 1,
