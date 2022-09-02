@@ -186,6 +186,7 @@ class _MyMatchesCardState extends State<MyMatchesCard> {
                     width: deviceWidth*38,
                     child: Text(
                       '1 Contests',
+                      textAlign: TextAlign.end,
                       style: TextStyle(
                           fontSize: deviceWidth * 4.5,
                           fontWeight: FontWeight.normal,
