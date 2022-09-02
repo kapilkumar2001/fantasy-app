@@ -113,6 +113,7 @@ class _UpcomingMatchesCardState extends State<UpcomingMatchesCard> {
                       width: deviceWidth*19,
                       child: Text(
                         "40m 50s",
+                        textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Colors.red,
                             fontWeight: FontWeight.bold,

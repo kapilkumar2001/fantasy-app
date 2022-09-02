@@ -77,13 +77,13 @@ class _HomePageState extends State<HomePage> {
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
-                const MyMatchesCard(),
+                MyMatchesCard(isMatchLive: true, isMatchCompleted: false,),
                 SizedBox(width: deviceWidth * 1),
-                const MyMatchesCard(),
+                MyMatchesCard(isMatchLive: true, isMatchCompleted: false),
                 SizedBox(width: deviceWidth * 1),
-                const MyMatchesCard(),
+                MyMatchesCard(isMatchLive: true, isMatchCompleted: false),
                 SizedBox(width: deviceWidth * 1),
-                const MyMatchesCard()
+                MyMatchesCard(isMatchLive: true, isMatchCompleted: false)
               ],
             ),
           ),

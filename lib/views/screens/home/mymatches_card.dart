@@ -2,7 +2,9 @@ import 'package:create11/views/screens/home/matchdetails_page.dart';
 import 'package:flutter/material.dart';
 
 class MyMatchesCard extends StatefulWidget {
-  const MyMatchesCard({Key? key}) : super(key: key);
+  bool isMatchLive;
+  bool isMatchCompleted;
+  MyMatchesCard({required bool this.isMatchCompleted, required bool this.isMatchLive});
 
   @override
   State<MyMatchesCard> createState() => _MyMatchesCardState();
@@ -27,18 +29,17 @@ class _MyMatchesCardState extends State<MyMatchesCard> {
         ),
         child: Container(
           width: deviceWidth * 90,
-         // height: deviceHeight * 19,
+          // height: deviceHeight * 19,
           decoration: BoxDecoration(
               color: Colors.white70,
               borderRadius: BorderRadius.circular(deviceWidth * 5)),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             SizedBox(
               height: deviceHeight * 1.5,
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: deviceWidth*5),
+              padding: EdgeInsets.symmetric(horizontal: deviceWidth * 5),
               child: Text(
                 'Dresden T10 Cricket Series',
                 style: TextStyle(
@@ -62,7 +63,7 @@ class _MyMatchesCardState extends State<MyMatchesCard> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      width: deviceWidth*30,
+                      width: deviceWidth * 30,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -101,17 +102,36 @@ class _MyMatchesCardState extends State<MyMatchesCard> {
                       ),
                     ),
                     Container(
-                      width: deviceWidth*20,
-                      child: Text(
-                        "40m 50s",
-                        style: TextStyle(
-                            color: Colors.red,
-                            fontWeight: FontWeight.bold,
-                            fontSize: deviceWidth * 4.3),
-                      ),
+                      width: deviceWidth * 20,
+                      child: widget.isMatchCompleted
+                          ? Text(
+                              "Winner Declared",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Colors.red,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: deviceWidth * 4),
+                            )
+                          : widget.isMatchLive
+                          ? Text(
+                            "Live",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.green,
+                              fontWeight: FontWeight.bold,
+                              fontSize: deviceWidth * 4),
+                          )
+                          : Text(
+                              "40m 50s",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Colors.red,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: deviceWidth * 4.3),
+                            ),
                     ),
                     Container(
-                      width: deviceWidth*30,
+                      width: deviceWidth * 30,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
@@ -127,26 +147,26 @@ class _MyMatchesCardState extends State<MyMatchesCard> {
                             height: deviceHeight * 0.5,
                           ),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                            Text(
-                              "VIK",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                                fontSize: deviceWidth * 4.3,
-                              ),
-                            ),
-                            SizedBox(
-                              width: deviceWidth * 1,
-                            ),
-                            CircleAvatar(
-                              radius: deviceWidth * 5,
-                              backgroundColor: Colors.black87,
-                              backgroundImage:
-                                  const AssetImage("assets/images/aus.jpg"),
-                            ),
-                          ]),
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  "VIK",
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: deviceWidth * 4.3,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: deviceWidth * 1,
+                                ),
+                                CircleAvatar(
+                                  radius: deviceWidth * 5,
+                                  backgroundColor: Colors.black87,
+                                  backgroundImage:
+                                      const AssetImage("assets/images/aus.jpg"),
+                                ),
+                              ]),
                         ],
                       ),
                     ),
@@ -167,32 +187,49 @@ class _MyMatchesCardState extends State<MyMatchesCard> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: deviceWidth * 5),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    width: deviceWidth*38,
+                    width: widget.isMatchCompleted
+                        ? deviceWidth * 20
+                        : deviceWidth * 40,
                     child: Text(
                       '1 Team',
+                      textAlign: TextAlign.start,
                       style: TextStyle(
                           fontSize: deviceWidth * 4.5,
                           fontWeight: FontWeight.normal,
                           color: Colors.black87),
                     ),
                   ),
-                  SizedBox(
-                    width: deviceWidth * 4,
-                  ),
                   Container(
-                    width: deviceWidth*38,
+                    width: widget.isMatchCompleted
+                        ? deviceWidth * 20
+                        : deviceWidth * 40,
                     child: Text(
                       '1 Contests',
-                      textAlign: TextAlign.end,
+                      textAlign: widget.isMatchCompleted
+                          ? TextAlign.center
+                          : TextAlign.end,
                       style: TextStyle(
                           fontSize: deviceWidth * 4.5,
                           fontWeight: FontWeight.normal,
                           color: Colors.black38),
                     ),
                   ),
+                  widget.isMatchCompleted
+                      ? Container(
+                          width: deviceWidth * 40,
+                          child: Text(
+                            'YOU WON: ₹1000000',
+                            textAlign: TextAlign.end,
+                            style: TextStyle(
+                                fontSize: deviceWidth * 4.5,
+                                fontWeight: FontWeight.normal,
+                                color: Colors.black87),
+                          ),
+                        )
+                      : Container()
                 ],
               ),
             ),
