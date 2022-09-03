@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:create11/constants/strings.dart';
 import 'package:flutter/material.dart';
 
@@ -308,95 +306,78 @@ customDialogBox(BuildContext context) {
       builder: (BuildContext context) {
         double? deviceHeight = MediaQuery.of(context).size.height / 100;
         double? deviceWidth = MediaQuery.of(context).size.width / 100;
-        return Dialog(
-            // shape: RoundedRectangleBorder(
-            //     borderRadius:
-            //         BorderRadius.all(Radius.circular(deviceWidth * 5))),
-            // backgroundColor: Colors.transparent,
-            insetPadding: EdgeInsets.symmetric(
-                horizontal: deviceWidth * 5, vertical: deviceHeight * 34),
-            child: Stack(
-              clipBehavior: Clip.none,
-              alignment: Alignment.center,
-              children: <Widget>[
-                Column(
-                  children: [
-                    Container(
-                      
-                          color: Colors.redAccent,
-                         
-                      child: Padding(
-                        padding: EdgeInsets.all(deviceWidth * 5),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                    width: deviceWidth * 70,
-                                    child: Text(
-                                      "Winning Balance",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: deviceWidth * 5),
-                                    )),
-                                Container(
-                                    width: deviceWidth * 70,
-                                    child: Text("₹3.87",
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: deviceWidth * 5)))
-                              ],
-                            ),
-                            InkWell(
-                                onTap: () {
-                                  Navigator.pop(context);
-                                },
-                                child: const Icon(
-                                  Icons.close_outlined,
-                                  color: Colors.white,
-                                ))
-                          ],
+        return AlertDialog(
+          contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+            shape: RoundedRectangleBorder(
+                borderRadius:
+                    BorderRadius.all(Radius.circular(deviceWidth * 4))),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ListTile(
+                  shape: RoundedRectangleBorder(
+              borderRadius:
+                  BorderRadius.vertical(top: Radius.circular(deviceWidth * 4))),
+                  tileColor: Colors.redAccent,
+                    title: Text(
+                      "Winning Balance",
+                      style: TextStyle(
+                          color: Colors.white, fontSize: deviceWidth * 5),
+                    ),
+                    subtitle: Text("₹3.87",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: deviceWidth * 5)),
+                    trailing: InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Icon(
+                          Icons.close_outlined,
+                          color: Colors.white,
+                        ))),
+                SizedBox(
+                  height: deviceHeight * 2,
+                ),
+              
+                InkWell(
+                  onTap: (){},
+                  child: Container(
+                    decoration: BoxDecoration(border: Border.all(), borderRadius: BorderRadius.all(Radius.circular(deviceWidth * 1))),
+                    width: deviceWidth*50,
+                    child: Padding(
+                      padding: EdgeInsets.all(deviceWidth*2),
+                      child: const Text(
+                          "Instant Bank Withdraw",
+                          textAlign: TextAlign.center,
+                          overflow: TextOverflow.ellipsis,
                         ),
-                      ),
                     ),
-                    SizedBox(
-                      height: deviceHeight * 2,
-                    ),
-                    Container(
-                        width: deviceWidth * 80,
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          child: Container(
-                              width: deviceWidth * 70,
-                              child: const Text(
-                                "Instant Bank Withdraw",
-                                textAlign: TextAlign.center,
-                                overflow: TextOverflow.ellipsis,
-                              )),
-                          style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all<Color>(
-                                  Colors.transparent)),
-                        )),
-                    Container(
-                      width: deviceWidth * 80,
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        child: Container(
-                          width: deviceWidth * 70,
-                          child: const Text(
-                            "Normal Withdraw",
-                            textAlign: TextAlign.center,
-                            overflow: TextOverflow.ellipsis,
-                          ),
+                  ),
+                ),
+
+                 SizedBox(
+                  height: deviceHeight * 1.5,
+                ),
+
+                InkWell(
+                  onTap: (){},
+                  child: Container(
+                    decoration: BoxDecoration(border: Border.all(), borderRadius: BorderRadius.all(Radius.circular(deviceWidth * 1))),
+                    width: deviceWidth*50,
+                    child: Padding(
+                      padding: EdgeInsets.all(deviceWidth*2),
+                      child: const Text(
+                          "Instant Bank Withdraw",
+                          textAlign: TextAlign.center,
+                          overflow: TextOverflow.ellipsis,
                         ),
-                        style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                                Colors.transparent)),
-                      ),
                     ),
-                  ],
+                  ),
+                ),
+               
+                SizedBox(
+                  height: deviceHeight*2,
                 )
               ],
             ));

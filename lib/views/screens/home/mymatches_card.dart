@@ -138,6 +138,7 @@ class _MyMatchesCardState extends State<MyMatchesCard> {
                           Text(
                             'FC Viktoria',
                             overflow: TextOverflow.visible,
+                            textAlign: TextAlign.end,
                             style: TextStyle(
                                 color: Colors.black38,
                                 fontWeight: FontWeight.normal,

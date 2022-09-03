@@ -28,7 +28,8 @@ class _HomePageState extends State<HomePage> {
           IconButton(
               onPressed: () {},
               icon: const Icon(Icons.account_balance_wallet_outlined)),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.notifications_outlined)),
+          IconButton(
+              onPressed: () {}, icon: const Icon(Icons.notifications_outlined)),
         ],
       ),
       body: SingleChildScrollView(
@@ -42,7 +43,7 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  width: deviceWidth*50,
+                  width: deviceWidth * 50,
                   child: Text(
                     Strings.myMatches,
                     style: TextStyle(
@@ -54,10 +55,9 @@ class _HomePageState extends State<HomePage> {
                 ),
                 Row(children: [
                   Container(
-                  
-                    width: deviceWidth*30,
+                    width: deviceWidth * 30,
                     child: Text(Strings.viewAll,
-                    textAlign: TextAlign.end,
+                        textAlign: TextAlign.end,
                         style: TextStyle(
                             fontSize: deviceHeight * 2.3, color: Colors.black)),
                   ),
@@ -70,22 +70,22 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           SizedBox(
-            height: deviceHeight * 2, 
+            height: deviceHeight * 2,
           ),
-          
+
           SingleChildScrollView(
             padding: EdgeInsets.symmetric(horizontal: deviceWidth * 4),
             scrollDirection: Axis.horizontal,
-            child: 
-            Row(
+            child: Row(
               children: [
-                MyMatchesCard(isMatchLive: true, isMatchCompleted: false,),
-                SizedBox(width: deviceWidth * 1),
-                MyMatchesCard(isMatchLive: true, isMatchCompleted: false),
-                SizedBox(width: deviceWidth * 1),
-                MyMatchesCard(isMatchLive: true, isMatchCompleted: false),
-                SizedBox(width: deviceWidth * 1),
-                MyMatchesCard(isMatchLive: true, isMatchCompleted: false)
+                for (int i = 0; i < 4; i++)
+                
+                   MyMatchesCard(
+                  isMatchLive: true,
+                  isMatchCompleted: false,
+                ),
+               
+                
               ],
             ),
           ),
@@ -97,36 +97,48 @@ class _HomePageState extends State<HomePage> {
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
-                const PromoCard(),
-                SizedBox(width: deviceWidth * 3),
-                const PromoCard(),
-                SizedBox(width: deviceWidth * 3),
-                const PromoCard(),
-                SizedBox(width: deviceWidth * 3),
-                const PromoCard()
+                for (int i = 0; i < 4; i++) 
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: deviceWidth*1),
+                  child: const PromoCard(),
+                ), 
               ],
             ),
           ),
           SizedBox(
             height: deviceHeight * 2,
           ),
-          SingleChildScrollView(
-            padding: EdgeInsets.symmetric(horizontal: deviceWidth * 4),
-            scrollDirection: Axis.vertical,
-            child: Column(
-              children: [
-                const UpcomingMatchesCard(),
-                SizedBox(height: deviceHeight * 1),
-                const UpcomingMatchesCard(),
-                SizedBox(height: deviceHeight * 1),
-                const UpcomingMatchesCard(),
-                SizedBox(height: deviceHeight * 1),
-                const UpcomingMatchesCard(),
-                SizedBox(height: deviceHeight * 1),
-                const UpcomingMatchesCard()
-              ],
-            ),
-          ),
+          
+          ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: 5,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: EdgeInsets.only(
+                      left: deviceWidth * 3,
+                      right: deviceWidth * 3,
+                      top: deviceHeight * 1),
+                  child: UpcomingMatchesCard(),
+                );
+              }),
+          // SingleChildScrollView(
+          //   padding: EdgeInsets.symmetric(horizontal: deviceWidth * 4),
+          //   scrollDirection: Axis.vertical,
+          //   child: Column(
+          //     children: [
+          //       const UpcomingMatchesCard(),
+          //       SizedBox(height: deviceHeight * 1),
+          //       const UpcomingMatchesCard(),
+          //       SizedBox(height: deviceHeight * 1),
+          //       const UpcomingMatchesCard(),
+          //       SizedBox(height: deviceHeight * 1),
+          //       const UpcomingMatchesCard(),
+          //       SizedBox(height: deviceHeight * 1),
+          //       const UpcomingMatchesCard()
+          //     ],
+          //   ),
+          // ),
           SizedBox(
             height: deviceHeight * 2,
           ),
