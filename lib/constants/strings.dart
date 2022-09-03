@@ -8,4 +8,9 @@ class Strings{
   static const myContests = 'My Contests';
   static const account = 'Account';
   static const more = 'More';
+
+  static const totalBalance = 'TOTAL BALANCE';
+  static const deposited = 'DEPOSITED';
+  static const winnings = 'WINNINGS';
+  static const cashBonus = 'CASH BONUS';
 }

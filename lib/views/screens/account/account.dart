@@ -33,7 +33,6 @@ class _AccountPageState extends State<AccountPage> {
                 ),
                 child: Container(
                   width: deviceWidth * 90,
-                //  height: deviceHeight * 47,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [

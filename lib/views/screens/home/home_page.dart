@@ -72,10 +72,12 @@ class _HomePageState extends State<HomePage> {
           SizedBox(
             height: deviceHeight * 2, 
           ),
+          
           SingleChildScrollView(
             padding: EdgeInsets.symmetric(horizontal: deviceWidth * 4),
             scrollDirection: Axis.horizontal,
-            child: Row(
+            child: 
+            Row(
               children: [
                 MyMatchesCard(isMatchLive: true, isMatchCompleted: false,),
                 SizedBox(width: deviceWidth * 1),
