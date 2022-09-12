@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 class MyMatchesCard extends StatefulWidget {
   bool isMatchLive;
   bool isMatchCompleted;
-  MyMatchesCard({required bool this.isMatchCompleted, required bool this.isMatchLive});
+  MyMatchesCard(
+      {required bool this.isMatchCompleted, required bool this.isMatchLive});
 
   @override
   State<MyMatchesCard> createState() => _MyMatchesCardState();
@@ -113,22 +114,22 @@ class _MyMatchesCardState extends State<MyMatchesCard> {
                                   fontSize: deviceWidth * 4),
                             )
                           : widget.isMatchLive
-                          ? Text(
-                            "Live",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.green,
-                              fontWeight: FontWeight.bold,
-                              fontSize: deviceWidth * 4),
-                          )
-                          : Text(
-                              "40m 50s",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  color: Colors.red,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: deviceWidth * 4.3),
-                            ),
+                              ? Text(
+                                  "Live",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: Colors.green,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: deviceWidth * 4),
+                                )
+                              : Text(
+                                  "40m 50s",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      color: Colors.red,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: deviceWidth * 4.3),
+                                ),
                     ),
                     Container(
                       width: deviceWidth * 30,

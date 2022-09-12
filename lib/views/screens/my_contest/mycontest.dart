@@ -4,7 +4,7 @@ import 'package:create11/views/screens/home/upcomingmatches_card.dart';
 import 'package:flutter/material.dart';
 
 class MyContestPage extends StatefulWidget {
-  const MyContestPage({ Key? key }) : super(key: key);
+  const MyContestPage({Key? key}) : super(key: key);
 
   @override
   State<MyContestPage> createState() => _MyContestPageState();
@@ -26,11 +26,12 @@ class _MyContestPageState extends State<MyContestPage> {
             IconButton(
                 onPressed: () {},
                 icon: const Icon(Icons.account_balance_wallet_outlined)),
-            IconButton(onPressed: () {}, icon: const Icon(Icons.notifications_outlined)),
+            IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.notifications_outlined)),
           ],
           bottom: const TabBar(
             indicatorColor: Colors.white70,
-            
             tabs: <Tab>[
               Tab(
                 child: Text("Upcoming"),
@@ -46,30 +47,42 @@ class _MyContestPageState extends State<MyContestPage> {
         ),
         body: TabBarView(
           children: [
-        ListView.builder(
-          itemCount: 5,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: EdgeInsets.only(left: deviceWidth*3, right: deviceWidth*3, top: deviceHeight*1),
-              child: MyMatchesCard(isMatchLive: false, isMatchCompleted: false),
-            );
-          }),
-        ListView.builder(
-          itemCount: 5,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: EdgeInsets.only(left: deviceWidth*3, right: deviceWidth*3, top: deviceHeight*1),
-              child: MyMatchesCard(isMatchLive: true, isMatchCompleted: false),
-            );
-          }),
-        ListView.builder(
-          itemCount: 5,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: EdgeInsets.only(left: deviceWidth*3, right: deviceWidth*3, top: deviceHeight*1),
-              child: MyMatchesCard(isMatchLive: false, isMatchCompleted: true),
-            );
-          }),
+            ListView.builder(
+                itemCount: 5,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: EdgeInsets.only(
+                        left: deviceWidth * 3,
+                        right: deviceWidth * 3,
+                        top: deviceHeight * 1),
+                    child: MyMatchesCard(
+                        isMatchLive: false, isMatchCompleted: false),
+                  );
+                }),
+            ListView.builder(
+                itemCount: 5,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: EdgeInsets.only(
+                        left: deviceWidth * 3,
+                        right: deviceWidth * 3,
+                        top: deviceHeight * 1),
+                    child: MyMatchesCard(
+                        isMatchLive: true, isMatchCompleted: false),
+                  );
+                }),
+            ListView.builder(
+                itemCount: 5,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: EdgeInsets.only(
+                        left: deviceWidth * 3,
+                        right: deviceWidth * 3,
+                        top: deviceHeight * 1),
+                    child: MyMatchesCard(
+                        isMatchLive: false, isMatchCompleted: true),
+                  );
+                }),
           ],
         ),
       ),

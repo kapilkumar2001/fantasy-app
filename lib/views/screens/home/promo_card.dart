@@ -13,7 +13,7 @@ class _PromoCardState extends State<PromoCard> {
     double? deviceHeight = MediaQuery.of(context).size.height / 100;
     double? deviceWidth = MediaQuery.of(context).size.width / 100;
     return Container(
-     // height: deviceHeight * 10,
+      // height: deviceHeight * 10,
       width: deviceWidth * 90,
       padding: EdgeInsets.symmetric(
         horizontal: deviceWidth * 1,
@@ -24,33 +24,32 @@ class _PromoCardState extends State<PromoCard> {
       ),
       child: Center(
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: deviceHeight * 2),
-            child: Column(children: [
-        
-        Container(
-          width: deviceWidth*80,
-          child: Text(
+        padding: EdgeInsets.symmetric(vertical: deviceHeight * 2),
+        child: Column(children: [
+          Container(
+            width: deviceWidth * 80,
+            child: Text(
               "SUBSCRIBE US ON",
               style: TextStyle(
                   color: Colors.white,
                   fontSize: deviceHeight * 2,
                   fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
+            ),
           ),
-        ),
-        Container(
-          width: deviceWidth*80,
-          child: Text(
+          Container(
+            width: deviceWidth * 80,
+            child: Text(
               "YOUTUBE",
               style: TextStyle(
                   color: Colors.white,
                   fontSize: deviceHeight * 4,
                   fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
+            ),
           ),
-        ),
-      ]),
-          )),
+        ]),
+      )),
     );
   }
 }

@@ -1,4 +1,4 @@
-class Strings{
+class Strings {
   static const appName = 'create11';
 
   static const viewAll = 'View All';

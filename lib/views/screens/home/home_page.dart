@@ -79,13 +79,10 @@ class _HomePageState extends State<HomePage> {
             child: Row(
               children: [
                 for (int i = 0; i < 4; i++)
-                
-                   MyMatchesCard(
-                  isMatchLive: true,
-                  isMatchCompleted: false,
-                ),
-               
-                
+                  MyMatchesCard(
+                    isMatchLive: true,
+                    isMatchCompleted: false,
+                  ),
               ],
             ),
           ),
@@ -97,18 +94,18 @@ class _HomePageState extends State<HomePage> {
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
-                for (int i = 0; i < 4; i++) 
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: deviceWidth*1),
-                  child: const PromoCard(),
-                ), 
+                for (int i = 0; i < 4; i++)
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: deviceWidth * 1),
+                    child: const PromoCard(),
+                  ),
               ],
             ),
           ),
           SizedBox(
             height: deviceHeight * 2,
           ),
-          
+
           ListView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),

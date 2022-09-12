@@ -307,7 +307,7 @@ customDialogBox(BuildContext context) {
         double? deviceHeight = MediaQuery.of(context).size.height / 100;
         double? deviceWidth = MediaQuery.of(context).size.width / 100;
         return AlertDialog(
-          contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+            contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 0),
             shape: RoundedRectangleBorder(
                 borderRadius:
                     BorderRadius.all(Radius.circular(deviceWidth * 4))),
@@ -315,10 +315,10 @@ customDialogBox(BuildContext context) {
               mainAxisSize: MainAxisSize.min,
               children: [
                 ListTile(
-                  shape: RoundedRectangleBorder(
-              borderRadius:
-                  BorderRadius.vertical(top: Radius.circular(deviceWidth * 4))),
-                  tileColor: Colors.redAccent,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(deviceWidth * 4))),
+                    tileColor: Colors.redAccent,
                     title: Text(
                       "Winning Balance",
                       style: TextStyle(
@@ -326,8 +326,7 @@ customDialogBox(BuildContext context) {
                     ),
                     subtitle: Text("₹3.87",
                         style: TextStyle(
-                            color: Colors.white,
-                            fontSize: deviceWidth * 5)),
+                            color: Colors.white, fontSize: deviceWidth * 5)),
                     trailing: InkWell(
                         onTap: () {
                           Navigator.pop(context);
@@ -339,45 +338,47 @@ customDialogBox(BuildContext context) {
                 SizedBox(
                   height: deviceHeight * 2,
                 ),
-              
                 InkWell(
-                  onTap: (){},
+                  onTap: () {},
                   child: Container(
-                    decoration: BoxDecoration(border: Border.all(), borderRadius: BorderRadius.all(Radius.circular(deviceWidth * 1))),
-                    width: deviceWidth*50,
+                    decoration: BoxDecoration(
+                        border: Border.all(),
+                        borderRadius:
+                            BorderRadius.all(Radius.circular(deviceWidth * 1))),
+                    width: deviceWidth * 50,
                     child: Padding(
-                      padding: EdgeInsets.all(deviceWidth*2),
+                      padding: EdgeInsets.all(deviceWidth * 2),
                       child: const Text(
-                          "Instant Bank Withdraw",
-                          textAlign: TextAlign.center,
-                          overflow: TextOverflow.ellipsis,
-                        ),
+                        "Instant Bank Withdraw",
+                        textAlign: TextAlign.center,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
                   ),
                 ),
-
-                 SizedBox(
+                SizedBox(
                   height: deviceHeight * 1.5,
                 ),
-
                 InkWell(
-                  onTap: (){},
+                  onTap: () {},
                   child: Container(
-                    decoration: BoxDecoration(border: Border.all(), borderRadius: BorderRadius.all(Radius.circular(deviceWidth * 1))),
-                    width: deviceWidth*50,
+                    decoration: BoxDecoration(
+                        border: Border.all(),
+                        borderRadius:
+                            BorderRadius.all(Radius.circular(deviceWidth * 1))),
+                    width: deviceWidth * 50,
                     child: Padding(
-                      padding: EdgeInsets.all(deviceWidth*2),
+                      padding: EdgeInsets.all(deviceWidth * 2),
                       child: const Text(
-                          "Instant Bank Withdraw",
-                          textAlign: TextAlign.center,
-                          overflow: TextOverflow.ellipsis,
-                        ),
+                        "Instant Bank Withdraw",
+                        textAlign: TextAlign.center,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
                   ),
                 ),
-               
                 SizedBox(
-                  height: deviceHeight*2,
+                  height: deviceHeight * 2,
                 )
               ],
             ));

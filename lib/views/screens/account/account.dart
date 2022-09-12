@@ -40,7 +40,7 @@ class _AccountPageState extends State<AccountPage> {
                         height: deviceHeight * 2,
                       ),
                       Container(
-                        width: deviceWidth*90,
+                        width: deviceWidth * 90,
                         child: Center(
                           child: Text(
                             "Total Balance",
@@ -49,7 +49,7 @@ class _AccountPageState extends State<AccountPage> {
                         ),
                       ),
                       Container(
-                        width: deviceWidth*90,
+                        width: deviceWidth * 90,
                         child: Center(
                           child: Text(
                             "₹5204.87",
@@ -80,16 +80,17 @@ class _AccountPageState extends State<AccountPage> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
-                              width: deviceWidth*70,
+                              width: deviceWidth * 70,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text("Deposited",
-                                      style:
-                                          TextStyle(fontSize: deviceHeight * 2.2)),
+                                      style: TextStyle(
+                                          fontSize: deviceHeight * 2.2)),
                                   Text(
                                     "₹5204.87",
-                                    style: TextStyle(fontSize: deviceHeight * 2.2),
+                                    style:
+                                        TextStyle(fontSize: deviceHeight * 2.2),
                                   ),
                                 ],
                               ),
@@ -114,16 +115,17 @@ class _AccountPageState extends State<AccountPage> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
-                              width: deviceWidth*70,
+                              width: deviceWidth * 70,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text("Winnings",
-                                      style:
-                                          TextStyle(fontSize: deviceHeight * 2.2)),
+                                      style: TextStyle(
+                                          fontSize: deviceHeight * 2.2)),
                                   Text(
                                     "₹3.87",
-                                    style: TextStyle(fontSize: deviceHeight * 2.2),
+                                    style:
+                                        TextStyle(fontSize: deviceHeight * 2.2),
                                   ),
                                 ],
                               ),
@@ -155,16 +157,17 @@ class _AccountPageState extends State<AccountPage> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
-                              width: deviceWidth*70,
+                              width: deviceWidth * 70,
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text("Cash Bonus",
-                                      style:
-                                          TextStyle(fontSize: deviceHeight * 2.2)),
+                                      style: TextStyle(
+                                          fontSize: deviceHeight * 2.2)),
                                   Text(
                                     "₹0.00",
-                                    style: TextStyle(fontSize: deviceHeight * 2.2),
+                                    style:
+                                        TextStyle(fontSize: deviceHeight * 2.2),
                                   ),
                                 ],
                               ),
@@ -192,8 +195,8 @@ class _AccountPageState extends State<AccountPage> {
             ),
             Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
               Padding(
-                padding:
-                    EdgeInsets.only(left: deviceWidth * 5, top: deviceWidth * 5),
+                padding: EdgeInsets.only(
+                    left: deviceWidth * 5, top: deviceWidth * 5),
                 child: Card(
                   shadowColor: Colors.white70,
                   shape: RoundedRectangleBorder(
@@ -201,9 +204,9 @@ class _AccountPageState extends State<AccountPage> {
                   ),
                   child: Container(
                     width: deviceWidth * 42.5,
-                  //  height: deviceHeight * 10,
+                    //  height: deviceHeight * 10,
                     child: Padding(
-                      padding: EdgeInsets.all(deviceHeight*1),
+                      padding: EdgeInsets.all(deviceHeight * 1),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
@@ -212,14 +215,15 @@ class _AccountPageState extends State<AccountPage> {
                             size: deviceHeight * 5,
                           ),
                           Container(
-                            width: deviceWidth*27,
+                            width: deviceWidth * 27,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                   "1139",
-                                  style: TextStyle(fontSize: deviceHeight * 2.5),
+                                  style:
+                                      TextStyle(fontSize: deviceHeight * 2.5),
                                 ),
                                 Text("Match Played",
                                     style: TextStyle(
@@ -235,9 +239,9 @@ class _AccountPageState extends State<AccountPage> {
                 ),
               ),
               Padding(
-                padding:
-                    EdgeInsets.only(right: deviceWidth * 5, top: deviceWidth * 5),
-                 child: Card(
+                padding: EdgeInsets.only(
+                    right: deviceWidth * 5, top: deviceWidth * 5),
+                child: Card(
                   shadowColor: Colors.white70,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(deviceWidth * 3),
@@ -246,7 +250,7 @@ class _AccountPageState extends State<AccountPage> {
                     width: deviceWidth * 42.5,
                     // height: deviceHeight * 10,
                     child: Padding(
-                      padding: EdgeInsets.all(deviceHeight*1),
+                      padding: EdgeInsets.all(deviceHeight * 1),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
@@ -255,14 +259,15 @@ class _AccountPageState extends State<AccountPage> {
                             size: deviceHeight * 5,
                           ),
                           Container(
-                            width: deviceWidth*27,
+                            width: deviceWidth * 27,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                   "1993",
-                                  style: TextStyle(fontSize: deviceHeight * 2.5),
+                                  style:
+                                      TextStyle(fontSize: deviceHeight * 2.5),
                                 ),
                                 Text("Contests Joined",
                                     style: TextStyle(
@@ -280,8 +285,8 @@ class _AccountPageState extends State<AccountPage> {
             ]),
             Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
               Padding(
-                padding:
-                    EdgeInsets.only(left: deviceWidth * 5, top: deviceWidth * 5),
+                padding: EdgeInsets.only(
+                    left: deviceWidth * 5, top: deviceWidth * 5),
                 child: Card(
                   shadowColor: Colors.white70,
                   shape: RoundedRectangleBorder(
@@ -291,7 +296,7 @@ class _AccountPageState extends State<AccountPage> {
                     width: deviceWidth * 42.5,
                     // height: deviceHeight * 10,
                     child: Padding(
-                      padding: EdgeInsets.all(deviceHeight*1),
+                      padding: EdgeInsets.all(deviceHeight * 1),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
@@ -300,14 +305,15 @@ class _AccountPageState extends State<AccountPage> {
                             size: deviceHeight * 5,
                           ),
                           Container(
-                            width: deviceWidth*27,
+                            width: deviceWidth * 27,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                   "1273",
-                                  style: TextStyle(fontSize: deviceHeight * 2.5),
+                                  style:
+                                      TextStyle(fontSize: deviceHeight * 2.5),
                                 ),
                                 Text("Contests Won",
                                     style: TextStyle(
@@ -323,18 +329,18 @@ class _AccountPageState extends State<AccountPage> {
                 ),
               ),
               Padding(
-                padding:
-                    EdgeInsets.only(right: deviceWidth * 5, top: deviceWidth * 5),
-                 child: Card(
+                padding: EdgeInsets.only(
+                    right: deviceWidth * 5, top: deviceWidth * 5),
+                child: Card(
                   shadowColor: Colors.white70,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(deviceWidth * 3),
                   ),
                   child: Container(
                     width: deviceWidth * 42.5,
-                   // height: deviceHeight * 10,
+                    // height: deviceHeight * 10,
                     child: Padding(
-                      padding: EdgeInsets.all(deviceHeight*1),
+                      padding: EdgeInsets.all(deviceHeight * 1),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
@@ -343,14 +349,15 @@ class _AccountPageState extends State<AccountPage> {
                             size: deviceHeight * 5,
                           ),
                           Container(
-                            width: deviceWidth*27,
+                            width: deviceWidth * 27,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                   "₹345267.01",
-                                  style: TextStyle(fontSize: deviceHeight * 2.5),
+                                  style:
+                                      TextStyle(fontSize: deviceHeight * 2.5),
                                 ),
                                 Text("Total Winnings",
                                     style: TextStyle(

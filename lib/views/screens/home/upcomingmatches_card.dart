@@ -27,7 +27,7 @@ class _UpcomingMatchesCardState extends State<UpcomingMatchesCard> {
         ),
         child: Container(
           width: deviceWidth * 90,
-        // height: deviceHeight * 19,
+          // height: deviceHeight * 19,
           decoration: BoxDecoration(
               color: Colors.white38,
               borderRadius: BorderRadius.circular(deviceWidth * 5)),
@@ -41,7 +41,7 @@ class _UpcomingMatchesCardState extends State<UpcomingMatchesCard> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    width: deviceWidth*70,
+                    width: deviceWidth * 70,
                     child: Text(
                       'India Vs West Indies T20I',
                       style: TextStyle(
@@ -72,7 +72,7 @@ class _UpcomingMatchesCardState extends State<UpcomingMatchesCard> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      width: deviceWidth*30,
+                      width: deviceWidth * 30,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -91,8 +91,9 @@ class _UpcomingMatchesCardState extends State<UpcomingMatchesCard> {
                           Row(children: [
                             CircleAvatar(
                               radius: deviceWidth * 5,
-                              backgroundColor: Colors.black87, 
-                              backgroundImage: const AssetImage("assets/images/wind.jpg"),
+                              backgroundColor: Colors.black87,
+                              backgroundImage:
+                                  const AssetImage("assets/images/wind.jpg"),
                             ),
                             SizedBox(
                               width: deviceWidth * 1,
@@ -110,7 +111,7 @@ class _UpcomingMatchesCardState extends State<UpcomingMatchesCard> {
                       ),
                     ),
                     Container(
-                      width: deviceWidth*19,
+                      width: deviceWidth * 19,
                       child: Text(
                         "40m 50s",
                         textAlign: TextAlign.center,
@@ -121,7 +122,7 @@ class _UpcomingMatchesCardState extends State<UpcomingMatchesCard> {
                       ),
                     ),
                     Container(
-                      width: deviceWidth*30,
+                      width: deviceWidth * 30,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
@@ -137,32 +138,31 @@ class _UpcomingMatchesCardState extends State<UpcomingMatchesCard> {
                             height: deviceHeight * 0.5,
                           ),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                            Text(
-                              "IND",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                                fontSize: deviceWidth * 4.3,
-                              ),
-                            ),
-                            SizedBox(
-                              width: deviceWidth * 1,
-                            ),
-                            CircleAvatar(
-                              
-                              radius: deviceWidth * 5,
-                              backgroundColor: Colors.black87,
-                              backgroundImage: const AssetImage("assets/images/ind.jpg"),
-                            ),
-                          ]),
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  "IND",
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: deviceWidth * 4.3,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: deviceWidth * 1,
+                                ),
+                                CircleAvatar(
+                                  radius: deviceWidth * 5,
+                                  backgroundColor: Colors.black87,
+                                  backgroundImage:
+                                      const AssetImage("assets/images/ind.jpg"),
+                                ),
+                              ]),
                         ],
                       ),
                     ),
                   ],
                 ),
-                
               ),
             ),
             SizedBox(
@@ -194,7 +194,7 @@ class _UpcomingMatchesCardState extends State<UpcomingMatchesCard> {
                     width: deviceWidth * 2,
                   ),
                   Container(
-                    width: deviceWidth*40,
+                    width: deviceWidth * 40,
                     child: Text(
                       '₹ 20 LAKH',
                       style: TextStyle(
