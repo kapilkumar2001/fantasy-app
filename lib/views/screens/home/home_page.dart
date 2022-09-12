@@ -1,8 +1,10 @@
 import 'package:create11/constants/strings.dart';
 import 'package:create11/views/screens/home/drawer.dart';
 import 'package:create11/views/screens/home/mymatches_card.dart';
+import 'package:create11/views/screens/home/profile.dart';
 import 'package:create11/views/screens/home/promo_card.dart';
 import 'package:create11/views/screens/home/upcomingmatches_card.dart';
+import 'package:create11/views/screens/my_contest/mycontest.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -53,19 +55,29 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
-                Row(children: [
-                  Container(
-                    width: deviceWidth * 30,
-                    child: Text(Strings.viewAll,
-                        textAlign: TextAlign.end,
-                        style: TextStyle(
-                            fontSize: deviceHeight * 2.3, color: Colors.black)),
-                  ),
-                  Icon(
-                    Icons.arrow_forward_ios,
-                    size: deviceHeight * 1.8,
-                  ),
-                ]),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const MyContestPage()),
+                    );
+                  },
+                  child: Row(children: [
+                    Container(
+                      width: deviceWidth * 30,
+                      child: Text(Strings.viewAll,
+                          textAlign: TextAlign.end,
+                          style: TextStyle(
+                              fontSize: deviceHeight * 2.3,
+                              color: Colors.black)),
+                    ),
+                    Icon(
+                      Icons.arrow_forward_ios,
+                      size: deviceHeight * 1.8,
+                    ),
+                  ]),
+                ),
               ],
             ),
           ),
