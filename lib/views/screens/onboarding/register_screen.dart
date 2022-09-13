@@ -1,4 +1,5 @@
 import 'package:create11/views/screens/onboarding/login_screen.dart';
+import 'package:create11/views/screens/onboarding/otp_screen.dart';
 import 'package:create11/views/screens/others/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -71,24 +72,24 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: deviceWidth * 5, vertical: deviceWidth * 2),
-                child: TextFormField(
-                  decoration: const InputDecoration(
-                    hintText: 'Password',
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: deviceWidth * 5, vertical: deviceWidth * 2),
-                child: TextFormField(
-                  decoration: const InputDecoration(
-                    hintText: 'Confirm Password',
-                  ),
-                ),
-              ),
+              // Padding(
+              //   padding: EdgeInsets.symmetric(
+              //       horizontal: deviceWidth * 5, vertical: deviceWidth * 2),
+              //   child: TextFormField(
+              //     decoration: const InputDecoration(
+              //       hintText: 'Password',
+              //     ),
+              //   ),
+              // ),
+              // Padding(
+              //   padding: EdgeInsets.symmetric(
+              //       horizontal: deviceWidth * 5, vertical: deviceWidth * 2),
+              //   child: TextFormField(
+              //     decoration: const InputDecoration(
+              //       hintText: 'Confirm Password',
+              //     ),
+              //   ),
+              // ),
               SizedBox(
                 height: deviceWidth * 4,
               ),
@@ -99,7 +100,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const DashBoard()),
+                          builder: (context) => const OTPScreen()),
                     );
                   },
                   child: Container(
@@ -112,7 +113,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: Padding(
                       padding: EdgeInsets.all(deviceWidth * 5),
                       child: Text(
-                        "CREATE ACCOUNT",
+                        "SEND OTP",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Colors.white,
