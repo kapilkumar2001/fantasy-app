@@ -1,4 +1,5 @@
 import 'package:create11/views/screens/home/profile.dart';
+import 'package:create11/views/screens/onboarding/onboarding_page.dart';
 import 'package:flutter/material.dart';
 
 class HomeDrawer extends StatefulWidget {
@@ -144,7 +145,12 @@ class _HomeDrawerState extends State<HomeDrawer> {
         ),
         ListTile(
           title: const Text('Log Out'),
-          onTap: () {},
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const OnboardingPage()),
+            );
+          },
           leading: Icon(Icons.logout_outlined, size: deviceHeight * 4),
         ),
       ]),

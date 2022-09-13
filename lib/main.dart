@@ -1,3 +1,4 @@
+import 'package:create11/views/screens/onboarding/onboarding_page.dart';
 import 'package:create11/views/screens/others/dashboard.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const DashBoard(),
+      home: const OnboardingPage(),
       debugShowCheckedModeBanner: false,
     );
   }
