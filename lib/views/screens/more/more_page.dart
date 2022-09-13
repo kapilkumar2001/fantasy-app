@@ -21,9 +21,7 @@ class _MorePageState extends State<MorePage> {
           style: TextStyle(fontSize: deviceHeight * 3),
         ),
         actions: [
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.account_balance_wallet_outlined)),
+          
           IconButton(
               onPressed: () {}, icon: const Icon(Icons.notifications_outlined)),
         ],
