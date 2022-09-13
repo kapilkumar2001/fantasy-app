@@ -1,3 +1,4 @@
+import 'package:create11/views/screens/home/contest_card.dart';
 import 'package:create11/views/screens/home/home_page.dart';
 import 'package:create11/views/screens/home/mymatches_card.dart';
 import 'package:create11/views/screens/others/compare_teams.dart';
@@ -113,7 +114,6 @@ class _MatchDetailsPageState extends State<MatchDetailsPage>
                 ),
               ),
             ),
-
             SizedBox(
               height: deviceHeight * 6.5,
               child: AppBar(
@@ -142,274 +142,320 @@ class _MatchDetailsPageState extends State<MatchDetailsPage>
                 ),
               ),
             ),
-
-            // create widgets for each tab bar here
             Expanded(
               child: TabBarView(
                 children: [
                   // first tab bar view widget
                   SingleChildScrollView(
                     child: Container(
-                      color: Colors.white70,
                       child: Column(children: [
-                        InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const CompareTeamsPage()),
-                            );
-                          },
-                          child: Container(
-                            // decoration: BoxDecoration(
-                            //     border: Border.all(),
-                            //     borderRadius: BorderRadius.all(
-                            //         Radius.circular(deviceWidth * 1))),
-                            width: deviceWidth * 100,
-                            color: Colors.black12,
-                            child: Padding(
-                              padding: EdgeInsets.all(deviceWidth * 5),
-                              child: Text(
-                                "Compare Team",
-                                textAlign: TextAlign.center,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(fontSize: deviceWidth * 5),
-                              ),
-                            ),
-                          ),
-                        ),
-                        SizedBox(
-                          height: deviceHeight * 3,
-                        ),
                         Padding(
-                          padding: EdgeInsets.all(deviceWidth * 5),
-                          child: Card(
-                            shadowColor: Colors.white,
-                            child: Padding(
-                              padding: EdgeInsets.all(deviceWidth * 5),
-                              child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Column(
-                                      children: [
-                                        Container(
-                                            width: deviceWidth * 25,
-                                            child: const Text(
-                                              "Investment",
-                                              textAlign: TextAlign.start,
-                                            )),
-                                        Container(
-                                          width: deviceWidth * 25,
-                                          child: Text(
-                                            "₹5199",
-                                            textAlign: TextAlign.start,
-                                            style: TextStyle(
-                                                fontSize: deviceWidth * 6,
-                                                color: Colors.red[800]),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                    Column(
-                                      children: [
-                                        Container(
-                                            width: deviceWidth * 25,
-                                            child: const Text(
-                                              "Winnings",
-                                              textAlign: TextAlign.center,
-                                            )),
-                                        Container(
-                                          width: deviceWidth * 25,
-                                          child: Text(
-                                            "₹0",
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                fontSize: deviceWidth * 6,
-                                                color: Colors.yellow[800]),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                    Column(
-                                      children: [
-                                        Container(
-                                            width: deviceWidth * 25,
-                                            child: const Text(
-                                              "Profit",
-                                              textAlign: TextAlign.end,
-                                            )),
-                                        Container(
-                                          width: deviceWidth * 25,
-                                          child: Text(
-                                            "₹-5199",
-                                            textAlign: TextAlign.end,
-                                            style: TextStyle(
-                                                fontSize: deviceWidth * 6,
-                                                color: Colors.red[800]),
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ]),
+                          padding: EdgeInsets.only(
+                              right: deviceWidth * 5,
+                              left: deviceWidth * 5,
+                              top: deviceWidth * 2,
+                              bottom: deviceWidth * 1),
+                          child: ListTile(
+                            leading: CircleAvatar(
+                              radius: deviceWidth * 5,
+                              backgroundColor: Colors.black87,
+                              backgroundImage:
+                                  const AssetImage("assets/images/sl.jpg"),
                             ),
+                            title: Text("Mega GL"),
+                            subtitle: Text("Low entry Mega Winnings!!"),
                           ),
                         ),
-                        SizedBox(
-                          height: deviceHeight * 2,
-                        ),
+                        ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: 2,
+                            itemBuilder: (context, index) {
+                              return ContestCard();
+                            }),
                         Padding(
-                          padding: EdgeInsets.all(deviceWidth * 5),
-                          child: Card(
-                            child: Column(children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Icon(
-                                    Icons.emoji_events_outlined,
-                                    color: Colors.yellow[800],
-                                  ),
-                                  Text(
-                                    "1",
-                                    style: TextStyle(color: Colors.yellow[800]),
-                                  ),
-                                  const Text("Winners")
-                                ],
-                              ),
-                              Padding(
-                                padding: EdgeInsets.all(deviceWidth * 5),
-                                child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Column(
-                                        children: [
-                                          Container(
-                                            width: deviceWidth * 25,
-                                            child: Text(
-                                              "₹10000",
-                                              textAlign: TextAlign.start,
-                                              style: TextStyle(
-                                                fontSize: deviceWidth * 6,
-                                              ),
-                                            ),
-                                          ),
-                                          Container(
-                                              width: deviceWidth * 25,
-                                              child: const Text(
-                                                "Prize Pool",
-                                                textAlign: TextAlign.start,
-                                                style: TextStyle(
-                                                    color: Colors.black38),
-                                              )),
-                                        ],
-                                      ),
-                                      Column(
-                                        children: [
-                                          Container(
-                                            width: deviceWidth * 25,
-                                            child: Text(
-                                              "2",
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                fontSize: deviceWidth * 6,
-                                              ),
-                                            ),
-                                          ),
-                                          Container(
-                                            width: deviceWidth * 25,
-                                            child: const Text("Spot",
-                                                textAlign: TextAlign.center,
-                                                style: TextStyle(
-                                                    color: Colors.black38)),
-                                          )
-                                        ],
-                                      ),
-                                      Column(
-                                        children: [
-                                          Container(
-                                            width: deviceWidth * 25,
-                                            child: Text(
-                                              "₹5199",
-                                              textAlign: TextAlign.end,
-                                              style: TextStyle(
-                                                fontSize: deviceWidth * 6,
-                                              ),
-                                            ),
-                                          ),
-                                          Container(
-                                            width: deviceWidth * 25,
-                                            child: const Text("Entry Fee",
-                                                textAlign: TextAlign.end,
-                                                style: TextStyle(
-                                                    color: Colors.black38)),
-                                          )
-                                        ],
-                                      ),
-                                    ]),
-                              ),
-                              Divider(
-                                height: deviceWidth * 2,
-                              ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: deviceWidth * 5,
-                                    vertical: deviceWidth * 2),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                        width: deviceWidth * 25,
-                                        child: const Text(
-                                          "RadhaKrishna123(T1)",
-                                          overflow: TextOverflow.ellipsis,
-                                          textAlign: TextAlign.start,
-                                        )),
-                                    Container(
-                                        width: deviceWidth * 25,
-                                        child: const Text(
-                                          "536.50",
-                                          textAlign: TextAlign.center,
-                                        )),
-                                    Container(
-                                        width: deviceWidth * 25,
-                                        child: const Text(
-                                          "#2",
-                                          textAlign: TextAlign.end,
-                                        ))
-                                  ],
-                                ),
-                              )
-                            ]),
+                          padding: EdgeInsets.only(
+                              right: deviceWidth * 5,
+                              left: deviceWidth * 5,
+                              top: deviceWidth * 2,
+                              bottom: deviceWidth * 1),
+                          child: ListTile(
+                            leading: CircleAvatar(
+                              radius: deviceWidth * 5,
+                              backgroundColor: Colors.black87,
+                              backgroundImage:
+                                  const AssetImage("assets/images/sl.jpg"),
+                            ),
+                            title: Text("Create11 Giveaway"),
+                            subtitle: Text("Loot!!"),
                           ),
-                        )
+                        ),
+                        ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: 2,
+                            itemBuilder: (context, index) {
+                              return ContestCard();
+                            }),
+                        Padding(
+                          padding: EdgeInsets.only(
+                              right: deviceWidth * 5,
+                              left: deviceWidth * 5,
+                              top: deviceWidth * 2,
+                              bottom: deviceWidth * 1),
+                          child: ListTile(
+                            leading: CircleAvatar(
+                              radius: deviceWidth * 5,
+                              backgroundColor: Colors.black87,
+                              backgroundImage:
+                                  const AssetImage("assets/images/sl.jpg"),
+                            ),
+                            title: Text("Winner takes all"),
+                            subtitle: Text("Everything To Play For"),
+                          ),
+                        ),
+                        ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: 4,
+                            itemBuilder: (context, index) {
+                              return ContestCard();
+                            }),
                       ]),
                     ),
                   ),
-                  Container(
-                    color: Colors.white70,
-                    child: const Center(
-                      child: Text(
-                        'Batting',
-                      ),
+                  SingleChildScrollView(
+                    child: Container(
+                      child: Column(children: [
+                        Padding(
+                          padding: EdgeInsets.only(
+                              right: deviceWidth * 5,
+                              left: deviceWidth * 5,
+                              top: deviceWidth * 2,
+                              bottom: deviceWidth * 1),
+                          child: ListTile(
+                            leading: CircleAvatar(
+                              radius: deviceWidth * 5,
+                              backgroundColor: Colors.black87,
+                              backgroundImage:
+                                  const AssetImage("assets/images/sl.jpg"),
+                            ),
+                            title: Text("Mega GL"),
+                            subtitle: Text("Low entry Mega Winnings!!"),
+                          ),
+                        ),
+                        ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: 2,
+                            itemBuilder: (context, index) {
+                              return ContestCard();
+                            }),
+                        Padding(
+                          padding: EdgeInsets.only(
+                              right: deviceWidth * 5,
+                              left: deviceWidth * 5,
+                              top: deviceWidth * 2,
+                              bottom: deviceWidth * 1),
+                          child: ListTile(
+                            leading: CircleAvatar(
+                              radius: deviceWidth * 5,
+                              backgroundColor: Colors.black87,
+                              backgroundImage:
+                                  const AssetImage("assets/images/sl.jpg"),
+                            ),
+                            title: Text("Create11 Giveaway"),
+                            subtitle: Text("Loot!!"),
+                          ),
+                        ),
+                        ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: 2,
+                            itemBuilder: (context, index) {
+                              return ContestCard();
+                            }),
+                        Padding(
+                          padding: EdgeInsets.only(
+                              right: deviceWidth * 5,
+                              left: deviceWidth * 5,
+                              top: deviceWidth * 2,
+                              bottom: deviceWidth * 1),
+                          child: ListTile(
+                            leading: CircleAvatar(
+                              radius: deviceWidth * 5,
+                              backgroundColor: Colors.black87,
+                              backgroundImage:
+                                  const AssetImage("assets/images/sl.jpg"),
+                            ),
+                            title: Text("Winner takes all"),
+                            subtitle: Text("Everything To Play For"),
+                          ),
+                        ),
+                        ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: 4,
+                            itemBuilder: (context, index) {
+                              return ContestCard();
+                            }),
+                      ]),
                     ),
                   ),
-                  Container(
-                    color: Colors.white70,
-                    child: const Center(
-                      child: Text(
-                        'Bowling',
-                      ),
+                  SingleChildScrollView(
+                    child: Container(
+                      child: Column(children: [
+                        Padding(
+                          padding: EdgeInsets.only(
+                              right: deviceWidth * 5,
+                              left: deviceWidth * 5,
+                              top: deviceWidth * 2,
+                              bottom: deviceWidth * 1),
+                          child: ListTile(
+                            leading: CircleAvatar(
+                              radius: deviceWidth * 5,
+                              backgroundColor: Colors.black87,
+                              backgroundImage:
+                                  const AssetImage("assets/images/sl.jpg"),
+                            ),
+                            title: Text("Mega GL"),
+                            subtitle: Text("Low entry Mega Winnings!!"),
+                          ),
+                        ),
+                        ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: 2,
+                            itemBuilder: (context, index) {
+                              return ContestCard();
+                            }),
+                        Padding(
+                          padding: EdgeInsets.only(
+                              right: deviceWidth * 5,
+                              left: deviceWidth * 5,
+                              top: deviceWidth * 2,
+                              bottom: deviceWidth * 1),
+                          child: ListTile(
+                            leading: CircleAvatar(
+                              radius: deviceWidth * 5,
+                              backgroundColor: Colors.black87,
+                              backgroundImage:
+                                  const AssetImage("assets/images/sl.jpg"),
+                            ),
+                            title: Text("Create11 Giveaway"),
+                            subtitle: Text("Loot!!"),
+                          ),
+                        ),
+                        ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: 2,
+                            itemBuilder: (context, index) {
+                              return ContestCard();
+                            }),
+                        Padding(
+                          padding: EdgeInsets.only(
+                              right: deviceWidth * 5,
+                              left: deviceWidth * 5,
+                              top: deviceWidth * 2,
+                              bottom: deviceWidth * 1),
+                          child: ListTile(
+                            leading: CircleAvatar(
+                              radius: deviceWidth * 5,
+                              backgroundColor: Colors.black87,
+                              backgroundImage:
+                                  const AssetImage("assets/images/sl.jpg"),
+                            ),
+                            title: Text("Winner takes all"),
+                            subtitle: Text("Everything To Play For"),
+                          ),
+                        ),
+                        ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: 4,
+                            itemBuilder: (context, index) {
+                              return ContestCard();
+                            }),
+                      ]),
                     ),
                   ),
-                  Container(
-                    color: Colors.white70,
-                    child: const Center(
-                      child: Text(
-                        'Reverse',
-                      ),
+                  SingleChildScrollView(
+                    child: Container(
+                      child: Column(children: [
+                        Padding(
+                          padding: EdgeInsets.only(
+                              right: deviceWidth * 5,
+                              left: deviceWidth * 5,
+                              top: deviceWidth * 2,
+                              bottom: deviceWidth * 1),
+                          child: ListTile(
+                            leading: CircleAvatar(
+                              radius: deviceWidth * 5,
+                              backgroundColor: Colors.black87,
+                              backgroundImage:
+                                  const AssetImage("assets/images/sl.jpg"),
+                            ),
+                            title: Text("Mega GL"),
+                            subtitle: Text("Low entry Mega Winnings!!"),
+                          ),
+                        ),
+                        ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: 2,
+                            itemBuilder: (context, index) {
+                              return ContestCard();
+                            }),
+                        Padding(
+                          padding: EdgeInsets.only(
+                              right: deviceWidth * 5,
+                              left: deviceWidth * 5,
+                              top: deviceWidth * 2,
+                              bottom: deviceWidth * 1),
+                          child: ListTile(
+                            leading: CircleAvatar(
+                              radius: deviceWidth * 5,
+                              backgroundColor: Colors.black87,
+                              backgroundImage:
+                                  const AssetImage("assets/images/sl.jpg"),
+                            ),
+                            title: Text("Create11 Giveaway"),
+                            subtitle: Text("Loot!!"),
+                          ),
+                        ),
+                        ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: 2,
+                            itemBuilder: (context, index) {
+                              return ContestCard();
+                            }),
+                        Padding(
+                          padding: EdgeInsets.only(
+                              right: deviceWidth * 5,
+                              left: deviceWidth * 5,
+                              top: deviceWidth * 2,
+                              bottom: deviceWidth * 1),
+                          child: ListTile(
+                            leading: CircleAvatar(
+                              radius: deviceWidth * 5,
+                              backgroundColor: Colors.black87,
+                              backgroundImage:
+                                  const AssetImage("assets/images/sl.jpg"),
+                            ),
+                            title: Text("Winner takes all"),
+                            subtitle: Text("Everything To Play For"),
+                          ),
+                        ),
+                        ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: 4,
+                            itemBuilder: (context, index) {
+                              return ContestCard();
+                            }),
+                      ]),
                     ),
                   ),
                 ],
