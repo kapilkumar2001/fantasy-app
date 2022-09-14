@@ -20,12 +20,22 @@ class _SplashScreenState extends State<SplashScreen> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Padding(
-          padding: EdgeInsets.all(deviceWidth*5),
-          child: Container(width: deviceWidth*90, child: Text("Welcome to", style: TextStyle(fontSize: deviceWidth*5),)),
+          padding: EdgeInsets.all(deviceWidth * 5),
+          child: Container(
+              width: deviceWidth * 90,
+              child: Text(
+                "Welcome to",
+                style: TextStyle(fontSize: deviceWidth * 5),
+              )),
         ),
         Padding(
-          padding: EdgeInsets.all(deviceWidth*5),
-          child: Container(width: deviceWidth*90, child: Text("Create11", style: TextStyle(fontSize: deviceWidth*8),)),
+          padding: EdgeInsets.all(deviceWidth * 5),
+          child: Container(
+              width: deviceWidth * 90,
+              child: Text(
+                "Create11",
+                style: TextStyle(fontSize: deviceWidth * 8),
+              )),
         )
       ],
     );

@@ -23,7 +23,6 @@ class _MyContestPageState extends State<MyContestPage> {
           backgroundColor: Colors.redAccent,
           title: const Text(Strings.myContests),
           actions: [
-            
             IconButton(
                 onPressed: () {},
                 icon: const Icon(Icons.notifications_outlined)),

@@ -27,7 +27,6 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
         title: const Text(Strings.appName),
         actions: [
-         
           IconButton(
               onPressed: () {}, icon: const Icon(Icons.notifications_outlined)),
         ],

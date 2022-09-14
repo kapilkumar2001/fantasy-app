@@ -1,4 +1,5 @@
 import 'package:create11/views/screens/home/contest_card.dart';
+import 'package:create11/views/screens/home/create_team_page.dart';
 import 'package:flutter/material.dart';
 
 class ContestPage extends StatefulWidget {
@@ -141,16 +142,25 @@ class _ContestPageState extends State<ContestPage> {
                 ),
               )
             ]),
-            Container(
-              color: Colors.green,
-              width: deviceWidth * 100,
-              child: Padding(
-                padding: EdgeInsets.all(deviceWidth * 5),
-                child: Text(
-                  "Join Contest Now",
-                  textAlign: TextAlign.center,
-                  style:
-                      TextStyle(color: Colors.white, fontSize: deviceWidth * 5),
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const CreateTeamPage()),
+                );
+              },
+              child: Container(
+                color: Colors.green,
+                width: deviceWidth * 100,
+                child: Padding(
+                  padding: EdgeInsets.all(deviceWidth * 5),
+                  child: Text(
+                    "Join Contest Now",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Colors.white, fontSize: deviceWidth * 5),
+                  ),
                 ),
               ),
             ),
