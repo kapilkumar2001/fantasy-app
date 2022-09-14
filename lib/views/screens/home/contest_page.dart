@@ -155,7 +155,7 @@ class _ContestPageState extends State<ContestPage> {
               ),
             ),
             SizedBox(
-              height: deviceHeight * 6,
+              height: deviceHeight * 6.5,
               child: AppBar(
                 backgroundColor: Colors.white,
                 bottom: TabBar(
