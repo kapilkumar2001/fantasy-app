@@ -1,9 +1,9 @@
-import 'package:create11/views/screens/home/matchdetails_page.dart';
+import 'package:create11/views/screens/home/all_contests_page.dart';
 import 'package:flutter/material.dart';
 
 class MyMatchesCard extends StatefulWidget {
   bool isMatchLive;
-  bool isMatchCompleted;
+  bool isMatchCompleted; 
   MyMatchesCard(
       {required bool this.isMatchCompleted, required bool this.isMatchLive});
 
@@ -18,10 +18,10 @@ class _MyMatchesCardState extends State<MyMatchesCard> {
     double? deviceWidth = MediaQuery.of(context).size.width / 100;
     return InkWell(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const MatchDetailsPage()),
-        );
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(builder: (context) => AllContestsPage()),
+        // );
       },
       child: Card(
         shadowColor: Colors.white70,

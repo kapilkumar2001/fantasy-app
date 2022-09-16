@@ -1,23 +1,35 @@
-import 'package:create11/views/screens/home/matchdetails_page.dart';
+import 'dart:convert';
+
+import 'package:create11/services/data.dart';
+import 'package:create11/views/screens/home/all_contests_page.dart';
 import 'package:flutter/material.dart';
 
 class UpcomingMatchesCard extends StatefulWidget {
-  const UpcomingMatchesCard({Key? key}) : super(key: key);
-
+  var matchDetails;
+  UpcomingMatchesCard(this.matchDetails);
+ 
   @override
   State<UpcomingMatchesCard> createState() => _UpcomingMatchesCardState();
 }
 
 class _UpcomingMatchesCardState extends State<UpcomingMatchesCard> {
+
+  
+
+
   @override
   Widget build(BuildContext context) {
     double? deviceHeight = MediaQuery.of(context).size.height / 100;
     double? deviceWidth = MediaQuery.of(context).size.width / 100;
+
+    String tournamentName = jsonDecode(widget.matchDetails['tournament'])['name'];
+    var teamA = jsonDecode(widget.matchDetails['teams'])['a'];
+    var teamB = jsonDecode(widget.matchDetails['teams'])['b'];
     return InkWell(
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const MatchDetailsPage()),
+          MaterialPageRoute(builder: (context) =>  AllContestsPage(widget.matchDetails)),
         );
       },
       child: Card(
@@ -43,7 +55,7 @@ class _UpcomingMatchesCardState extends State<UpcomingMatchesCard> {
                   Container(
                     width: deviceWidth * 70,
                     child: Text(
-                      'India Vs West Indies T20I',
+                      tournamentName,
                       style: TextStyle(
                           fontSize: deviceWidth * 4.5,
                           fontWeight: FontWeight.normal,
@@ -77,7 +89,7 @@ class _UpcomingMatchesCardState extends State<UpcomingMatchesCard> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'West Indies',
+                            teamA['name'],
                             style: TextStyle(
                               color: Colors.black38,
                               fontWeight: FontWeight.normal,
@@ -99,7 +111,7 @@ class _UpcomingMatchesCardState extends State<UpcomingMatchesCard> {
                               width: deviceWidth * 1,
                             ),
                             Text(
-                              "WI",
+                              teamA['code'],
                               style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold,
@@ -113,7 +125,7 @@ class _UpcomingMatchesCardState extends State<UpcomingMatchesCard> {
                     Container(
                       width: deviceWidth * 19,
                       child: Text(
-                        "40m 50s",
+                        widget.matchDetails['start_date'],
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Colors.red,
@@ -127,7 +139,7 @@ class _UpcomingMatchesCardState extends State<UpcomingMatchesCard> {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           Text(
-                            'India',
+                            teamB['name'],
                             overflow: TextOverflow.visible,
                             style: TextStyle(
                                 color: Colors.black38,
@@ -141,7 +153,7 @@ class _UpcomingMatchesCardState extends State<UpcomingMatchesCard> {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Text(
-                                  "IND",
+                                  teamA['code'],
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold,

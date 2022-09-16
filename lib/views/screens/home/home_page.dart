@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:create11/constants/strings.dart';
 import 'package:create11/views/screens/home/drawer.dart';
 import 'package:create11/views/screens/home/mymatches_card.dart';
@@ -7,6 +9,8 @@ import 'package:create11/views/screens/home/upcomingmatches_card.dart';
 import 'package:create11/views/screens/my_contest/mycontest.dart';
 import 'package:flutter/material.dart';
 
+import '../../../services/data.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -15,8 +19,28 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  List? upcomingMatchesList;
+
+  @override
+  void initState()  {
+    getMatches();
+    super.initState();
+  }
+
+  Future getMatches() async {
+    
+    upcomingMatchesList = (await Data().getUpcomingMatches()).toList();
+
+    setState(() {
+      
+    });
+    print(upcomingMatchesList!.length);
+  }
+  
   @override
   Widget build(BuildContext context) {
+
     double? deviceHeight = MediaQuery.of(context).size.height / 100;
     double? deviceWidth = MediaQuery.of(context).size.width / 100;
 
@@ -118,33 +142,16 @@ class _HomePageState extends State<HomePage> {
           ListView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              itemCount: 5,
+              itemCount:upcomingMatchesList ==null? 0: upcomingMatchesList!.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: EdgeInsets.only(
                       left: deviceWidth * 3,
                       right: deviceWidth * 3,
                       top: deviceHeight * 1),
-                  child: UpcomingMatchesCard(),
+                  child: UpcomingMatchesCard(upcomingMatchesList![index]),
                 );
               }),
-          // SingleChildScrollView(
-          //   padding: EdgeInsets.symmetric(horizontal: deviceWidth * 4),
-          //   scrollDirection: Axis.vertical,
-          //   child: Column(
-          //     children: [
-          //       const UpcomingMatchesCard(),
-          //       SizedBox(height: deviceHeight * 1),
-          //       const UpcomingMatchesCard(),
-          //       SizedBox(height: deviceHeight * 1),
-          //       const UpcomingMatchesCard(),
-          //       SizedBox(height: deviceHeight * 1),
-          //       const UpcomingMatchesCard(),
-          //       SizedBox(height: deviceHeight * 1),
-          //       const UpcomingMatchesCard()
-          //     ],
-          //   ),
-          // ),
           SizedBox(
             height: deviceHeight * 2,
           ),

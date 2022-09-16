@@ -2,7 +2,8 @@ import 'package:create11/views/screens/home/contest_page.dart';
 import 'package:flutter/material.dart';
 
 class ContestCard extends StatefulWidget {
-  const ContestCard({Key? key}) : super(key: key);
+  var contestDetails;
+  ContestCard(this.contestDetails);
 
   @override
   State<ContestCard> createState() => _ContestCardState();
@@ -42,7 +43,7 @@ class _ContestCardState extends State<ContestCard> {
                         Container(
                           width: deviceWidth * 25,
                           child: Text(
-                            "₹10000",
+                            ((int.parse(widget.contestDetails['entry_amount']))*(int.parse(widget.contestDetails['contest_limit']))).toString(),
                             textAlign: TextAlign.start,
                             style: TextStyle(
                               fontSize: deviceWidth * 5,
@@ -63,7 +64,7 @@ class _ContestCardState extends State<ContestCard> {
                         Container(
                           width: deviceWidth * 25,
                           child: Text(
-                            "₹5199",
+                            widget.contestDetails['entry_amount'],
                             textAlign: TextAlign.end,
                             style: TextStyle(
                               fontSize: deviceWidth * 5,
@@ -84,9 +85,9 @@ class _ContestCardState extends State<ContestCard> {
               child: Slider(
                 activeColor: Colors.red[900],
                 inactiveColor: Colors.black38,
-                value: 1489,
-                max: 4999,
-                divisions: 4999,
+                value: double.parse(widget.contestDetails['contest_limit']),
+                max: double.parse(widget.contestDetails['contest_limit']),
+                divisions: int.parse(widget.contestDetails['contest_limit']),
                 onChanged: (double value) {
                   setState(() {});
                 },
@@ -103,10 +104,10 @@ class _ContestCardState extends State<ContestCard> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "3511 Spots Left",
+                    "${widget.contestDetails['contest_limit']} Spots Left",
                     style: TextStyle(color: Colors.red[900]),
                   ),
-                  const Text("4999 Spots",
+                   Text("${widget.contestDetails['contest_limit']} Spots",
                       style: TextStyle(color: Colors.black38))
                 ],
               ),
@@ -115,27 +116,37 @@ class _ContestCardState extends State<ContestCard> {
               height: deviceWidth * 2,
             ),
             Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: deviceWidth * 5, vertical: deviceWidth * 2),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                      width: deviceWidth * 25,
-                      child: const Text(
-                        "₹30000",
-                        overflow: TextOverflow.ellipsis,
-                        textAlign: TextAlign.start,
-                      )),
-                  Container(
-                      width: deviceWidth * 25,
-                      child: const Text(
-                        "1500 Team Win",
-                        textAlign: TextAlign.center,
-                      )),
-                ],
-              ),
-            )
+              padding: EdgeInsets.symmetric(horizontal: deviceWidth * 5, vertical: deviceWidth * 2),
+              child: Container(
+                        width: deviceWidth * 80,
+                        child: Text(
+                          "Contest Name: ${widget.contestDetails['name']}",
+                        //  overflow: TextOverflow.ellipsis,
+                          textAlign: TextAlign.start,
+                        )),
+            ),
+            // Padding(
+            //   padding: EdgeInsets.symmetric(
+            //       horizontal: deviceWidth * 5, vertical: deviceWidth * 2),
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //     children: [
+            //       Container(
+            //           width: deviceWidth * 25,
+            //           child: const Text(
+            //             "₹30000",
+            //             overflow: TextOverflow.ellipsis,
+            //             textAlign: TextAlign.start,
+            //           )),
+            //       Container(
+            //           width: deviceWidth * 25,
+            //           child: const Text(
+            //             "1500 Team Win",
+            //             textAlign: TextAlign.center,
+            //           )),
+            //     ],
+            //   ),
+            // )
           ]),
         ),
       ),
