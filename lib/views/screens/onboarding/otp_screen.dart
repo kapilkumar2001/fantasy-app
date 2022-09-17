@@ -1,15 +1,18 @@
+import 'package:create11/views/screens/onboarding/register_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import 'package:create11/services/data.dart';
 import 'package:create11/views/screens/onboarding/onboarding_page.dart';
 import 'package:create11/views/screens/others/dashboard.dart';
-import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:sms_autofill/sms_autofill.dart';
+import 'package:create11/views/widgets/msg_toast.dart';
+
+import '../../../provider/auth.dart';
 
 class OTPScreen extends StatefulWidget {
-  var verificationId;
   String? fname, lname, username, mobile;
-  OTPScreen(this.verificationId, {this.fname, this.lname, this.mobile, this.username});
+  OTPScreen({this.fname, this.lname, this.mobile, this.username});
 
   @override
   State<OTPScreen> createState() => _OTPScreenState();
@@ -17,6 +20,7 @@ class OTPScreen extends StatefulWidget {
 
 class _OTPScreenState extends State<OTPScreen> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  int? loginInfo;
 
   TextEditingController otpController = TextEditingController();
 
@@ -25,34 +29,34 @@ class _OTPScreenState extends State<OTPScreen> {
         .showSnackBar(SnackBar(content: Text(message)));
   }
 
-  void signInWithPhoneNumber() async {
-    try {
-      final AuthCredential credential = PhoneAuthProvider.credential(
-        verificationId: widget.verificationId,
-        smsCode: otpController.text,
-      );
+//   void signInWithPhoneNumber() async {
+//     try {
+//       final AuthCredential credential = PhoneAuthProvider.credential(
+//         verificationId: widget.verificationId,
+//         smsCode: otpController.text,
+//       );
 
-      final User? user = (await _auth.signInWithCredential(credential)).user;
+//       final User? user = (await _auth.signInWithCredential(credential)).user;
 
-      if(widget.fname!=null)
-      {
-        Data().addUser(widget.fname!, widget.lname!, widget.username!, widget.mobile!);
-      }
+  // if(widget.fname!=null)
+  // {
+  //   Data().addUser(widget.fname!, widget.lname!, widget.username!, widget.mobile!);
+  // }
 
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const DashBoard()),
-      );
+  // Navigator.push(
+  //   context,
+  //   MaterialPageRoute(builder: (context) => const DashBoard()),
+  // );
 
- //     showSnackbar("Successfully signed in UID: ${user!.uid}");
-    } catch (e) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const OnboardingPage()),
-      );
-      showSnackbar("Failed to sign in: $e");
-    }
-  }
+//  //     showSnackbar("Successfully signed in UID: ${user!.uid}");
+//     } catch (e) {
+  // Navigator.push(
+  //   context,
+  //   MaterialPageRoute(builder: (context) => const OnboardingPage()),
+  // );
+//       showSnackbar("Failed to sign in: $e");
+//     }
+//   }
 
   @override
   Widget build(BuildContext context) {
@@ -132,8 +136,56 @@ class _OTPScreenState extends State<OTPScreen> {
                     Padding(
                       padding: EdgeInsets.all(deviceWidth * 5),
                       child: InkWell(
-                        onTap: () {
-                          signInWithPhoneNumber();
+                        onTap: () async {
+                          loginInfo =
+                              await Provider.of<Auth>(context, listen: false)
+                                  .submitOTP(otpController.text.toString());
+                          
+
+                          if (loginInfo == 1) {
+                            Auth.setUid();
+                            // new user
+
+                            if (widget.fname != null) {
+                              // registering
+                              Data().addUser(widget.fname!, widget.lname!,
+                                  widget.username!, widget.mobile!);
+                              Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const DashBoard()),
+                                  (route) => false);
+                            } else {
+                              // directly logging without registering
+                              msgToast("User not registered, kinldy register");
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const RegisterScreen()),
+                              );
+                            }
+                          } else if (loginInfo == 0) {
+                            // existing user
+                            Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const DashBoard()),
+                                (route) => false);
+                          } else {
+                            // login failed
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const OnboardingPage()),
+                            );
+                            msgToast("Failed to login, try again!");
+                          }
+
+                          //                      if(fnameController.text!=null)
+                          // {
+                          //   Data().addUser(fname, lname!, username!, mobile!);
+                          // }
                         },
                         child: Container(
                           width: deviceWidth * 80,

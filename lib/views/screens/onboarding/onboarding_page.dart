@@ -1,3 +1,4 @@
+import 'package:create11/services/data.dart';
 import 'package:create11/views/screens/onboarding/login_screen.dart';
 import 'package:create11/views/screens/onboarding/register_screen.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
               padding: EdgeInsets.all(deviceWidth * 5),
               child: InkWell(
                 onTap: () {
+                  Data().getUsers();
                   Navigator.push(
                     context,
                     MaterialPageRoute(

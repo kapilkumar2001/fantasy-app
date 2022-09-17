@@ -1,6 +1,8 @@
+import 'package:create11/provider/auth.dart';
 import 'package:create11/views/screens/home/profile.dart';
 import 'package:create11/views/screens/onboarding/onboarding_page.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomeDrawer extends StatefulWidget {
   const HomeDrawer({Key? key}) : super(key: key);
@@ -145,11 +147,13 @@ class _HomeDrawerState extends State<HomeDrawer> {
         ),
         ListTile(
           title: const Text('Log Out'),
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const OnboardingPage()),
-            );
+          onTap: () async {
+            await Provider.of<Auth>(context, listen: false).logout();
+
+            Navigator.pushAndRemoveUntil(context,
+                MaterialPageRoute(builder: (context) {
+              return OnboardingPage();
+            }), (route) => false);
           },
           leading: Icon(Icons.logout_outlined, size: deviceHeight * 4),
         ),

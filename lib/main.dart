@@ -1,7 +1,10 @@
+import 'package:create11/provider/auth.dart';
 import 'package:create11/views/screens/onboarding/onboarding_page.dart';
+import 'package:create11/views/screens/onboarding/splash_screen.dart';
 import 'package:create11/views/screens/others/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,58 +17,52 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const OnboardingPage(),
-      debugShowCheckedModeBanner: false,
-    );
+    return FutureBuilder(
+        future: Init.instance.initialize(context),
+        builder: (context, AsyncSnapshot snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return MaterialApp(home: SplashScreen());
+          } else {
+            return MultiProvider(
+                providers: [
+                  ChangeNotifierProvider<Auth>(
+                    create: (_) => Auth(),
+                  ),
+                ],
+                child: MaterialApp(
+                  theme: ThemeData(
+                    primarySwatch: Colors.blue,
+                  ),
+                  home: getHome(snapshot.data),
+                  debugShowCheckedModeBanner: false,
+                ));
+          }
+        });
+  }
+
+  Widget getHome(int authLevel) {
+    switch (authLevel) {
+      case -1:
+        return OnboardingPage();
+      case 0:
+        return DashBoard();
+      default:
+        return Center(child: Text('Something Went wrong : ((((('));
+    }
   }
 }
 
-// class MyHomePage extends StatefulWidget {
-//   const MyHomePage({Key? key, required this.title}) : super(key: key);
-//   final String title;
+class Init {
+  Init._();
+  static final instance = Init._();
 
-//   @override
-//   State<MyHomePage> createState() => _MyHomePageState();
-// }
-
-// class _MyHomePageState extends State<MyHomePage> {
-//   int _counter = 0;
-
-//   void _incrementCounter() {
-//     setState(() {
-//       _counter++;
-//     });
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text(widget.title),
-//       ),
-//       body: Center(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: <Widget>[
-//             const Text(
-//               'You have pushed the button this many times:',
-//             ),
-//             Text(
-//               '$_counter',
-//               style: Theme.of(context).textTheme.headline4,
-//             ),
-//           ],
-//         ),
-//       ),
-//       floatingActionButton: FloatingActionButton(
-//         onPressed: _incrementCounter,
-//         tooltip: 'Increment',
-//         child: const Icon(Icons.add),
-//       ),
-//     );
-//   }
-// }
+  Future<int?> initialize(BuildContext context) async {
+    await Firebase.initializeApp();
+    if (!Auth.isAuth) {
+      return -1;
+    } else {
+      Auth.setUid();
+      return 0;
+    }
+  }
+}

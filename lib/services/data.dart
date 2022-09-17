@@ -62,6 +62,22 @@ class Data extends ChangeNotifier {
     }
   }
 
+  Future<User> getUsers() async {
+    final response =  await http.post(
+      Uri.parse('https://create11.brilliantrev.com/api/get_users'),
+    );
+
+    if(response.statusCode==200){
+      print(jsonDecode(response.body));
+      return User.fromJson(jsonDecode(response.body));
+    }
+    else{
+      throw Exception('Failed to get Users');
+    }
+  }
+
+   
+
   Future<Contest> createContest(String contestName, String fixtureId, String contestLimit, String entryAmount) async {
     final response =  await http.post(
       Uri.parse('https://create11.brilliantrev.com/api/add_contest'),
