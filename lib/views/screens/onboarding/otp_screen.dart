@@ -1,14 +1,59 @@
+import 'package:create11/services/data.dart';
+import 'package:create11/views/screens/onboarding/onboarding_page.dart';
 import 'package:create11/views/screens/others/dashboard.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:sms_autofill/sms_autofill.dart';
 
 class OTPScreen extends StatefulWidget {
-  const OTPScreen({Key? key}) : super(key: key);
+  var verificationId;
+  String? fname, lname, username, mobile;
+  OTPScreen(this.verificationId, {this.fname, this.lname, this.mobile, this.username});
 
   @override
   State<OTPScreen> createState() => _OTPScreenState();
 }
 
 class _OTPScreenState extends State<OTPScreen> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  TextEditingController otpController = TextEditingController();
+
+  void showSnackbar(String message) {
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(message)));
+  }
+
+  void signInWithPhoneNumber() async {
+    try {
+      final AuthCredential credential = PhoneAuthProvider.credential(
+        verificationId: widget.verificationId,
+        smsCode: otpController.text,
+      );
+
+      final User? user = (await _auth.signInWithCredential(credential)).user;
+
+      if(widget.fname!=null)
+      {
+        Data().addUser(widget.fname!, widget.lname!, widget.username!, widget.mobile!);
+      }
+
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const DashBoard()),
+      );
+
+ //     showSnackbar("Successfully signed in UID: ${user!.uid}");
+    } catch (e) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const OnboardingPage()),
+      );
+      showSnackbar("Failed to sign in: $e");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     double? deviceHeight = MediaQuery.of(context).size.height / 100;
@@ -57,16 +102,16 @@ class _OTPScreenState extends State<OTPScreen> {
                     SizedBox(
                       height: deviceHeight * 2,
                     ),
-                    Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: deviceWidth * 5),
-                      child: Text(
-                        "9016399741",
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                            fontSize: deviceWidth * 4, color: Colors.red[900]),
-                      ),
-                    ),
+                    // Padding(
+                    //   padding:
+                    //       EdgeInsets.symmetric(horizontal: deviceWidth * 5),
+                    //   child: Text(
+                    //     "",
+                    //     textAlign: TextAlign.start,
+                    //     style: TextStyle(
+                    //         fontSize: deviceWidth * 4, color: Colors.red[900]),
+                    //   ),
+                    // ),
                     SizedBox(
                       height: deviceHeight * 3,
                     ),
@@ -75,6 +120,7 @@ class _OTPScreenState extends State<OTPScreen> {
                           horizontal: deviceWidth * 5,
                           vertical: deviceWidth * 2),
                       child: TextFormField(
+                        controller: otpController,
                         decoration: const InputDecoration(
                           hintText: 'Enter OTP',
                         ),
@@ -87,11 +133,7 @@ class _OTPScreenState extends State<OTPScreen> {
                       padding: EdgeInsets.all(deviceWidth * 5),
                       child: InkWell(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const DashBoard()),
-                          );
+                          signInWithPhoneNumber();
                         },
                         child: Container(
                           width: deviceWidth * 80,

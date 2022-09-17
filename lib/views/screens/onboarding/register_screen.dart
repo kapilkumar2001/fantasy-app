@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:sms_autofill/sms_autofill.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -14,6 +17,66 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  String? _verificationId;
+  final SmsAutoFill _autoFill = SmsAutoFill();
+
+  TextEditingController mobileController = TextEditingController();
+  TextEditingController fnameController = TextEditingController();
+  TextEditingController lnameController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
+
+  void showSnackbar(String message) {
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(message)));
+  }
+
+  void verifyPhoneNumber() async {
+    verificationCompleted(PhoneAuthCredential phoneAuthCredential) async {
+      await _auth.signInWithCredential(phoneAuthCredential);
+      showSnackbar(
+          "Phone number automatically verified and user signed in: ${_auth.currentUser!.uid}");
+    }
+
+    verificationFailed(FirebaseAuthException authException) {
+      showSnackbar(
+          'Phone number verification failed. Code: ${authException.code}. Message: ${authException.message}');
+    }
+
+    codeSent(String verificationId, [int? forceResendingToken]) async {
+      showSnackbar('Please check your phone for the verification code.');
+       setState(() {
+         _verificationId = verificationId;
+      });
+      _verificationId = verificationId;
+      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => OTPScreen(_verificationId, fname: fnameController.text,lname: lnameController.text,username: usernameController.text,mobile: mobileController.text)),
+                      );
+    }
+
+    codeAutoRetrievalTimeout(String verificationId) {
+      // showSnackbar("verification code: " + verificationId);
+      _verificationId = verificationId;
+    }
+
+    try {
+      await _auth.verifyPhoneNumber(
+          phoneNumber: "+91 ${mobileController.text}",
+          timeout: const Duration(seconds: 5),
+          verificationCompleted: verificationCompleted,
+          verificationFailed: verificationFailed,
+          codeSent: codeSent,
+          codeAutoRetrievalTimeout: codeAutoRetrievalTimeout);
+    } catch (e) {
+      showSnackbar("Failed to Verify Phone Number: ${e}");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     double? deviceHeight = MediaQuery.of(context).size.height / 100;
@@ -49,47 +112,42 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 padding: EdgeInsets.symmetric(
                     horizontal: deviceWidth * 5, vertical: deviceWidth * 2),
                 child: TextFormField(
+                  controller: fnameController,
+                  decoration: const InputDecoration(
+                    hintText: 'First Name',
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: deviceWidth * 5, vertical: deviceWidth * 2),
+                child: TextFormField(
+                  controller: lnameController,
+                  decoration: const InputDecoration(
+                    hintText: 'Last Name',
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: deviceWidth * 5, vertical: deviceWidth * 2),
+                child: TextFormField(
+                  controller: usernameController,
+                  decoration: const InputDecoration(
+                    hintText: 'Username',
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: deviceWidth * 5, vertical: deviceWidth * 2),
+                child: TextFormField(
+                  controller: mobileController,
                   decoration: const InputDecoration(
                     hintText: 'Mobile Number',
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: deviceWidth * 5, vertical: deviceWidth * 2),
-                child: TextFormField(
-                  decoration: const InputDecoration(
-                    hintText: 'Email Address',
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: deviceWidth * 5, vertical: deviceWidth * 2),
-                child: TextFormField(
-                  decoration: const InputDecoration(
-                    hintText: 'Date of Birth',
-                  ),
-                ),
-              ),
-              // Padding(
-              //   padding: EdgeInsets.symmetric(
-              //       horizontal: deviceWidth * 5, vertical: deviceWidth * 2),
-              //   child: TextFormField(
-              //     decoration: const InputDecoration(
-              //       hintText: 'Password',
-              //     ),
-              //   ),
-              // ),
-              // Padding(
-              //   padding: EdgeInsets.symmetric(
-              //       horizontal: deviceWidth * 5, vertical: deviceWidth * 2),
-              //   child: TextFormField(
-              //     decoration: const InputDecoration(
-              //       hintText: 'Confirm Password',
-              //     ),
-              //   ),
-              // ),
               SizedBox(
                 height: deviceWidth * 4,
               ),
@@ -97,11 +155,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 padding: EdgeInsets.all(deviceWidth * 5),
                 child: InkWell(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const OTPScreen()),
-                    );
+                    verifyPhoneNumber();
+                   
                   },
                   child: Container(
                     width: deviceWidth * 80,

@@ -1,6 +1,9 @@
 import 'package:create11/views/screens/onboarding/otp_screen.dart';
 import 'package:create11/views/screens/onboarding/register_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:sms_autofill/sms_autofill.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -10,6 +13,66 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  String? _verificationId;
+  final SmsAutoFill _autoFill = SmsAutoFill();
+
+  TextEditingController mobileController = TextEditingController();
+
+  void showSnackbar(String message) {
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(message)));
+  }
+
+  void verifyPhoneNumber() async {
+    verificationCompleted(PhoneAuthCredential phoneAuthCredential) async {
+      await _auth.signInWithCredential(phoneAuthCredential);
+      showSnackbar(
+          "Phone number automatically verified and user signed in: ${_auth.currentUser!.uid}");
+    }
+
+    verificationFailed(FirebaseAuthException authException) {
+      showSnackbar(
+          'Phone number verification failed. Code: ${authException.code}. Message: ${authException.message}');
+    }
+
+    codeSent(String verificationId, [int? forceResendingToken]) async {
+      showSnackbar('Please check your phone for the verification code.');
+      setState(() {
+         _verificationId = verificationId;
+      });
+       _verificationId = verificationId;
+      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => OTPScreen(_verificationId)),
+                      );
+     
+    }
+
+    codeAutoRetrievalTimeout(String verificationId) {
+      // showSnackbar("verification code: " + verificationId);
+      _verificationId = verificationId;
+    }
+
+    try {
+      await _auth.verifyPhoneNumber(
+          phoneNumber: "+91 ${mobileController.text}",
+          timeout: const Duration(seconds: 5),
+          verificationCompleted: verificationCompleted,
+          verificationFailed: verificationFailed,
+          codeSent: codeSent,
+          codeAutoRetrievalTimeout: codeAutoRetrievalTimeout);
+    } catch (e) {
+      showSnackbar("Failed to Verify Phone Number: ${e}");
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
     double? deviceHeight = MediaQuery.of(context).size.height / 100;
@@ -57,6 +120,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: EdgeInsets.symmetric(
                       horizontal: deviceWidth * 5, vertical: deviceWidth * 2),
                   child: TextFormField(
+                    controller: mobileController,
                     decoration: const InputDecoration(
                       hintText: 'Enter Mobile Number',
                     ),
@@ -79,11 +143,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   padding: EdgeInsets.all(deviceWidth * 5),
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const OTPScreen()),
-                      );
+                      verifyPhoneNumber();
+                      
                     },
                     child: Container(
                       width: deviceWidth * 80,

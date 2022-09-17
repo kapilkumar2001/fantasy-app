@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:create11/models/contest.dart';
+import 'package:create11/models/user.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
@@ -41,6 +42,26 @@ class Data extends ChangeNotifier {
     return [];
   }
 
+  Future<User> addUser(String fname, String lname, String username, String mobile) async {
+    final response =  await http.post(
+      Uri.parse('https://create11.brilliantrev.com/api/add_user'),
+      body: {
+        'fname': fname,
+        'lname': lname,
+        'username': username,
+        'mobile': mobile,
+        'isVerified': '1'
+      },
+    );
+
+    if(response.statusCode==200){
+      return User.fromJson(jsonDecode(response.body));
+    }
+    else{
+      throw Exception('Failed to add User');
+    }
+  }
+
   Future<Contest> createContest(String contestName, String fixtureId, String contestLimit, String entryAmount) async {
     final response =  await http.post(
       Uri.parse('https://create11.brilliantrev.com/api/add_contest'),
@@ -61,4 +82,24 @@ class Data extends ChangeNotifier {
       throw Exception('Failed to create contest');
     }
   }
+
+
+  Future participateInContest(String contestCode, String paymentId) async {
+    final response =  await http.post(
+      Uri.parse('https://create11.brilliantrev.com/api/user_contest_participation'),
+      body: {
+        'contest_code': contestCode,
+        'payment_id': paymentId,
+      },
+    );
+
+    if(response.statusCode==200){
+      return jsonDecode(response.body);
+    }
+    else{
+      throw Exception('Failed to create contest');
+    }
+  }
+
+  
 }

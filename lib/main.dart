@@ -1,8 +1,11 @@
 import 'package:create11/views/screens/onboarding/onboarding_page.dart';
 import 'package:create11/views/screens/others/dashboard.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
