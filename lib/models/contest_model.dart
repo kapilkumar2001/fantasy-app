@@ -1,13 +1,13 @@
 import 'dart:convert';
 
-class Contest {
+class ContestModel {
   String? contestName;
   String? fixtureId;
   String? entryAmount;
   String? contestLimit;
   String? contestId;
   String? contestCode;
-  Contest({
+  ContestModel({
     this.contestName,
     this.fixtureId,
     this.entryAmount,
@@ -17,7 +17,7 @@ class Contest {
   });
   
 
-  Contest copyWith({
+  ContestModel copyWith({
     String? contestName,
     String? fixtureId,
     String? entryAmount,
@@ -25,7 +25,7 @@ class Contest {
     String? contestId,
     String? contestCode,
   }) {
-    return Contest(
+    return ContestModel(
       contestName: contestName ?? this.contestName,
       fixtureId: fixtureId ?? this.fixtureId,
       entryAmount: entryAmount ?? this.entryAmount,
@@ -46,8 +46,8 @@ class Contest {
     };
   }
 
-  factory Contest.fromMap(Map<String, dynamic> map) {
-    return Contest(
+  factory ContestModel.fromMap(Map<String, dynamic> map) {
+    return ContestModel(
       contestName: map['contestName'],
       fixtureId: map['fixtureId'],
       entryAmount: map['entryAmount'],
@@ -59,8 +59,8 @@ class Contest {
 
   String toJson() => json.encode(toMap());
 
-  factory Contest.fromJson(Map<String, dynamic> json) {
-    return Contest(
+  factory ContestModel.fromJson(Map<String, dynamic> json) {
+    return ContestModel(
       contestName: json['contestName'],
       fixtureId: json['fixtureId'],
       entryAmount: json['entryAmount'],
@@ -79,7 +79,7 @@ class Contest {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
   
-    return other is Contest &&
+    return other is ContestModel &&
       other.contestName == contestName &&
       other.fixtureId == fixtureId &&
       other.entryAmount == entryAmount &&

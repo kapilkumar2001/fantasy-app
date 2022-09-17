@@ -1,3 +1,4 @@
+import 'package:create11/views/screens/home/team_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -209,10 +210,376 @@ class _CreateTeamPageState extends State<CreateTeamPage> {
           ),
           Expanded(
             child: TabBarView(
-              children: [Container(), Container(), Container(), Container()],
+              children: [
+                SingleChildScrollView(
+                    child: Column(
+                  children: [
+                    Container(
+                      color: Colors.white24,
+                      width: deviceWidth * 100,
+                      child: Padding(
+                        padding: EdgeInsets.all(deviceWidth * 2),
+                        child: const Text("Pick 1-4 Wicket-Keepar"),
+                      ),
+                    ),
+                    const Divider(
+                      color: Colors.black54,
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(width: deviceWidth*65,),
+                        Container(
+                          width: deviceWidth*15,
+                          child: const Text("POINTS"),
+                        ),
+                        Container(
+                          width: deviceWidth*15,
+                          child: const Text("CREDITS"),
+                        ),
+                      ],
+                    ),
+                    const Divider(
+                      color: Colors.black54,
+                    ),
+                    ListView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: 4,
+                        itemBuilder: (context, index) {
+                          return Column(
+                            children: [
+                              Row(children: [
+                                Container(
+                                  width: deviceWidth * 70,
+                                  child: Row(
+                                    children: [
+                                      Container(width: deviceWidth*5,child: const Text("WI-L")),
+                                      SizedBox(
+                                        width: deviceWidth * 1,
+                                      ),
+                                      CircleAvatar(
+                                        radius: deviceWidth * 5,
+                                        backgroundColor: Colors.black87,
+                                        backgroundImage: const AssetImage(
+                                            "assets/images/sl.jpg"),
+                                      ),
+                                      SizedBox(
+                                        width: deviceWidth * 3,
+                                      ),
+                                      Column(
+                                        children: [
+                                          Container(
+                                              width: deviceWidth * 50,
+                                              child: const Text("W Perkins", style: TextStyle(fontWeight: FontWeight.bold),)),
+                                          Container(
+                                              width: deviceWidth * 50,
+                                              child: const Text("Sel by 24.97%"))
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                    width: deviceWidth * 9, child: const Text("15")),
+                                Container(
+                                    width: deviceWidth * 9, child: const Text("8.5")),
+                                Container(
+                                    width: deviceWidth * 9,
+                                    child: const Icon(
+                                      Icons.add_circle_outline,
+                                      color: Colors.green,
+                                    ))
+                              ]),
+                              const Divider(
+                                color: Colors.black87,
+                              )
+                            ],
+                          );
+                        }),
+                  ],
+                )),
+                SingleChildScrollView(
+                    child: Column(
+                  children: [
+                    Container(
+                      color: Colors.white24,
+                      width: deviceWidth * 100,
+                      child: Padding(
+                        padding: EdgeInsets.all(deviceWidth * 2),
+                        child: const Text("Pick 4-6 Batsman"),
+                      ),
+                    ),
+                    const Divider(
+                      color: Colors.black54,
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(width: deviceWidth*65,),
+                        Container(
+                          width: deviceWidth*15,
+                          child: const Text("POINTS"),
+                        ),
+                        Container(
+                          width: deviceWidth*15,
+                          child: const Text("CREDITS"),
+                        ),
+                      ],
+                    ),
+                    const Divider(
+                      color: Colors.black54,
+                    ),
+                    ListView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: 9,
+                        itemBuilder: (context, index) {
+                          return Column(
+                            children: [
+                              Row(children: [
+                                Container(
+                                  width: deviceWidth * 70,
+                                  child: Row(
+                                    children: [
+                                      Container(width: deviceWidth*5,child: const Text("WI-L")),
+                                      SizedBox(
+                                        width: deviceWidth * 1,
+                                      ),
+                                      CircleAvatar(
+                                        radius: deviceWidth * 5,
+                                        backgroundColor: Colors.black87,
+                                        backgroundImage: const AssetImage(
+                                            "assets/images/sl.jpg"),
+                                      ),
+                                      SizedBox(
+                                        width: deviceWidth * 3,
+                                      ),
+                                      Column(
+                                        children: [
+                                          Container(
+                                              width: deviceWidth * 50,
+                                              child: const Text("W Perkins", style: TextStyle(fontWeight: FontWeight.bold),)),
+                                          Container(
+                                              width: deviceWidth * 50,
+                                              child: const Text("Sel by 24.97%"))
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                    width: deviceWidth * 9, child: const Text("15")),
+                                Container(
+                                    width: deviceWidth * 9, child: const Text("8.5")),
+                                Container(
+                                    width: deviceWidth * 9,
+                                    child: const Icon(
+                                      Icons.add_circle_outline,
+                                      color: Colors.green,
+                                    ))
+                              ]),
+                              const Divider(
+                                color: Colors.black87,
+                              )
+                            ],
+                          );
+                        }),
+                  ],
+                )),
+                SingleChildScrollView(
+                    child: Column(
+                  children: [
+                    Container(
+                      color: Colors.white24,
+                      width: deviceWidth * 100,
+                      child: Padding(
+                        padding: EdgeInsets.all(deviceWidth * 2),
+                        child: const Text("Pick 2-4 All Rounder"),
+                      ),
+                    ),
+                    const Divider(
+                      color: Colors.black54,
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(width: deviceWidth*65,),
+                        Container(
+                          width: deviceWidth*15,
+                          child: const Text("POINTS"),
+                        ),
+                        Container(
+                          width: deviceWidth*15,
+                          child: const Text("CREDITS"),
+                        ),
+                      ],
+                    ),
+                    const Divider(
+                      color: Colors.black54,
+                    ),
+                    ListView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: 6,
+                        itemBuilder: (context, index) {
+                          return Column(
+                            children: [
+                              Row(children: [
+                                Container(
+                                  width: deviceWidth * 70,
+                                  child: Row(
+                                    children: [
+                                      Container(width: deviceWidth*5,child: const Text("WI-L")),
+                                      SizedBox(
+                                        width: deviceWidth * 1,
+                                      ),
+                                      CircleAvatar(
+                                        radius: deviceWidth * 5,
+                                        backgroundColor: Colors.black87,
+                                        backgroundImage: const AssetImage(
+                                            "assets/images/sl.jpg"),
+                                      ),
+                                      SizedBox(
+                                        width: deviceWidth * 3,
+                                      ),
+                                      Column(
+                                        children: [
+                                          Container(
+                                              width: deviceWidth * 50,
+                                              child: const Text("W Perkins", style: TextStyle(fontWeight: FontWeight.bold),)),
+                                          Container(
+                                              width: deviceWidth * 50,
+                                              child: const Text("Sel by 24.97%"))
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                    width: deviceWidth * 9, child: const Text("15")),
+                                Container(
+                                    width: deviceWidth * 9, child: const Text("8.5")),
+                                Container(
+                                    width: deviceWidth * 9,
+                                    child: const Icon(
+                                      Icons.add_circle_outline,
+                                      color: Colors.green,
+                                    ))
+                              ]),
+                              const Divider(
+                                color: Colors.black87,
+                              )
+                            ],
+                          );
+                        }),
+                  ],
+                )),
+                SingleChildScrollView(
+                    child: Column(
+                  children: [
+                    Container(
+                      color: Colors.white24,
+                      width: deviceWidth * 100,
+                      child: Padding(
+                        padding: EdgeInsets.all(deviceWidth * 2),
+                        child: const Text("Pick 3-5 Bowler"),
+                      ),
+                    ),
+                    const Divider(
+                      color: Colors.black54,
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(width: deviceWidth*65,),
+                        Container(
+                          width: deviceWidth*15,
+                          child: const Text("POINTS"),
+                        ),
+                        Container(
+                          width: deviceWidth*15,
+                          child: const Text("CREDITS"),
+                        ),
+                      ],
+                    ),
+                    const Divider(
+                      color: Colors.black54,
+                    ),
+                    ListView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: 8,
+                        itemBuilder: (context, index) {
+                          return Column(
+                            children: [
+                              Row(children: [
+                                Container(
+                                  width: deviceWidth * 70,
+                                  child: Row(
+                                    children: [
+                                      Container(width: deviceWidth*5,child: const Text("WI-L")),
+                                      SizedBox(
+                                        width: deviceWidth * 1,
+                                      ),
+                                      CircleAvatar(
+                                        radius: deviceWidth * 5,
+                                        backgroundColor: Colors.black87,
+                                        backgroundImage: const AssetImage(
+                                            "assets/images/sl.jpg"),
+                                      ),
+                                      SizedBox(
+                                        width: deviceWidth * 3,
+                                      ),
+                                      Column(
+                                        children: [
+                                          Container(
+                                              width: deviceWidth * 50,
+                                              child: const Text("W Perkins", style: TextStyle(fontWeight: FontWeight.bold),)),
+                                          Container(
+                                              width: deviceWidth * 50,
+                                              child: const Text("Sel by 24.97%"))
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                    width: deviceWidth * 9, child: const Text("15")),
+                                Container(
+                                    width: deviceWidth * 9, child: const Text("8.5")),
+                                Container(
+                                    width: deviceWidth * 9,
+                                    child: const Icon(
+                                      Icons.add_circle_outline,
+                                      color: Colors.green,
+                                    ))
+                              ]),
+                              const Divider(
+                                color: Colors.black87,
+                              )
+                            ],
+                          );
+                        }),
+                  ],
+                )),
+              ],
             ),
           )
         ]),
+        bottomNavigationBar: InkWell(
+          onTap: (){
+            Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => TeamPreviewPage()),
+        );
+          },
+          child: Padding(
+            padding: EdgeInsets.all(deviceWidth*5),
+            child: Container(
+              color: Colors.red[900],
+              height: deviceWidth*10,
+              width: deviceWidth*80,
+              child: Center(child: Text("Continue", style: TextStyle(fontWeight: FontWeight.bold),)),
+            ),
+          ),
+        ),
       ),
     );
   }

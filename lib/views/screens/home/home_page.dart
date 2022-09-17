@@ -20,6 +20,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+  List myMatches = [];
   List? upcomingMatchesList;
 
   @override
@@ -106,7 +107,15 @@ class _HomePageState extends State<HomePage> {
             height: deviceHeight * 2,
           ),
 
-          SingleChildScrollView(
+          myMatches.length == 0 ? 
+          Container(
+            width: deviceWidth*100,
+            child: Padding(
+              padding: EdgeInsets.all(deviceWidth*5),
+              child: Text("You have not joined any contest!", textAlign: TextAlign.center,),
+            ),
+          )
+          : SingleChildScrollView(
             padding: EdgeInsets.symmetric(horizontal: deviceWidth * 4),
             scrollDirection: Axis.horizontal,
             child: Row(

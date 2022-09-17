@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'package:create11/models/contest.dart';
+import 'package:create11/models/contest_model.dart';
 import 'package:create11/models/user.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -65,7 +65,7 @@ class Data extends ChangeNotifier {
  
    
 
-  Future<Contest> createContest(String contestName, String fixtureId, String contestLimit, String entryAmount) async {
+  Future<ContestModel> createContest(String contestName, String fixtureId, String contestLimit, String entryAmount) async {
     final response =  await http.post(
       Uri.parse('https://create11.brilliantrev.com/api/add_contest'),
       body: {
@@ -79,7 +79,7 @@ class Data extends ChangeNotifier {
     if(response.statusCode==200){
       getContests(fixtureId);
       notifyListeners();
-      return Contest.fromJson(jsonDecode(response.body));
+      return ContestModel.fromJson(jsonDecode(response.body));
     }
     else{
       throw Exception('Failed to create contest');

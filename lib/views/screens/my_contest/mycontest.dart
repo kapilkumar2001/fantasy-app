@@ -11,6 +11,10 @@ class MyContestPage extends StatefulWidget {
 }
 
 class _MyContestPageState extends State<MyContestPage> {
+  List upcomingContests = [];
+  List liveContests = [];
+  List completedContests = [];
+
   @override
   Widget build(BuildContext context) {
     double? deviceHeight = MediaQuery.of(context).size.height / 100;
@@ -44,42 +48,81 @@ class _MyContestPageState extends State<MyContestPage> {
         ),
         body: TabBarView(
           children: [
-            ListView.builder(
-                itemCount: 5,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: EdgeInsets.only(
-                        left: deviceWidth * 3,
-                        right: deviceWidth * 3,
-                        top: deviceHeight * 1),
-                    child: MyMatchesCard(
-                        isMatchLive: false, isMatchCompleted: false),
-                  );
-                }),
-            ListView.builder(
-                itemCount: 5,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: EdgeInsets.only(
-                        left: deviceWidth * 3,
-                        right: deviceWidth * 3,
-                        top: deviceHeight * 1),
-                    child: MyMatchesCard(
-                        isMatchLive: true, isMatchCompleted: false),
-                  );
-                }),
-            ListView.builder(
-                itemCount: 5,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: EdgeInsets.only(
-                        left: deviceWidth * 3,
-                        right: deviceWidth * 3,
-                        top: deviceHeight * 1),
-                    child: MyMatchesCard(
-                        isMatchLive: false, isMatchCompleted: true),
-                  );
-                }),
+            upcomingContests.length == 0
+                ? Center(
+                    child: Container(
+                      width: deviceWidth * 100,
+                      child: Padding(
+                        padding: EdgeInsets.all(deviceWidth * 5),
+                        child: const Text(
+                          "You have not joined any contest!",
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                  )
+                : ListView.builder(
+                    itemCount: 5,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: EdgeInsets.only(
+                            left: deviceWidth * 3,
+                            right: deviceWidth * 3,
+                            top: deviceHeight * 1),
+                        child: MyMatchesCard(
+                            isMatchLive: false, isMatchCompleted: false),
+                      );
+                    }),
+            liveContests.length == 0
+                ? Center(
+                    child: Container(
+                      width: deviceWidth * 100,
+                      child: Padding(
+                        padding: EdgeInsets.all(deviceWidth * 5),
+                        child: const Text(
+                          "You have no live contest joined!",
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                  )
+                : ListView.builder(
+                    itemCount: 5,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: EdgeInsets.only(
+                            left: deviceWidth * 3,
+                            right: deviceWidth * 3,
+                            top: deviceHeight * 1),
+                        child: MyMatchesCard(
+                            isMatchLive: true, isMatchCompleted: false),
+                      );
+                    }),
+            completedContests.length == 0
+                ? Center(
+                    child: Container(
+                      width: deviceWidth * 100,
+                      child: Padding(
+                        padding: EdgeInsets.all(deviceWidth * 5),
+                        child: const Text(
+                          "You haven't joined any contest",
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                  )
+                : ListView.builder(
+                    itemCount: 5,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: EdgeInsets.only(
+                            left: deviceWidth * 3,
+                            right: deviceWidth * 3,
+                            top: deviceHeight * 1),
+                        child: MyMatchesCard(
+                            isMatchLive: false, isMatchCompleted: true),
+                      );
+                    }),
           ],
         ),
       ),
