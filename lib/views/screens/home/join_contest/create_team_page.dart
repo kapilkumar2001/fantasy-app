@@ -1,3 +1,4 @@
+import 'package:create11/views/screens/home/join_contest/choose_caption.dart';
 import 'package:create11/views/screens/home/join_contest/create_team_playercard.dart';
 import 'package:create11/views/screens/home/join_contest/team_preview.dart';
 import 'package:flutter/material.dart';
@@ -535,11 +536,19 @@ class _CreateTeamPageState extends State<CreateTeamPage> {
           },
           child: Padding(
             padding: EdgeInsets.all(deviceWidth*5),
-            child: Container(
-              color: Colors.red[900],
-              height: deviceWidth*10,
-              width: deviceWidth*80,
-              child: Center(child: Text("Continue", style: TextStyle(fontWeight: FontWeight.bold),)),
+            child: InkWell(
+              onTap: (){
+                Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const TeamPreviewPage()),
+          );
+              },
+              child: Container(
+                color: Colors.red[900],
+                height: deviceWidth*10,
+                width: deviceWidth*80,
+                child: Center(child: Text("Continue", style: TextStyle(fontWeight: FontWeight.bold),)),
+              ),
             ),
           ),
         ),

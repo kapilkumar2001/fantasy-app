@@ -82,6 +82,11 @@ class _ContestCardState extends State<ContestCard> {
                   ]),
             ),
             SliderTheme(
+              data: SliderTheme.of(context).copyWith(
+                  trackHeight: deviceHeight * 0.5,
+                  thumbColor: Colors.transparent,
+                  thumbShape:
+                      const RoundSliderThumbShape(enabledThumbRadius: 0.0)),
               child: Slider(
                 activeColor: Colors.red[900],
                 inactiveColor: Colors.black38,
@@ -92,11 +97,6 @@ class _ContestCardState extends State<ContestCard> {
                   setState(() {});
                 },
               ),
-              data: SliderTheme.of(context).copyWith(
-                  trackHeight: deviceHeight * 0.5,
-                  thumbColor: Colors.transparent,
-                  thumbShape:
-                      const RoundSliderThumbShape(enabledThumbRadius: 0.0)),
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: deviceWidth * 5),
