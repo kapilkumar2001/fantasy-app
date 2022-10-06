@@ -1,5 +1,5 @@
 import 'package:create11/views/screens/home/contest_card.dart';
-import 'package:create11/views/screens/home/create_team_page.dart';
+import 'package:create11/views/screens/home/join_contest/create_team_page.dart';
 import 'package:flutter/material.dart';
 
 class ContestPage extends StatefulWidget {

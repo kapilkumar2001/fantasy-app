@@ -1,4 +1,5 @@
-import 'package:create11/views/screens/home/team_preview.dart';
+import 'package:create11/views/screens/home/join_contest/create_team_playercard.dart';
+import 'package:create11/views/screens/home/join_contest/team_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -12,6 +13,9 @@ class CreateTeamPage extends StatefulWidget {
 }
 
 class _CreateTeamPageState extends State<CreateTeamPage> {
+
+  
+
   @override
   Widget build(BuildContext context) {
     double? deviceHeight = MediaQuery.of(context).size.height / 100;
@@ -248,48 +252,7 @@ class _CreateTeamPageState extends State<CreateTeamPage> {
                         itemBuilder: (context, index) {
                           return Column(
                             children: [
-                              Row(children: [
-                                Container(
-                                  width: deviceWidth * 70,
-                                  child: Row(
-                                    children: [
-                                      Container(width: deviceWidth*5,child: const Text("WI-L")),
-                                      SizedBox(
-                                        width: deviceWidth * 1,
-                                      ),
-                                      CircleAvatar(
-                                        radius: deviceWidth * 5,
-                                        backgroundColor: Colors.black87,
-                                        backgroundImage: const AssetImage(
-                                            "assets/images/sl.jpg"),
-                                      ),
-                                      SizedBox(
-                                        width: deviceWidth * 3,
-                                      ),
-                                      Column(
-                                        children: [
-                                          Container(
-                                              width: deviceWidth * 50,
-                                              child: const Text("W Perkins", style: TextStyle(fontWeight: FontWeight.bold),)),
-                                          Container(
-                                              width: deviceWidth * 50,
-                                              child: const Text("Sel by 24.97%"))
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                    width: deviceWidth * 9, child: const Text("15")),
-                                Container(
-                                    width: deviceWidth * 9, child: const Text("8.5")),
-                                Container(
-                                    width: deviceWidth * 9,
-                                    child: const Icon(
-                                      Icons.add_circle_outline,
-                                      color: Colors.green,
-                                    ))
-                              ]),
+                              CreateTeamPlayerCard(),
                               const Divider(
                                 color: Colors.black87,
                               )

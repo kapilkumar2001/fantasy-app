@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:create11/services/data.dart';
 import 'package:create11/views/screens/home/contest_card.dart';
-import 'package:create11/views/screens/home/create_contest.dart';
+import 'package:create11/views/screens/home/join_contest/create_contest.dart';
 import 'package:flutter/material.dart';
 
 class AllContestsPage extends StatefulWidget {
