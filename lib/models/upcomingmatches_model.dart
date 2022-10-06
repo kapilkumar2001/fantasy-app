@@ -64,7 +64,8 @@ class UpcomingMatchesModel {
 
   String toJson() => json.encode(toMap());
 
-  factory UpcomingMatchesModel.fromJson(String source) => UpcomingMatchesModel.fromMap(json.decode(source));
+  factory UpcomingMatchesModel.fromJson(String source) =>
+      UpcomingMatchesModel.fromMap(json.decode(source));
 
   @override
   String toString() {
@@ -74,25 +75,25 @@ class UpcomingMatchesModel {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-  
+
     return other is UpcomingMatchesModel &&
-      other.team1 == team1 &&
-      other.team2 == team2 &&
-      other.dateTime == dateTime &&
-      other.venue == venue &&
-      other.status == status &&
-      other.tournamentName == tournamentName &&
-      other.winner == winner;
+        other.team1 == team1 &&
+        other.team2 == team2 &&
+        other.dateTime == dateTime &&
+        other.venue == venue &&
+        other.status == status &&
+        other.tournamentName == tournamentName &&
+        other.winner == winner;
   }
 
   @override
   int get hashCode {
     return team1.hashCode ^
-      team2.hashCode ^
-      dateTime.hashCode ^
-      venue.hashCode ^
-      status.hashCode ^
-      tournamentName.hashCode ^
-      winner.hashCode;
+        team2.hashCode ^
+        dateTime.hashCode ^
+        venue.hashCode ^
+        status.hashCode ^
+        tournamentName.hashCode ^
+        winner.hashCode;
   }
 }

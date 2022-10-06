@@ -187,7 +187,8 @@ class _TeamPreviewPageState extends State<TeamPreviewPage> {
                     child: Center(
                         child: Text(
                       "Continue and Join Contest",
-                      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: Colors.white),
                     )),
                   ),
                 ),

@@ -125,13 +125,13 @@ class Auth with ChangeNotifier {
           .signInWithCredential(_phoneAuthCredential!)
           .then((UserCredential authRes) {
         firebaseUser = authRes.user!;
-          if (authRes.additionalUserInfo!.isNewUser) {
-            // new user
-            return 1;
-          } else {
-            // existing user
-            return 0;
-          }
+        if (authRes.additionalUserInfo!.isNewUser) {
+          // new user
+          return 1;
+        } else {
+          // existing user
+          return 0;
+        }
       }).catchError((e) {
         flag = 1;
         _handleError(e);

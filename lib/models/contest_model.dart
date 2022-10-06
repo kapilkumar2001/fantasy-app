@@ -15,7 +15,6 @@ class ContestModel {
     this.contestId,
     this.contestCode,
   });
-  
 
   ContestModel copyWith({
     String? contestName,
@@ -78,23 +77,23 @@ class ContestModel {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-  
+
     return other is ContestModel &&
-      other.contestName == contestName &&
-      other.fixtureId == fixtureId &&
-      other.entryAmount == entryAmount &&
-      other.contestLimit == contestLimit &&
-      other.contestId == contestId &&
-      other.contestCode == contestCode;
+        other.contestName == contestName &&
+        other.fixtureId == fixtureId &&
+        other.entryAmount == entryAmount &&
+        other.contestLimit == contestLimit &&
+        other.contestId == contestId &&
+        other.contestCode == contestCode;
   }
 
   @override
   int get hashCode {
     return contestName.hashCode ^
-      fixtureId.hashCode ^
-      entryAmount.hashCode ^
-      contestLimit.hashCode ^
-      contestId.hashCode ^
-      contestCode.hashCode;
+        fixtureId.hashCode ^
+        entryAmount.hashCode ^
+        contestLimit.hashCode ^
+        contestId.hashCode ^
+        contestCode.hashCode;
   }
 }

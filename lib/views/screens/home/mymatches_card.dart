@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class MyMatchesCard extends StatefulWidget {
   bool isMatchLive;
-  bool isMatchCompleted; 
+  bool isMatchCompleted;
   MyMatchesCard(
       {required bool this.isMatchCompleted, required bool this.isMatchLive});
 

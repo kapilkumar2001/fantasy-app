@@ -1,4 +1,4 @@
-import 'package:create11/views/screens/home/contest_page.dart';
+import 'package:create11/views/screens/home/join_contest/contest_page.dart';
 import 'package:flutter/material.dart';
 
 class ContestCard extends StatefulWidget {
@@ -43,7 +43,11 @@ class _ContestCardState extends State<ContestCard> {
                         Container(
                           width: deviceWidth * 25,
                           child: Text(
-                            ((int.parse(widget.contestDetails['entry_amount']))*(int.parse(widget.contestDetails['contest_limit']))).toString(),
+                            ((int.parse(widget
+                                        .contestDetails['entry_amount'])) *
+                                    (int.parse(widget
+                                        .contestDetails['contest_limit'])))
+                                .toString(),
                             textAlign: TextAlign.start,
                             style: TextStyle(
                               fontSize: deviceWidth * 5,
@@ -107,7 +111,7 @@ class _ContestCardState extends State<ContestCard> {
                     "${widget.contestDetails['contest_limit']} Spots Left",
                     style: TextStyle(color: Colors.red[900]),
                   ),
-                   Text("${widget.contestDetails['contest_limit']} Spots",
+                  Text("${widget.contestDetails['contest_limit']} Spots",
                       style: TextStyle(color: Colors.black38))
                 ],
               ),
@@ -116,14 +120,15 @@ class _ContestCardState extends State<ContestCard> {
               height: deviceWidth * 2,
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: deviceWidth * 5, vertical: deviceWidth * 2),
+              padding: EdgeInsets.symmetric(
+                  horizontal: deviceWidth * 5, vertical: deviceWidth * 2),
               child: Container(
-                        width: deviceWidth * 80,
-                        child: Text(
-                          "Contest Name: ${widget.contestDetails['name']}",
-                        //  overflow: TextOverflow.ellipsis,
-                          textAlign: TextAlign.start,
-                        )),
+                  width: deviceWidth * 80,
+                  child: Text(
+                    "Contest Name: ${widget.contestDetails['name']}",
+                    //  overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.start,
+                  )),
             ),
             // Padding(
             //   padding: EdgeInsets.symmetric(

@@ -80,9 +80,8 @@ class _CreateContestState extends State<CreateContest> {
                   widget.fixture_id!,
                   limitController.text.toString(),
                   amountController.text.toString());
-              
+
               Navigator.pop(context);
-             
             },
             child: Container(
               width: deviceWidth * 80,

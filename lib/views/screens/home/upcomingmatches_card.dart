@@ -7,29 +7,27 @@ import 'package:flutter/material.dart';
 class UpcomingMatchesCard extends StatefulWidget {
   var matchDetails;
   UpcomingMatchesCard(this.matchDetails);
- 
+
   @override
   State<UpcomingMatchesCard> createState() => _UpcomingMatchesCardState();
 }
 
 class _UpcomingMatchesCardState extends State<UpcomingMatchesCard> {
-
-  
-
-
   @override
   Widget build(BuildContext context) {
     double? deviceHeight = MediaQuery.of(context).size.height / 100;
     double? deviceWidth = MediaQuery.of(context).size.width / 100;
 
-    String tournamentName = jsonDecode(widget.matchDetails['tournament'])['name'];
+    String tournamentName =
+        jsonDecode(widget.matchDetails['tournament'])['name'];
     var teamA = jsonDecode(widget.matchDetails['teams'])['a'];
     var teamB = jsonDecode(widget.matchDetails['teams'])['b'];
     return InkWell(
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) =>  AllContestsPage(widget.matchDetails)),
+          MaterialPageRoute(
+              builder: (context) => AllContestsPage(widget.matchDetails)),
         );
       },
       child: Card(

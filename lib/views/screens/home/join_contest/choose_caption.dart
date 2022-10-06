@@ -17,42 +17,38 @@ class _ChooseCaptainState extends State<ChooseCaptain> {
     double? deviceWidth = MediaQuery.of(context).size.width / 100;
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Colors.black87,
-          elevation: 0,
-          title: const Text("Choose Captain and Vice Captain"),
+        backgroundColor: Colors.black87,
+        elevation: 0,
+        title: const Text("Choose Captain and Vice Captain"),
         //  actions: const [Icon(Icons.question_mark_rounded)],
-        ),
-      body: Column(
-        children: [
-          Container(
-            
-            width: deviceWidth*100,
-            child: Column(
-              children: [
-                ListTile(
-                  leading:
-                  //  Row(
-                  //   children: [
-                  //     Text("India", style: TextStyle(color: Colors.white),),
-                      Image(image: AssetImage("assets/images/ind.jpg")),
-                  //   ],
-                  // ),
-                  title: Text("VS"),
-                  trailing: 
-                  // Row(
-                  //   children: [
-                  //     Text("Sri Lanka", style: TextStyle(color: Colors.white),),
-                      Image(image: AssetImage("assets/images/sl.jpg")),
-                  //   ],
-                  // ),
-                ),
-                Text("Match starts in 14h:13m:12s"),
-
-              ],
-            ),
-          )
-        ]
       ),
+      body: Column(children: [
+        Container(
+          width: deviceWidth * 100,
+          child: Column(
+            children: [
+              ListTile(
+                leading:
+                    //  Row(
+                    //   children: [
+                    //     Text("India", style: TextStyle(color: Colors.white),),
+                    Image(image: AssetImage("assets/images/ind.jpg")),
+                //   ],
+                // ),
+                title: Text("VS"),
+                trailing:
+                    // Row(
+                    //   children: [
+                    //     Text("Sri Lanka", style: TextStyle(color: Colors.white),),
+                    Image(image: AssetImage("assets/images/sl.jpg")),
+                //   ],
+                // ),
+              ),
+              Text("Match starts in 14h:13m:12s"),
+            ],
+          ),
+        )
+      ]),
     );
   }
 }

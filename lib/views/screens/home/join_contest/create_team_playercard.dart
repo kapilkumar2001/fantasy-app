@@ -11,7 +11,6 @@ class CreateTeamPlayerCard extends StatefulWidget {
 }
 
 class _CreateTeamPlayerCardState extends State<CreateTeamPlayerCard> {
-
   bool addicon = true;
 
   @override
@@ -61,13 +60,14 @@ class _CreateTeamPlayerCardState extends State<CreateTeamPlayerCard> {
                 });
               },
               child: addicon == true
-              ? Icon(
-                Icons.add_circle_outline,
-                color: Colors.green,
-              ) : Icon(
-                Icons.close,
-                color: Colors.red,
-              )))
+                  ? Icon(
+                      Icons.add_circle_outline,
+                      color: Colors.green,
+                    )
+                  : Icon(
+                      Icons.close,
+                      color: Colors.red,
+                    )))
     ]);
   }
 }

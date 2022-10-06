@@ -140,7 +140,6 @@ class _OTPScreenState extends State<OTPScreen> {
                           loginInfo =
                               await Provider.of<Auth>(context, listen: false)
                                   .submitOTP(otpController.text.toString());
-                          
 
                           if (loginInfo == 1) {
                             Auth.setUid();

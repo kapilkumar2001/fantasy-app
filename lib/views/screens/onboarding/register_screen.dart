@@ -53,148 +53,157 @@ class _RegisterScreenState extends State<RegisterScreen> {
             decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(deviceWidth * 5)),
-            child:
-                Form(
-                  key: _formKey,
-                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                              Padding(
-                  padding: EdgeInsets.all(deviceWidth * 5),
-                  child: Text(
-                    "Register",
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                        fontSize: deviceWidth * 5, fontWeight: FontWeight.bold),
-                  ),
-                              ),
-                              Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: deviceWidth * 5, vertical: deviceWidth * 2),
-                  child: TextFormField(
-                    controller: fnameController,
-                    decoration: const InputDecoration(
-                      hintText: 'First Name',
+            child: Form(
+              key: _formKey,
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(deviceWidth * 5),
+                      child: Text(
+                        "Register",
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                            fontSize: deviceWidth * 5,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
-                    validator: (value) {
-                              if (value!.isEmpty) {
-                                return "Please enter first name";
-                              }
-                              return null;
-                            },
-                  ),
-                              ),
-                              Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: deviceWidth * 5, vertical: deviceWidth * 2),
-                  child: TextFormField(
-                    controller: lnameController,
-                    decoration: const InputDecoration(
-                      hintText: 'Last Name',
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: deviceWidth * 5,
+                          vertical: deviceWidth * 2),
+                      child: TextFormField(
+                        controller: fnameController,
+                        decoration: const InputDecoration(
+                          hintText: 'First Name',
+                        ),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Please enter first name";
+                          }
+                          return null;
+                        },
+                      ),
                     ),
-                    validator: (value) {
-                              if (value!.isEmpty) {
-                                return "Please enter last name";
-                              }
-                              return null;
-                            },
-                  ),
-                              ),
-                              Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: deviceWidth * 5, vertical: deviceWidth * 2),
-                  child: TextFormField(
-                    controller: usernameController,
-                    decoration: const InputDecoration(
-                      hintText: 'Username',
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: deviceWidth * 5,
+                          vertical: deviceWidth * 2),
+                      child: TextFormField(
+                        controller: lnameController,
+                        decoration: const InputDecoration(
+                          hintText: 'Last Name',
+                        ),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Please enter last name";
+                          }
+                          return null;
+                        },
+                      ),
                     ),
-                    validator: (value) {
-                              if (value!.length < 6) {
-                                return "username length should be more than 6";
-                              }
-                              return null;
-                            },
-                  ),
-                  
-                              ),
-                              Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: deviceWidth * 5, vertical: deviceWidth * 2),
-                  child: TextFormField(
-                    controller: mobileController,
-                    keyboardType: TextInputType.number,
-                    decoration: const InputDecoration(
-                      hintText: 'Mobile Number',
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: deviceWidth * 5,
+                          vertical: deviceWidth * 2),
+                      child: TextFormField(
+                        controller: usernameController,
+                        decoration: const InputDecoration(
+                          hintText: 'Username',
+                        ),
+                        validator: (value) {
+                          if (value!.length < 6) {
+                            return "username length should be more than 6";
+                          }
+                          return null;
+                        },
+                      ),
                     ),
-                    validator: (value) {
-                              if (value!.length != 10) {
-                                return "Please enter a valid Mobile Number";
-                              }
-                              return null;
-                            },
-                  ),
-                              ),
-                              SizedBox(
-                  height: deviceWidth * 4,
-                              ),
-                              Padding(
-                  padding: EdgeInsets.all(deviceWidth * 5),
-                  child: InkWell(
-                    onTap: () async {
-                      if (_formKey.currentState!.validate()){
-                      await Provider.of<Auth>(context, listen: false)
-                                    .verifyPhoneNumber(
-                                        mobileController.text, context, fname: fnameController.text,lname:  lnameController.text,username:  usernameController.text );
-                      }
-                    },
-                    child: Container(
-                      width: deviceWidth * 80,
-                      decoration: BoxDecoration(
-                          color: Colors.red[900],
-                          // border: Border.all(),
-                          borderRadius:
-                              BorderRadius.all(Radius.circular(deviceWidth * 5))),
-                      child: Padding(
-                        padding: EdgeInsets.all(deviceWidth * 5),
-                        child: Text(
-                          "SEND OTP",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: deviceWidth * 4,
-                              fontWeight: FontWeight.bold),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: deviceWidth * 5,
+                          vertical: deviceWidth * 2),
+                      child: TextFormField(
+                        controller: mobileController,
+                        keyboardType: TextInputType.number,
+                        decoration: const InputDecoration(
+                          hintText: 'Mobile Number',
+                        ),
+                        validator: (value) {
+                          if (value!.length != 10) {
+                            return "Please enter a valid Mobile Number";
+                          }
+                          return null;
+                        },
+                      ),
+                    ),
+                    SizedBox(
+                      height: deviceWidth * 4,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(deviceWidth * 5),
+                      child: InkWell(
+                        onTap: () async {
+                          if (_formKey.currentState!.validate()) {
+                            await Provider.of<Auth>(context, listen: false)
+                                .verifyPhoneNumber(
+                                    mobileController.text, context,
+                                    fname: fnameController.text,
+                                    lname: lnameController.text,
+                                    username: usernameController.text);
+                          }
+                        },
+                        child: Container(
+                          width: deviceWidth * 80,
+                          decoration: BoxDecoration(
+                              color: Colors.red[900],
+                              // border: Border.all(),
+                              borderRadius: BorderRadius.all(
+                                  Radius.circular(deviceWidth * 5))),
+                          child: Padding(
+                            padding: EdgeInsets.all(deviceWidth * 5),
+                            child: Text(
+                              "SEND OTP",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: deviceWidth * 4,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                              ),
-                              SizedBox(
-                  height: deviceWidth * 4,
-                              ),
-                              Padding(
-                  padding: EdgeInsets.all(deviceWidth * 5),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        "Already have an account? ",
-                        style: TextStyle(color: Colors.black38),
+                    SizedBox(
+                      height: deviceWidth * 4,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(deviceWidth * 5),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            "Already have an account? ",
+                            style: TextStyle(color: Colors.black38),
+                          ),
+                          InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const LoginScreen()),
+                                );
+                              },
+                              child: Text(
+                                "Sign in",
+                                style: TextStyle(color: Colors.red[900]),
+                              ))
+                        ],
                       ),
-                      InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const LoginScreen()),
-                            );
-                          },
-                          child: Text(
-                            "Sign in",
-                            style: TextStyle(color: Colors.red[900]),
-                          ))
-                    ],
-                  ),
-                              )
-                            ]),
-                ),
+                    )
+                  ]),
+            ),
           ),
         ),
       ),

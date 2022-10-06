@@ -78,7 +78,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       },
                     ),
                   ),
-              
                   Padding(
                     padding: EdgeInsets.all(deviceWidth * 5),
                     child: const Text(
@@ -87,7 +86,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       style: TextStyle(color: Colors.black38),
                     ),
                   ),
-              
                   SizedBox(
                     height: deviceWidth * 4,
                   ),
@@ -95,9 +93,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     padding: EdgeInsets.all(deviceWidth * 5),
                     child: InkWell(
                       onTap: () async {
-                        if (_formKey.currentState!.validate()){
-                        await Provider.of<Auth>(context, listen: false)
-                            .verifyPhoneNumber(mobileController.text, context);
+                        if (_formKey.currentState!.validate()) {
+                          await Provider.of<Auth>(context, listen: false)
+                              .verifyPhoneNumber(
+                                  mobileController.text, context);
                         }
                       },
                       child: Container(
@@ -121,7 +120,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                   ),
-              
                   SizedBox(
                     height: deviceWidth * 4,
                   ),
@@ -139,7 +137,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => const RegisterScreen()),
+                                    builder: (context) =>
+                                        const RegisterScreen()),
                               );
                             },
                             child: Text(

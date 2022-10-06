@@ -14,8 +14,6 @@ class User {
     this.isVerified,
   });
 
-  
-
   User copyWith({
     String? fname,
     String? lname,
@@ -64,8 +62,6 @@ class User {
     );
   }
 
-  
-
   @override
   String toString() {
     return 'User(fname: $fname, lname: $lname, username: $username, mobile: $mobile, isVerified: $isVerified)';
@@ -74,21 +70,21 @@ class User {
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-  
+
     return other is User &&
-      other.fname == fname &&
-      other.lname == lname &&
-      other.username == username &&
-      other.mobile == mobile &&
-      other.isVerified == isVerified;
+        other.fname == fname &&
+        other.lname == lname &&
+        other.username == username &&
+        other.mobile == mobile &&
+        other.isVerified == isVerified;
   }
 
   @override
   int get hashCode {
     return fname.hashCode ^
-      lname.hashCode ^
-      username.hashCode ^
-      mobile.hashCode ^
-      isVerified.hashCode;
+        lname.hashCode ^
+        username.hashCode ^
+        mobile.hashCode ^
+        isVerified.hashCode;
   }
 }

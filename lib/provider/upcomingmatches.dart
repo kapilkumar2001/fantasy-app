@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 
 import 'package:create11/models/upcomingmatches_model.dart';
 
-class UpcomingMatches with ChangeNotifier{
+class UpcomingMatches with ChangeNotifier {
   List<UpcomingMatchesModel> upcomingMatches = [];
 
   Future<void> getUpcomingMatches() async {
@@ -18,10 +18,8 @@ class UpcomingMatches with ChangeNotifier{
     print(responseData);
 
     if (response.statusCode == 200) {
-        print(jsonDecode(responseData));
-        upcomingMatches =  jsonDecode(responseData)['matches'];
+      print(jsonDecode(responseData));
+      upcomingMatches = jsonDecode(responseData)['matches'];
     }
   }
-
-
 }

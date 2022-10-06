@@ -19,29 +19,24 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   List myMatches = [];
   List? upcomingMatchesList;
 
   @override
-  void initState()  {
+  void initState() {
     getMatches();
     super.initState();
   }
 
   Future getMatches() async {
-    
     upcomingMatchesList = (await Data().getUpcomingMatches()).toList();
 
-    setState(() {
-      
-    });
+    setState(() {});
     print(upcomingMatchesList!.length);
   }
-  
+
   @override
   Widget build(BuildContext context) {
-
     double? deviceHeight = MediaQuery.of(context).size.height / 100;
     double? deviceWidth = MediaQuery.of(context).size.width / 100;
 
@@ -106,28 +101,30 @@ class _HomePageState extends State<HomePage> {
           SizedBox(
             height: deviceHeight * 2,
           ),
-
-          myMatches.length == 0 ? 
-          Container(
-            width: deviceWidth*100,
-            child: Padding(
-              padding: EdgeInsets.all(deviceWidth*5),
-              child: Text("You have not joined any contest!", textAlign: TextAlign.center,),
-            ),
-          )
-          : SingleChildScrollView(
-            padding: EdgeInsets.symmetric(horizontal: deviceWidth * 4),
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                for (int i = 0; i < 4; i++)
-                  MyMatchesCard(
-                    isMatchLive: true,
-                    isMatchCompleted: false,
+          myMatches.length == 0
+              ? Container(
+                  width: deviceWidth * 100,
+                  child: Padding(
+                    padding: EdgeInsets.all(deviceWidth * 5),
+                    child: Text(
+                      "You have not joined any contest!",
+                      textAlign: TextAlign.center,
+                    ),
                   ),
-              ],
-            ),
-          ),
+                )
+              : SingleChildScrollView(
+                  padding: EdgeInsets.symmetric(horizontal: deviceWidth * 4),
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      for (int i = 0; i < 4; i++)
+                        MyMatchesCard(
+                          isMatchLive: true,
+                          isMatchCompleted: false,
+                        ),
+                    ],
+                  ),
+                ),
           SizedBox(
             height: deviceHeight * 2,
           ),
@@ -147,11 +144,11 @@ class _HomePageState extends State<HomePage> {
           SizedBox(
             height: deviceHeight * 2,
           ),
-
           ListView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              itemCount:upcomingMatchesList ==null? 0: upcomingMatchesList!.length,
+              itemCount:
+                  upcomingMatchesList == null ? 0 : upcomingMatchesList!.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: EdgeInsets.only(

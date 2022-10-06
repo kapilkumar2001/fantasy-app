@@ -42,8 +42,9 @@ class Data extends ChangeNotifier {
     return [];
   }
 
-  Future<User> addUser(String fname, String lname, String username, String mobile) async {
-    final response =  await http.post(
+  Future<User> addUser(
+      String fname, String lname, String username, String mobile) async {
+    final response = await http.post(
       Uri.parse('https://create11.brilliantrev.com/api/add_user'),
       body: {
         'fname': fname,
@@ -54,19 +55,16 @@ class Data extends ChangeNotifier {
       },
     );
 
-    if(response.statusCode==200){
+    if (response.statusCode == 200) {
       return User.fromJson(jsonDecode(response.body));
-    }
-    else{
+    } else {
       throw Exception('Failed to add User');
     }
   }
 
- 
-   
-
-  Future<ContestModel> createContest(String contestName, String fixtureId, String contestLimit, String entryAmount) async {
-    final response =  await http.post(
+  Future<ContestModel> createContest(String contestName, String fixtureId,
+      String contestLimit, String entryAmount) async {
+    final response = await http.post(
       Uri.parse('https://create11.brilliantrev.com/api/add_contest'),
       body: {
         'name': contestName,
@@ -76,48 +74,42 @@ class Data extends ChangeNotifier {
       },
     );
 
-    if(response.statusCode==200){
+    if (response.statusCode == 200) {
       getContests(fixtureId);
       notifyListeners();
       return ContestModel.fromJson(jsonDecode(response.body));
-    }
-    else{
+    } else {
       throw Exception('Failed to create contest');
     }
   }
 
-
   Future participateInContest(String contestCode, String paymentId) async {
-    final response =  await http.post(
-      Uri.parse('https://create11.brilliantrev.com/api/user_contest_participation'),
+    final response = await http.post(
+      Uri.parse(
+          'https://create11.brilliantrev.com/api/user_contest_participation'),
       body: {
         'contest_code': contestCode,
         'payment_id': paymentId,
       },
     );
 
-    if(response.statusCode==200){
+    if (response.statusCode == 200) {
       return jsonDecode(response.body);
-    }
-    else{
+    } else {
       throw Exception('Failed to create contest');
     }
   }
 
-   Future<User> getUsers() async {
-    final response =  await http.post(
+  Future<User> getUsers() async {
+    final response = await http.post(
       Uri.parse('https://create11.brilliantrev.com/api/get_users'),
     );
 
-    if(response.statusCode==200){
+    if (response.statusCode == 200) {
       print(jsonDecode(response.body));
       return User.fromJson(jsonDecode(response.body));
-    }
-    else{
+    } else {
       throw Exception('Failed to get Users');
     }
   }
-
-
-  
 }
