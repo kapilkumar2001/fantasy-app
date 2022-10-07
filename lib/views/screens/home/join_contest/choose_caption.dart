@@ -1,3 +1,4 @@
+import 'package:create11/views/screens/home/join_contest/choosecaptain_playercard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -22,33 +23,109 @@ class _ChooseCaptainState extends State<ChooseCaptain> {
         title: const Text("Choose Captain and Vice Captain"),
         //  actions: const [Icon(Icons.question_mark_rounded)],
       ),
-      body: Column(children: [
-        Container(
-          width: deviceWidth * 100,
-          child: Column(
-            children: [
-              ListTile(
-                leading:
-                    //  Row(
-                    //   children: [
-                    //     Text("India", style: TextStyle(color: Colors.white),),
-                    Image(image: AssetImage("assets/images/ind.jpg")),
-                //   ],
-                // ),
-                title: Text("VS"),
-                trailing:
-                    // Row(
-                    //   children: [
-                    //     Text("Sri Lanka", style: TextStyle(color: Colors.white),),
-                    Image(image: AssetImage("assets/images/sl.jpg")),
-                //   ],
-                // ),
-              ),
-              Text("Match starts in 14h:13m:12s"),
-            ],
+      body: SingleChildScrollView(
+        child: Column(children: [
+          Container(
+            width: deviceWidth * 100,
+            color: Colors.black,
+            child: Column(
+              children:  [
+                SizedBox(height: deviceHeight*5,),
+                Row(children: [
+                  SizedBox(width: deviceWidth*10,),
+                  Container(width: deviceWidth*15, child: Text("IND", textAlign: TextAlign.center, style: TextStyle(color: Colors.white),),),
+                   CircleAvatar(
+                                radius: deviceWidth * 7.5,
+                                backgroundColor: Colors.black,
+                                backgroundImage:
+                                    const AssetImage("assets/images/ind.jpg"),
+                              ),
+                  
+                  SizedBox(width: deviceWidth*5,),
+                 Text("VS", style: TextStyle(color: Colors.white),),
+                 SizedBox(width: deviceWidth*5,),
+                  CircleAvatar(
+                                radius: deviceWidth * 7.5,
+                                backgroundColor: Colors.black,
+                                backgroundImage:
+                                    const AssetImage("assets/images/sl.jpg"),
+                              ),
+                  //    Image(image: AssetImage("assets/images/sl.jpg"), width: deviceWidth*15, ),
+                  Container(width: deviceWidth*15,  child: Text("SL", textAlign: TextAlign.center,style: TextStyle(color: Colors.white),),),
+      
+                ],),
+                      
+                 
+                SizedBox(height: deviceHeight*5,),
+                Text("Match starts in 14h:13m:12s", style: TextStyle(color: Colors.white)),
+                SizedBox(height: deviceHeight*5,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                  Container(
+                    width: deviceWidth*40,
+                    color: Colors.white,
+                    child: Padding(
+                      padding: EdgeInsets.all(deviceWidth*5),
+                      child: Text("Captain: Get 2x Points", style: TextStyle(color: Colors.red),),
+                    ),
+                  ),
+                  Container(
+                    width: deviceWidth*40,
+                    color: Colors.white,
+                    child: Padding(
+                      padding: EdgeInsets.all(deviceWidth*5),
+                      child: Text("Vice Captain: Get 1.5x Points", style: TextStyle(color: Colors.green),),
+                    ),
+                  ),
+                ],),
+                SizedBox(height: deviceWidth*5,)
+              ],
+            ),
           ),
-        )
-      ]),
+          Row(children: [
+            Container(
+              width: deviceWidth*55,
+              child: Padding(
+                padding: EdgeInsets.all(deviceWidth*3),
+                child: Text("Players"),
+              ),
+            ),
+            Container(
+              width: deviceWidth*15,
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical:  deviceWidth*3),
+                child: Text("Points", textAlign: TextAlign.center,),
+              ),
+            ),
+            Container(
+              width: deviceWidth*15,
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical:  deviceWidth*3),
+                child: Text("C",  textAlign: TextAlign.center,),
+              ),
+            ),
+            Container(
+              width: deviceWidth*15,
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical:  deviceWidth*3),
+                child: Text("VC", textAlign: TextAlign.center,),
+              ),
+            ),
+          ],),
+          Divider(
+            color: Colors.black12,
+          ),
+           ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount:
+                    11,
+                itemBuilder: (context, index) {
+                  return ChooseCaptainPlayerCard();
+                }),
+        ]),
+      ),
     );
   }
 }

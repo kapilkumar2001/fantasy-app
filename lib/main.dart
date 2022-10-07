@@ -1,4 +1,5 @@
 import 'package:create11/provider/auth.dart';
+import 'package:create11/views/screens/home/join_contest/choose_caption.dart';
 import 'package:create11/views/screens/onboarding/onboarding_page.dart';
 import 'package:create11/views/screens/onboarding/splash_screen.dart';
 import 'package:create11/views/screens/others/dashboard.dart';
@@ -45,7 +46,8 @@ class MyApp extends StatelessWidget {
       case -1:
         return OnboardingPage();
       case 0:
-        return DashBoard();
+        // return DashBoard();
+        return ChooseCaptain();
       default:
         return Center(child: Text('Something Went wrong : ((((('));
     }
