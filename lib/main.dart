@@ -46,8 +46,8 @@ class MyApp extends StatelessWidget {
       case -1:
         return OnboardingPage();
       case 0:
-        // return DashBoard();
-        return ChooseCaptain();
+        return DashBoard();
+      
       default:
         return Center(child: Text('Something Went wrong : ((((('));
     }
