@@ -25,6 +25,8 @@ class _AllContestsPageState extends State<AllContestsPage>
     super.initState();
   }
 
+
+
   Future getContests() async {
     contestsList =
         (await Data().getContests(widget.matchDetails['id'])).toList();
@@ -32,6 +34,21 @@ class _AllContestsPageState extends State<AllContestsPage>
       isLoading = false;
     });
   }
+
+
+  //  @override
+  // void didChangeDependencies() async {
+  //   super.didChangeDependencies();
+  //   if (_isInit) {
+  //     await Provider.of<Contests>(context, listen: false)
+  //         .getContests(widget.matchDetails['id']);
+  //     setState(() {
+  //       isLoading = false;
+  //     });
+  //   }
+  //   _isInit = false;
+  // }
+
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +100,7 @@ class _AllContestsPageState extends State<AllContestsPage>
                                       ),
                                       widget.matchDetails['status'] !=
                                               'not_started'
-                                          ? Text("135/8 (20)",
+                                          ? Text("0/0 (0)",
                                               style: TextStyle(
                                                   color: Colors.white,
                                                   fontSize: deviceHeight * 2.3))
@@ -124,7 +141,7 @@ class _AllContestsPageState extends State<AllContestsPage>
                                       ),
                                       widget.matchDetails['status'] !=
                                               'not_started'
-                                          ? Text("136/3 (17.3)",
+                                          ? Text("0/0 (0)",
                                               style: TextStyle(
                                                   color: Colors.white,
                                                   fontSize: deviceHeight * 2.3))
@@ -150,7 +167,7 @@ class _AllContestsPageState extends State<AllContestsPage>
                                   width: deviceWidth * 90,
                                   child: Center(
                                     child: Text(
-                                      "Bangladesh won by 7 wickets",
+                                      "",
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize: deviceHeight * 2),
@@ -185,7 +202,7 @@ class _AllContestsPageState extends State<AllContestsPage>
                           physics: const NeverScrollableScrollPhysics(),
                           itemCount: contestsList.length,
                           itemBuilder: (context, index) {
-                            return ContestCard(contestsList[index]);
+                            return ContestCard(contestsList[index], widget.matchDetails);
                           })
                       : Container(
                           child: Padding(

@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 class MyMatchesCard extends StatefulWidget {
   bool isMatchLive;
   bool isMatchCompleted;
+  var contestDetails;
   MyMatchesCard(
-      {required bool this.isMatchCompleted, required bool this.isMatchLive});
+      {required this.isMatchCompleted, required this.isMatchLive, required this.contestDetails});
 
   @override
   State<MyMatchesCard> createState() => _MyMatchesCardState();
@@ -42,7 +43,7 @@ class _MyMatchesCardState extends State<MyMatchesCard> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: deviceWidth * 5),
               child: Text(
-                'Dresden T10 Cricket Series',
+                widget.contestDetails['name'],
                 style: TextStyle(
                     fontSize: deviceWidth * 4.5,
                     fontWeight: FontWeight.normal,
@@ -196,7 +197,7 @@ class _MyMatchesCardState extends State<MyMatchesCard> {
                         ? deviceWidth * 20
                         : deviceWidth * 40,
                     child: Text(
-                      '1 Team',
+                      'Entry Amount: ${widget.contestDetails['entry_amount']}',
                       textAlign: TextAlign.start,
                       style: TextStyle(
                           fontSize: deviceWidth * 4.5,
@@ -209,14 +210,14 @@ class _MyMatchesCardState extends State<MyMatchesCard> {
                         ? deviceWidth * 20
                         : deviceWidth * 40,
                     child: Text(
-                      '1 Contests',
+                      'Prizes: ${int.parse(widget.contestDetails['entry_amount']) * int.parse(widget.contestDetails['contest_limit'])}',
                       textAlign: widget.isMatchCompleted
                           ? TextAlign.center
                           : TextAlign.end,
                       style: TextStyle(
                           fontSize: deviceWidth * 4.5,
                           fontWeight: FontWeight.normal,
-                          color: Colors.black38),
+                          color: Colors.black87),
                     ),
                   ),
                   widget.isMatchCompleted

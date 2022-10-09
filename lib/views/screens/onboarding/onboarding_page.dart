@@ -27,7 +27,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
               padding: EdgeInsets.all(deviceWidth * 5),
               child: InkWell(
                 onTap: () {
-                  Data().getUsers();
+                //  Data().getUsers();
                   Navigator.push(
                     context,
                     MaterialPageRoute(

@@ -2,8 +2,8 @@ import 'package:create11/views/screens/home/join_contest/contest_page.dart';
 import 'package:flutter/material.dart';
 
 class ContestCard extends StatefulWidget {
-  var contestDetails;
-  ContestCard(this.contestDetails);
+  var contestDetails, matchDetails;
+  ContestCard(this.contestDetails, this.matchDetails);
 
   @override
   State<ContestCard> createState() => _ContestCardState();
@@ -21,7 +21,7 @@ class _ContestCardState extends State<ContestCard> {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const ContestPage()),
+            MaterialPageRoute(builder: (context) => ContestPage(widget.contestDetails, widget.matchDetails)),
           );
         },
         child: Card(

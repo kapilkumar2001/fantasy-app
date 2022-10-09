@@ -1,8 +1,12 @@
+import 'package:create11/models/contest_model.dart';
+import 'package:create11/provider/contest.dart';
 import 'package:create11/services/data.dart';
+import 'package:create11/views/screens/others/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:provider/provider.dart';
 
 class CreateContest extends StatefulWidget {
   String? fixture_id;
@@ -75,13 +79,20 @@ class _CreateContestState extends State<CreateContest> {
           padding: EdgeInsets.all(deviceWidth * 5),
           child: InkWell(
             onTap: () {
-              var contest = Data().createContest(
-                  nameController.text.toString(),
-                  widget.fixture_id!,
-                  limitController.text.toString(),
-                  amountController.text.toString());
+              Provider.of<Contests>(context, listen: false)
+                                .createContest(
+                              ContestModel(contestName: nameController.text.toString(), fixtureId: widget.fixture_id!,contestLimit: limitController.text.toString(),entryAmount: amountController.text.toString()),
+                            );
+              // var c = Data().createContest(
+              //     nameController.text.toString(),
+              //     widget.fixture_id!,
+              //     limitController.text.toString(),
+              //     amountController.text.toString());
 
-              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => DashBoard()),
+              );
             },
             child: Container(
               width: deviceWidth * 80,

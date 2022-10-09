@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:create11/constants/strings.dart';
 import 'package:create11/views/screens/home/drawer.dart';
-import 'package:create11/views/screens/home/mymatches_card.dart';
+import 'package:create11/views/widgets/cards/mymatches_card.dart';
 import 'package:create11/views/screens/home/profile.dart';
 import 'package:create11/views/screens/home/promo_card.dart';
 import 'package:create11/views/screens/home/upcomingmatches_card.dart';
@@ -30,7 +30,9 @@ class _HomePageState extends State<HomePage> {
 
   Future getMatches() async {
     upcomingMatchesList = (await Data().getUpcomingMatches()).toList();
-
+    // TODO: change usedID with real
+    // this is just for testing purpose , id being used is userid - 8
+    myMatches = (await Data().getUsersContests("8")).toList();
     setState(() {});
     print(upcomingMatchesList!.length);
   }
@@ -117,10 +119,11 @@ class _HomePageState extends State<HomePage> {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
-                      for (int i = 0; i < 4; i++)
+                      for (int i = 0; i < myMatches.length; i++)
                         MyMatchesCard(
-                          isMatchLive: true,
                           isMatchCompleted: false,
+                          isMatchLive: true,
+                          contestDetails: myMatches[i]
                         ),
                     ],
                   ),

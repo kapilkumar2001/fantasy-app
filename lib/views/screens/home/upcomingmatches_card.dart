@@ -151,7 +151,7 @@ class _UpcomingMatchesCardState extends State<UpcomingMatchesCard> {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Text(
-                                  teamA['code'],
+                                  teamB['code'],
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold,
@@ -178,45 +178,45 @@ class _UpcomingMatchesCardState extends State<UpcomingMatchesCard> {
             SizedBox(
               height: deviceHeight * 0.5,
             ),
-            Divider(
-              height: deviceHeight * 1.5,
-              color: Colors.black12,
-            ),
-            SizedBox(
-              height: deviceHeight * 0.5,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: deviceWidth * 5),
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    radius: deviceWidth * 2.2,
-                    backgroundColor: Colors.green,
-                    child: Text(
-                      'M',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: deviceWidth * 3),
-                    ),
-                  ),
-                  SizedBox(
-                    width: deviceWidth * 2,
-                  ),
-                  Container(
-                    width: deviceWidth * 40,
-                    child: Text(
-                      '₹ 20 LAKH',
-                      style: TextStyle(
-                          fontSize: deviceWidth * 4.3,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.green),
-                      textAlign: TextAlign.start,
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            // Divider(
+            //   height: deviceHeight * 1.5,
+            //   color: Colors.black12,
+            // ),
+            // SizedBox(
+            //   height: deviceHeight * 0.5,
+            // ),
+            // Padding(
+            //   padding: EdgeInsets.symmetric(horizontal: deviceWidth * 5),
+            //   child: Row(
+            //     children: [
+            //       CircleAvatar(
+            //         radius: deviceWidth * 2.2,
+            //         backgroundColor: Colors.green,
+            //         child: Text(
+            //           'M',
+            //           style: TextStyle(
+            //               color: Colors.white,
+            //               fontWeight: FontWeight.bold,
+            //               fontSize: deviceWidth * 3),
+            //         ),
+            //       ),
+            //       SizedBox(
+            //         width: deviceWidth * 2,
+            //       ),
+            //       Container(
+            //         width: deviceWidth * 40,
+            //         child: Text(
+            //           '₹ 20 LAKH',
+            //           style: TextStyle(
+            //               fontSize: deviceWidth * 4.3,
+            //               fontWeight: FontWeight.w500,
+            //               color: Colors.green),
+            //           textAlign: TextAlign.start,
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
             SizedBox(
               height: deviceHeight * 1,
             ),

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class Contests with ChangeNotifier {
-  List<ContestModel> contests = [];
+  List contests = [];
 
   Future<void> getContests(String id) async {
     var client = http.Client();
@@ -17,27 +17,28 @@ class Contests with ChangeNotifier {
     print(responseData);
 
     if (response.statusCode == 200) {
-      contests = jsonDecode(responseData)['contests'];
+      var cont = jsonDecode(responseData)['contests'];
+      contests = cont.map((i) => 
+           ContestModel.fromJson(i)).toList();
+      // contests = cont.map((e) => ContestModel.fromJson(e as Map<String, dynamic>))
+      //   .toList();
       notifyListeners();
     }
   }
 
-  Future<void> createContest(String contestName, String fixtureId,
-      String contestLimit, String entryAmount) async {
+  Future<void> createContest(ContestModel c) async {
     final response = await http.post(
       Uri.parse('https://create11.brilliantrev.com/api/add_contest'),
       body: {
-        'name': contestName,
-        'fixture_id': fixtureId,
-        'contest_limit': contestLimit,
-        'entry_amount': entryAmount
+        'name': c.contestName,
+        'fixture_id': c.fixtureId,
+        'contest_limit': c.contestLimit,
+        'entry_amount': c.entryAmount
       },
     );
-
     if (response.statusCode == 200) {
-      getContests(fixtureId);
+      getContests(c.fixtureId!);
       notifyListeners();
-      //  ContestModel.fromJson(jsonDecode(response.body));
     } else {
       throw Exception('Failed to create contest');
     }

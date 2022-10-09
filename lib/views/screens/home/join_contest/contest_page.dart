@@ -3,7 +3,8 @@ import 'package:create11/views/screens/home/join_contest/create_team_page.dart';
 import 'package:flutter/material.dart';
 
 class ContestPage extends StatefulWidget {
-  const ContestPage({Key? key}) : super(key: key);
+  var contestDetails, matchDetails;
+  ContestPage(this.contestDetails, this.matchDetails);
 
   @override
   State<ContestPage> createState() => _ContestPageState();
@@ -22,11 +23,11 @@ class _ContestPageState extends State<ContestPage> {
           title:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Text(
-              "IND-L Vs WI-L",
+              widget.matchDetails['short_name'],
               style: TextStyle(fontSize: deviceWidth * 5),
             ),
             Text(
-              "14h:44m Left",
+              widget.matchDetails['start_date'],
               style: TextStyle(fontSize: deviceWidth * 4),
             )
           ]),
@@ -47,7 +48,7 @@ class _ContestPageState extends State<ContestPage> {
                           Container(
                             width: deviceWidth * 25,
                             child: Text(
-                              "₹10000",
+                              (int.parse(widget.contestDetails['contest_limit'])* int.parse(widget.contestDetails['entry_amount'])).toString(),
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                 fontSize: deviceWidth * 5,
@@ -68,7 +69,7 @@ class _ContestPageState extends State<ContestPage> {
                           Container(
                             width: deviceWidth * 25,
                             child: Text(
-                              "₹5199",
+                              widget.contestDetails['entry_amount'],
                               textAlign: TextAlign.end,
                               style: TextStyle(
                                 fontSize: deviceWidth * 5,
@@ -108,10 +109,10 @@ class _ContestPageState extends State<ContestPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "3511 Spots Left",
+                      "${widget.contestDetails['contest_limit']} Spots Left",
                       style: TextStyle(color: Colors.red[900]),
                     ),
-                    const Text("4999 Spots",
+                    Text("${widget.contestDetails['contest_limit']} Spots",
                         style: TextStyle(color: Colors.black38))
                   ],
                 ),
@@ -119,35 +120,35 @@ class _ContestPageState extends State<ContestPage> {
               Divider(
                 height: deviceWidth * 2,
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: deviceWidth * 5, vertical: deviceWidth * 2),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                        width: deviceWidth * 25,
-                        child: const Text(
-                          "₹30000",
-                          overflow: TextOverflow.ellipsis,
-                          textAlign: TextAlign.start,
-                        )),
-                    Container(
-                        width: deviceWidth * 25,
-                        child: const Text(
-                          "1500 Team Win",
-                          textAlign: TextAlign.center,
-                        )),
-                  ],
-                ),
-              )
+              // Padding(
+              //   padding: EdgeInsets.symmetric(
+              //       horizontal: deviceWidth * 5, vertical: deviceWidth * 2),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //     children: [
+              //       Container(
+              //           width: deviceWidth * 25,
+              //           child: const Text(
+              //             "₹30000",
+              //             overflow: TextOverflow.ellipsis,
+              //             textAlign: TextAlign.start,
+              //           )),
+              //       Container(
+              //           width: deviceWidth * 25,
+              //           child: const Text(
+              //             "1500 Team Win",
+              //             textAlign: TextAlign.center,
+              //           )),
+              //     ],
+              //   ),
+              // )
             ]),
             InkWell(
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const CreateTeamPage()),
+                      builder: (context) => CreateTeamPage(widget.contestDetails, widget.matchDetails)),
                 );
               },
               child: Container(

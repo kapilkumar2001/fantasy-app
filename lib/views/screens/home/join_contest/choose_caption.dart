@@ -1,11 +1,13 @@
 import 'package:create11/views/screens/home/join_contest/choosecaptain_playercard.dart';
+import 'package:create11/views/screens/home/join_contest/team_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class ChooseCaptain extends StatefulWidget {
-  const ChooseCaptain({Key? key}) : super(key: key);
+  var contestDetails;
+  ChooseCaptain(this.contestDetails);
 
   @override
   State<ChooseCaptain> createState() => _ChooseCaptainState();
@@ -79,7 +81,30 @@ class _ChooseCaptainState extends State<ChooseCaptain> {
                     ),
                   ),
                 ],),
-                SizedBox(height: deviceWidth*5,)
+                SizedBox(height: deviceWidth*5,),
+                Padding(
+            padding: EdgeInsets.all(deviceWidth * 5),
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => TeamPreviewPage(widget.contestDetails)),
+                );
+              },
+              child: Container(
+                color: Colors.white,
+                height: deviceWidth * 10,
+                width: deviceWidth * 80,
+                child: Center(
+                    child: Text(
+                  "Continue",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                )),
+              ),
+            ),
+          ),
+           SizedBox(height: deviceWidth*5,),
               ],
             ),
           ),
@@ -124,6 +149,7 @@ class _ChooseCaptainState extends State<ChooseCaptain> {
                 itemBuilder: (context, index) {
                   return ChooseCaptainPlayerCard();
                 }),
+          
         ]),
       ),
     );

@@ -36,23 +36,23 @@ class ContestModel {
 
   Map<String, dynamic> toMap() {
     return {
-      'contestName': contestName,
-      'fixtureId': fixtureId,
-      'entryAmount': entryAmount,
-      'contestLimit': contestLimit,
-      'contestId': contestId,
-      'contestCode': contestCode,
+      'name': contestName,
+      'fixture_id': fixtureId,
+      'entry_amount': entryAmount,
+      'contest_limit': contestLimit,
+      'c_id': contestId,
+      'contest_code': contestCode,
     };
   }
 
   factory ContestModel.fromMap(Map<String, dynamic> map) {
     return ContestModel(
-      contestName: map['contestName'],
-      fixtureId: map['fixtureId'],
-      entryAmount: map['entryAmount'],
-      contestLimit: map['contestLimit'],
-      contestId: map['contestId'],
-      contestCode: map['contestCode'],
+      contestName: map['name'],
+      fixtureId: map['fixture_id'],
+      entryAmount: map['entry_amount'],
+      contestLimit: map['contest_limit'],
+      contestId: map['c_id'],
+      contestCode: map['contest_code'],
     );
   }
 
@@ -60,19 +60,19 @@ class ContestModel {
 
   factory ContestModel.fromJson(Map<String, dynamic> json) {
     return ContestModel(
-      contestName: json['contestName'],
-      fixtureId: json['fixtureId'],
-      entryAmount: json['entryAmount'],
-      contestLimit: json['contestLimit'],
-      contestId: json['contestId'],
-      contestCode: json['contestCode'],
+      contestName: json['name'],
+      fixtureId: json['fixture_id'],
+      entryAmount: json['entry_amount'],
+      contestLimit: json['contest_limit'],
+      contestId: json['c_id'],
+      contestCode: json['contest_code'],
     );
   }
 
-  @override
-  String toString() {
-    return 'Contest(contestName: $contestName, fixtureId: $fixtureId, entryAmount: $entryAmount, contestLimit: $contestLimit, contestId: $contestId, contestCode: $contestCode)';
-  }
+  // @override
+  // String toString() {
+  //   return 'Contest(contestName: $contestName, fixtureId: $fixtureId, entryAmount: $entryAmount, contestLimit: $contestLimit, contestId: $contestId, contestCode: $contestCode)';
+  // }
 
   @override
   bool operator ==(Object other) {

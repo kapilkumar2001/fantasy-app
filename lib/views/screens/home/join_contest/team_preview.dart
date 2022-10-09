@@ -1,3 +1,4 @@
+import 'package:create11/services/data.dart';
 import 'package:create11/views/screens/home/home_page.dart';
 import 'package:create11/views/screens/others/dashboard.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +7,8 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class TeamPreviewPage extends StatefulWidget {
-  const TeamPreviewPage({Key? key}) : super(key: key);
+  var contestDetails;
+  TeamPreviewPage(this.contestDetails);
 
   @override
   State<TeamPreviewPage> createState() => _TeamPreviewPageState();
@@ -173,7 +175,10 @@ class _TeamPreviewPageState extends State<TeamPreviewPage> {
               Padding(
                 padding: EdgeInsets.all(deviceWidth * 5),
                 child: InkWell(
-                  onTap: () {
+                  onTap: () async {
+                    // TODO: Change userID and paymentID
+                    // this is just for testng purpose. ID being used is user id 8
+                    var participate = await Data().participateInContest(widget.contestDetails['contest_code'], "200", "8");
                     Navigator.push(
                       context,
                       MaterialPageRoute(
