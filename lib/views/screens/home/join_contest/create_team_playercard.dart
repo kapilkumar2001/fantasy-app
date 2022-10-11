@@ -1,11 +1,12 @@
+import 'package:create11/views/widgets/msg_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class CreateTeamPlayerCard extends StatefulWidget {
-  var playerDetails;
-  CreateTeamPlayerCard(this.playerDetails);
+  var playerDetails, createdTeam;
+  CreateTeamPlayerCard(this.playerDetails, this.createdTeam);
 
   @override
   State<CreateTeamPlayerCard> createState() => _CreateTeamPlayerCardState();
@@ -21,18 +22,22 @@ class _CreateTeamPlayerCardState extends State<CreateTeamPlayerCard> {
     double? deviceWidth = MediaQuery.of(context).size.width / 100;
     return Column(
       children: [
-        Row(
-          children: [
+        Row(children: [
           Container(
             width: deviceWidth * 70,
             child: Row(
               children: [
-                Container(width: deviceWidth * 5, child: Text(widget.playerDetails['nationality']['code'])),
+                Container(
+                    width: deviceWidth * 5,
+                    child: Text(widget.playerDetails['nationality']['code'])),
                 SizedBox(
                   width: deviceWidth * 1,
                 ),
-                CircleAvatar(child: Icon(Icons.person_rounded, size: deviceWidth*5, color: Colors.white), backgroundColor: Colors.grey,),
-                
+                CircleAvatar(
+                  child: Icon(Icons.person_rounded,
+                      size: deviceWidth * 5, color: Colors.white),
+                  backgroundColor: Colors.grey,
+                ),
                 SizedBox(
                   width: deviceWidth * 3,
                 ),
@@ -45,7 +50,8 @@ class _CreateTeamPlayerCardState extends State<CreateTeamPlayerCard> {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         )),
                     Container(
-                        width: deviceWidth * 50, child: Text(widget.playerDetails['seasonal_role']))
+                        width: deviceWidth * 50,
+                        child: Text(widget.playerDetails['seasonal_role']))
                   ],
                 )
               ],
@@ -57,9 +63,18 @@ class _CreateTeamPlayerCardState extends State<CreateTeamPlayerCard> {
               width: deviceWidth * 9,
               child: InkWell(
                   onTap: () {
-                    setState(() {
-                      addicon == true ? addicon = false : addicon = true;
-                    });
+                    if (widget.createdTeam.length >= 11 && addicon==true) {
+                      msgToast("You can't select more than 11 players");
+                    } else {
+                      setState(() {
+                        addicon == true ? addicon = false : addicon = true;
+                        addicon == false
+                            ? widget.createdTeam
+                                .add(widget.playerDetails)
+                            : widget.createdTeam.removeWhere((item) =>
+                                item == widget.playerDetails);
+                      });
+                    }
                   },
                   child: addicon == true
                       ? Icon(
@@ -72,8 +87,8 @@ class _CreateTeamPlayerCardState extends State<CreateTeamPlayerCard> {
                         )))
         ]),
         const Divider(
-                                color: Colors.black87,
-                              )
+          color: Colors.black87,
+        )
       ],
     );
   }

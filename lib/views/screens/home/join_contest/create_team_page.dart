@@ -4,6 +4,7 @@ import 'package:create11/services/data.dart';
 import 'package:create11/views/screens/home/join_contest/choose_caption.dart';
 import 'package:create11/views/screens/home/join_contest/create_team_playercard.dart';
 import 'package:create11/views/screens/home/join_contest/team_preview.dart';
+import 'package:create11/views/widgets/msg_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -21,6 +22,8 @@ class _CreateTeamPageState extends State<CreateTeamPage> {
 
   List teamA = [];
   List teamB = [];
+
+  List createdteam = [];
   
   @override
   void initState() {
@@ -271,14 +274,14 @@ class _CreateTeamPageState extends State<CreateTeamPage> {
                         physics: const NeverScrollableScrollPhysics(),
                         itemCount: teamA.length,
                         itemBuilder: (context, index) {
-                          return CreateTeamPlayerCard(teamA[index] );
+                          return CreateTeamPlayerCard(teamA[index], createdteam);
                         }),
                        ListView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         itemCount: teamB.length,
                         itemBuilder: (context, index) {
-                          return CreateTeamPlayerCard(teamB[index] );
+                          return CreateTeamPlayerCard(teamB[index], createdteam);
                         }),
                   ],
                 )),
@@ -635,31 +638,33 @@ class _CreateTeamPageState extends State<CreateTeamPage> {
         ]),
         bottomNavigationBar: InkWell(
           onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => TeamPreviewPage(widget.contestDetails)),
-            );
+            if(createdteam.length==11)
+                {
+                  // Navigator.push(
+                  // context,
+                  // MaterialPageRoute(
+                  //     builder: (context) => ChooseCaptain(widget.contestDetails, createdteam)),
+                   Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => TeamPreviewPage(widget.contestDetails, createdteam)),
+                );
+                }
+                else {
+                  msgToast("Please select 11 players of your team");
+                }
           },
           child: Padding(
             padding: EdgeInsets.all(deviceWidth * 5),
-            child: InkWell(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => ChooseCaptain(widget.contestDetails)),
-                );
-              },
-              child: Container(
-                color: Colors.red[900],
-                height: deviceWidth * 10,
-                width: deviceWidth * 80,
-                child: Center(
-                    child: Text(
-                  "Continue",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                )),
-              ),
+            child: Container(
+              color: Colors.red[900],
+              height: deviceWidth * 10,
+              width: deviceWidth * 80,
+              child: Center(
+                  child: Text(
+                "Continue",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              )),
             ),
           ),
         ),

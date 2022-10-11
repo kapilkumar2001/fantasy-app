@@ -7,8 +7,8 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class TeamPreviewPage extends StatefulWidget {
-  var contestDetails;
-  TeamPreviewPage(this.contestDetails);
+  var contestDetails, createdTeam;
+  TeamPreviewPage(this.contestDetails, this.createdTeam);
 
   @override
   State<TeamPreviewPage> createState() => _TeamPreviewPageState();
@@ -33,173 +33,227 @@ class _TeamPreviewPageState extends State<TeamPreviewPage> {
               fit: BoxFit.cover,
             ),
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Column(
+          child:  GridView.count(
+          // Create a grid with 2 columns. If you change the scrollDirection to
+          // horizontal, this produces 2 rows.
+          crossAxisCount: 4,
+
+          padding: EdgeInsets.symmetric(vertical: deviceWidth*20),
+          // Generate 100 widgets that display their index in the List.
+          children: List.generate(widget.createdTeam.length, (index) {
+          
+            return Center(
+              child:         Column(
                     children: [
                       CircleAvatar(
                           backgroundColor: Colors.blueGrey[500],
                           child: const Icon(Icons.person_rounded)),
-                      Text(
-                        "MS Dhoni",
-                        style: TextStyle(color: Colors.white),
-                      )
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      CircleAvatar(
-                          backgroundColor: Colors.blueGrey[500],
-                          child: const Icon(Icons.person_rounded)),
-                      Text(
-                        "MS Dhoni",
-                        style: TextStyle(color: Colors.white),
-                      )
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      CircleAvatar(
-                          backgroundColor: Colors.blueGrey[500],
-                          child: const Icon(Icons.person_rounded)),
-                      Text(
-                        "MS Dhoni",
-                        style: TextStyle(color: Colors.white),
-                      )
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      CircleAvatar(
-                          backgroundColor: Colors.blueGrey[500],
-                          child: const Icon(Icons.person_rounded)),
-                      Text(
-                        "MS Dhoni",
-                        style: TextStyle(color: Colors.white),
-                      )
-                    ],
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Column(
-                    children: [
-                      CircleAvatar(
-                          backgroundColor: Colors.blueGrey[500],
-                          child: const Icon(Icons.person_rounded)),
-                      Text(
-                        "MS Dhoni",
-                        style: TextStyle(color: Colors.white),
-                      )
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      CircleAvatar(
-                          backgroundColor: Colors.blueGrey[500],
-                          child: const Icon(Icons.person_rounded)),
-                      Text(
-                        "MS Dhoni",
-                        style: TextStyle(color: Colors.white),
-                      )
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      CircleAvatar(
-                          backgroundColor: Colors.blueGrey[500],
-                          child: const Icon(Icons.person_rounded)),
-                      Text(
-                        "MS Dhoni",
-                        style: TextStyle(color: Colors.white),
-                      )
-                    ],
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Column(
-                    children: [
-                      CircleAvatar(
-                          backgroundColor: Colors.blueGrey[500],
-                          child: const Icon(Icons.person_rounded)),
-                      Text(
-                        "MS Dhoni",
-                        style: TextStyle(color: Colors.white),
-                      )
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      CircleAvatar(
-                          backgroundColor: Colors.blueGrey[500],
-                          child: const Icon(Icons.person_rounded)),
-                      Text(
-                        "MS Dhoni",
-                        style: TextStyle(color: Colors.white),
-                      )
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      CircleAvatar(
-                          backgroundColor: Colors.blueGrey[500],
-                          child: const Icon(Icons.person_rounded)),
-                      Text(
-                        "MS Dhoni",
-                        style: TextStyle(color: Colors.white),
-                      )
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      CircleAvatar(
-                          backgroundColor: Colors.blueGrey[500],
-                          child: const Icon(Icons.person_rounded)),
-                      Text(
-                        "MS Dhoni",
-                        style: TextStyle(color: Colors.white),
-                      )
-                    ],
-                  ),
-                ],
-              ),
-              Padding(
-                padding: EdgeInsets.all(deviceWidth * 5),
-                child: InkWell(
-                  onTap: () async {
-                    // TODO: Change userID and paymentID
-                    // this is just for testng purpose. ID being used is user id 8
-                    var participate = await Data().participateInContest(widget.contestDetails['contest_code'], "200", "8");
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const DashBoard()),
-                    );
-                  },
-                  child: Container(
-                    color: Colors.red[900],
-                    height: deviceWidth * 10,
-                    width: deviceWidth * 80,
-                    child: Center(
+                      Container(
+                        width: deviceWidth*25,
                         child: Text(
-                      "Continue and Join Contest",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.white),
-                    )),
+
+                          widget.createdTeam[index]['name'],
+                          textAlign: TextAlign.center,
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      )
+                    ],
                   ),
-                ),
-              ),
-            ],
-          )),
+            );
+          }),
+        ),
+          // child: Column(
+          //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+          //   children: [
+          //     Row(
+          //       mainAxisAlignment: MainAxisAlignment.spaceAround,
+          //       children: [
+                  // Column(
+                  //   children: [
+                  //     CircleAvatar(
+                  //         backgroundColor: Colors.blueGrey[500],
+                  //         child: const Icon(Icons.person_rounded)),
+                  //     Text(
+                  //       "MS Dhoni",
+                  //       style: TextStyle(color: Colors.white),
+                  //     )
+                  //   ],
+                  // ),
+          //         Column(
+          //           children: [
+          //             CircleAvatar(
+          //                 backgroundColor: Colors.blueGrey[500],
+          //                 child: const Icon(Icons.person_rounded)),
+          //             Text(
+          //               "MS Dhoni",
+          //               style: TextStyle(color: Colors.white),
+          //             )
+          //           ],
+          //         ),
+          //         Column(
+          //           children: [
+          //             CircleAvatar(
+          //                 backgroundColor: Colors.blueGrey[500],
+          //                 child: const Icon(Icons.person_rounded)),
+          //             Text(
+          //               "MS Dhoni",
+          //               style: TextStyle(color: Colors.white),
+          //             )
+          //           ],
+          //         ),
+          //         Column(
+          //           children: [
+          //             CircleAvatar(
+          //                 backgroundColor: Colors.blueGrey[500],
+          //                 child: const Icon(Icons.person_rounded)),
+          //             Text(
+          //               "MS Dhoni",
+          //               style: TextStyle(color: Colors.white),
+          //             )
+          //           ],
+          //         ),
+          //       ],
+          //     ),
+          //     Row(
+          //       mainAxisAlignment: MainAxisAlignment.spaceAround,
+          //       children: [
+          //         Column(
+          //           children: [
+          //             CircleAvatar(
+          //                 backgroundColor: Colors.blueGrey[500],
+          //                 child: const Icon(Icons.person_rounded)),
+          //             Text(
+          //               "MS Dhoni",
+          //               style: TextStyle(color: Colors.white),
+          //             )
+          //           ],
+          //         ),
+          //         Column(
+          //           children: [
+          //             CircleAvatar(
+          //                 backgroundColor: Colors.blueGrey[500],
+          //                 child: const Icon(Icons.person_rounded)),
+          //             Text(
+          //               "MS Dhoni",
+          //               style: TextStyle(color: Colors.white),
+          //             )
+          //           ],
+          //         ),
+          //         Column(
+          //           children: [
+          //             CircleAvatar(
+          //                 backgroundColor: Colors.blueGrey[500],
+          //                 child: const Icon(Icons.person_rounded)),
+          //             Text(
+          //               "MS Dhoni",
+          //               style: TextStyle(color: Colors.white),
+          //             )
+          //           ],
+          //         ),
+          //       ],
+          //     ),
+          //     Row(
+          //       mainAxisAlignment: MainAxisAlignment.spaceAround,
+          //       children: [
+          //         Column(
+          //           children: [
+          //             CircleAvatar(
+          //                 backgroundColor: Colors.blueGrey[500],
+          //                 child: const Icon(Icons.person_rounded)),
+          //             Text(
+          //               "MS Dhoni",
+          //               style: TextStyle(color: Colors.white),
+          //             )
+          //           ],
+          //         ),
+          //         Column(
+          //           children: [
+          //             CircleAvatar(
+          //                 backgroundColor: Colors.blueGrey[500],
+          //                 child: const Icon(Icons.person_rounded)),
+          //             Text(
+          //               "MS Dhoni",
+          //               style: TextStyle(color: Colors.white),
+          //             )
+          //           ],
+          //         ),
+          //         Column(
+          //           children: [
+          //             CircleAvatar(
+          //                 backgroundColor: Colors.blueGrey[500],
+          //                 child: const Icon(Icons.person_rounded)),
+          //             Text(
+          //               "MS Dhoni",
+          //               style: TextStyle(color: Colors.white),
+          //             )
+          //           ],
+          //         ),
+          //         Column(
+          //           children: [
+          //             CircleAvatar(
+          //                 backgroundColor: Colors.blueGrey[500],
+          //                 child: const Icon(Icons.person_rounded)),
+          //             Text(
+          //               "MS Dhoni",
+          //               style: TextStyle(color: Colors.white),
+          //             )
+          //           ],
+          //         ),
+          //       ],
+          //     ),
+          //     Padding(
+          //       padding: EdgeInsets.all(deviceWidth * 5),
+          //       child: InkWell(
+          //         onTap: () async {
+          //           // TODO: Change userID and paymentID
+          //           // this is just for testng purpose. ID being used is user id 8
+          //           var participate = await Data().participateInContest(widget.contestDetails['contest_code'], "200", "8");
+          //           Navigator.push(
+          //             context,
+          //             MaterialPageRoute(
+          //                 builder: (context) => const DashBoard()),
+          //           );
+          //         },
+          //         child: Container(
+          //           color: Colors.red[900],
+          //           height: deviceWidth * 10,
+          //           width: deviceWidth * 80,
+          //           child: Center(
+          //               child: Text(
+          //             "Continue and Join Contest",
+          //             style: TextStyle(
+          //                 fontWeight: FontWeight.bold, color: Colors.white),
+          //           )),
+          //         ),
+          //       ),
+          //     ),
+          //   ],
+          // )
+          ),
+
+          bottomNavigationBar: InkWell(
+          onTap: () {
+            
+                   Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => DashBoard()));
+               
+          },
+          child: Padding(
+            padding: EdgeInsets.all(deviceWidth * 5),
+            child: Container(
+              color: Colors.red[900],
+              height: deviceWidth * 10,
+              width: deviceWidth * 80,
+              child: Center(
+                  child: Text(
+                "Participate",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              )),
+            ),
+          ),
+        ),
     );
   }
 }

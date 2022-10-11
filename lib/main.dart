@@ -1,5 +1,6 @@
 import 'package:create11/provider/auth.dart';
 import 'package:create11/provider/contest.dart';
+import 'package:create11/provider/team.dart';
 import 'package:create11/views/screens/home/join_contest/choose_caption.dart';
 import 'package:create11/views/screens/onboarding/onboarding_page.dart';
 import 'package:create11/views/screens/onboarding/splash_screen.dart';
@@ -32,6 +33,9 @@ class MyApp extends StatelessWidget {
                   ),
                   ChangeNotifierProvider<Contests>(
                     create: (_) => Contests(),
+                  ),
+                  ChangeNotifierProvider<Teams>(
+                    create: (_) => Teams(),
                   ),
                 ],
                 child: MaterialApp(

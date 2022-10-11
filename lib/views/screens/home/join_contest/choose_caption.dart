@@ -6,8 +6,8 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class ChooseCaptain extends StatefulWidget {
-  var contestDetails;
-  ChooseCaptain(this.contestDetails);
+  var contestDetails, createdTeam;
+  ChooseCaptain(this.contestDetails, this.createdTeam);
 
   @override
   State<ChooseCaptain> createState() => _ChooseCaptainState();
@@ -89,7 +89,7 @@ class _ChooseCaptainState extends State<ChooseCaptain> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => TeamPreviewPage(widget.contestDetails)),
+                      builder: (context) => TeamPreviewPage(widget.contestDetails, widget.createdTeam)),
                 );
               },
               child: Container(
