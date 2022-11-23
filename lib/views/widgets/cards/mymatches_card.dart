@@ -1,4 +1,5 @@
 import 'package:create11/views/screens/home/all_contests_page.dart';
+import 'package:create11/views/screens/home/joined_contest/joined_contest_page.dart';
 import 'package:flutter/material.dart';
 
 class MyMatchesCard extends StatefulWidget {
@@ -19,10 +20,10 @@ class _MyMatchesCardState extends State<MyMatchesCard> {
     double? deviceWidth = MediaQuery.of(context).size.width / 100;
     return InkWell(
       onTap: () {
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(builder: (context) => AllContestsPage()),
-        // );
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => JoinedContestPage()),
+        );
       },
       child: Card(
         shadowColor: Colors.white70,

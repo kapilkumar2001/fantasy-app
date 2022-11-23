@@ -3,15 +3,16 @@ import 'package:create11/views/screens/home/join_contest/create_team_page.dart';
 import 'package:create11/views/screens/others/compare_teams.dart';
 import 'package:flutter/material.dart';
 
-class ContestPage extends StatefulWidget {
-  var contestDetails, matchDetails;
-  ContestPage(this.contestDetails, this.matchDetails);
+class JoinedContestPage extends StatefulWidget {
+ // var contestDetails, matchDetails;
+ // JoinedContestPage(this.contestDetails, this.matchDetails);
+ JoinedContestPage();
 
   @override
-  State<ContestPage> createState() => _ContestPageState();
+  State<JoinedContestPage> createState() => _JoinedContestPageState();
 }
 
-class _ContestPageState extends State<ContestPage> {
+class _JoinedContestPageState extends State<JoinedContestPage> {
   @override
   Widget build(BuildContext context) {
     double? deviceHeight = MediaQuery.of(context).size.height / 100;
@@ -24,11 +25,13 @@ class _ContestPageState extends State<ContestPage> {
           title:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Text(
-              widget.matchDetails['short_name'],
+             // widget.matchDetails['short_name'],
+             "IND vs WI",
               style: TextStyle(fontSize: deviceWidth * 5),
             ),
             Text(
-              widget.matchDetails['start_date'],
+             // widget.matchDetails['start_date'],
+             "24 Dec 2022",
               style: TextStyle(fontSize: deviceWidth * 4),
             )
           ]),
@@ -49,7 +52,8 @@ class _ContestPageState extends State<ContestPage> {
                           Container(
                             width: deviceWidth * 25,
                             child: Text(
-                              (int.parse(widget.contestDetails['contest_limit'])* int.parse(widget.contestDetails['entry_amount'])).toString(),
+                             // (int.parse(widget.contestDetails['contest_limit'])* int.parse(widget.contestDetails['entry_amount'])).toString(),
+                             "India",
                               textAlign: TextAlign.start,
                               style: TextStyle(
                                 fontSize: deviceWidth * 5,
@@ -59,7 +63,7 @@ class _ContestPageState extends State<ContestPage> {
                           Container(
                               width: deviceWidth * 25,
                               child: const Text(
-                                "Prize Pool",
+                                "203/4 (50)",
                                 textAlign: TextAlign.start,
                                 style: TextStyle(color: Colors.black38),
                               )),
@@ -70,7 +74,8 @@ class _ContestPageState extends State<ContestPage> {
                           Container(
                             width: deviceWidth * 25,
                             child: Text(
-                              widget.contestDetails['entry_amount'],
+                              //widget.contestDetails['entry_amount'],
+                              "WI",
                               textAlign: TextAlign.end,
                               style: TextStyle(
                                 fontSize: deviceWidth * 5,
@@ -79,7 +84,8 @@ class _ContestPageState extends State<ContestPage> {
                           ),
                           Container(
                             width: deviceWidth * 25,
-                            child: const Text("Entry Fee",
+                            child: const Text(
+                              "201/2 (50)",
                                 textAlign: TextAlign.end,
                                 style: TextStyle(color: Colors.black38)),
                           )
@@ -87,37 +93,37 @@ class _ContestPageState extends State<ContestPage> {
                       ),
                     ]),
               ),
-              SliderTheme(
-                child: Slider(
-                  activeColor: Colors.red[900],
-                  inactiveColor: Colors.black38,
-                  value: 1489,
-                  max: 4999,
-                  divisions: 4999,
-                  onChanged: (double value) {
-                    setState(() {});
-                  },
-                ),
-                data: SliderTheme.of(context).copyWith(
-                    trackHeight: deviceHeight * 0.5,
-                    thumbColor: Colors.transparent,
-                    thumbShape:
-                        const RoundSliderThumbShape(enabledThumbRadius: 0.0)),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: deviceWidth * 5),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "${widget.contestDetails['contest_limit']} Spots Left",
-                      style: TextStyle(color: Colors.red[900]),
-                    ),
-                    Text("${widget.contestDetails['contest_limit']} Spots",
-                        style: TextStyle(color: Colors.black38))
-                  ],
-                ),
-              ),
+              // SliderTheme(
+              //   child: Slider(
+              //     activeColor: Colors.red[900],
+              //     inactiveColor: Colors.black38,
+              //     value: 1489,
+              //     max: 4999,
+              //     divisions: 4999,
+              //     onChanged: (double value) {
+              //       setState(() {});
+              //     },
+              //   ),
+              //   data: SliderTheme.of(context).copyWith(
+              //       trackHeight: deviceHeight * 0.5,
+              //       thumbColor: Colors.transparent,
+              //       thumbShape:
+              //           const RoundSliderThumbShape(enabledThumbRadius: 0.0)),
+              // ),
+              // Padding(
+              //   padding: EdgeInsets.symmetric(horizontal: deviceWidth * 5),
+              //   child: Row(
+              //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //     children: [
+              //       Text(
+              //         "${widget.contestDetails['contest_limit']} Spots Left",
+              //         style: TextStyle(color: Colors.red[900]),
+              //       ),
+              //       Text("${widget.contestDetails['contest_limit']} Spots",
+              //           style: TextStyle(color: Colors.black38))
+              //     ],
+              //   ),
+              // ),
               Divider(
                 height: deviceWidth * 2,
               ),
@@ -144,28 +150,28 @@ class _ContestPageState extends State<ContestPage> {
               //   ),
               // )
             ]),
-            InkWell(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => CreateTeamPage(widget.contestDetails, widget.matchDetails)),
-                );
-              },
-              child: Container(
-                color: Colors.green,
-                width: deviceWidth * 100,
-                child: Padding(
-                  padding: EdgeInsets.all(deviceWidth * 5),
-                  child: Text(
-                    "Join Contest Now",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: Colors.white, fontSize: deviceWidth * 5),
-                  ),
-                ),
-              ),
-            ),
+            // InkWell(
+            //   onTap: () {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(
+            //           builder: (context) => CreateTeamPage(widget.contestDetails, widget.matchDetails)),
+            //     );
+            //   },
+            //   child: Container(
+            //     color: Colors.green,
+            //     width: deviceWidth * 100,
+            //     child: Padding(
+            //       padding: EdgeInsets.all(deviceWidth * 5),
+            //       child: Text(
+            //         "Join Contest Now",
+            //         textAlign: TextAlign.center,
+            //         style: TextStyle(
+            //             color: Colors.white, fontSize: deviceWidth * 5),
+            //       ),
+            //     ),
+            //   ),
+            // ),
             SizedBox(
               height: deviceHeight * 6.5,
               child: AppBar(
