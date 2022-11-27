@@ -1,3 +1,4 @@
+import 'package:create11/views/screens/account/add_cash.dart';
 import 'package:flutter/material.dart';
 
 class AccountPage extends StatefulWidget {
@@ -58,7 +59,12 @@ class _AccountPageState extends State<AccountPage> {
                         ),
                       ),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const AddCash()),
+      );
+                        },
                         child: Text("Add Cash"),
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all<Color?>(

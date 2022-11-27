@@ -1,6 +1,9 @@
 import 'package:create11/constants/strings.dart';
 import 'package:flutter/material.dart';
 
+import '../account/add_cash.dart';
+import '../more/update_profile.dart';
+
 class UserProfilePage extends StatefulWidget {
   const UserProfilePage({Key? key}) : super(key: key);
 
@@ -51,7 +54,13 @@ class _UserProfilePageState extends State<UserProfilePage> {
                                     fontSize: deviceWidth * 5),
                               )),
                           ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                 Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const UpdateProfile()),
+                );
+                              },
                               child: Container(
                                 width: deviceWidth * 20,
                                 child: const Text(
@@ -113,7 +122,12 @@ class _UserProfilePageState extends State<UserProfilePage> {
                         height: deviceHeight * 0.7,
                       ),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                           Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const AddCash()),
+      );
+                        },
                         child: const Text("Add Cash"),
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all<Color?>(

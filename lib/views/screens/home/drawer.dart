@@ -4,6 +4,8 @@ import 'package:create11/views/screens/onboarding/onboarding_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../account/add_cash.dart';
+
 class HomeDrawer extends StatefulWidget {
   const HomeDrawer({Key? key}) : super(key: key);
 
@@ -98,7 +100,12 @@ class _HomeDrawerState extends State<HomeDrawer> {
                     style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all<Color>(
                             Colors.green.shade700)),
-                    onPressed: () {},
+                    onPressed: () {
+                       Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const AddCash()),
+      );
+                    },
                     child: Center(child: const Text("Add Cash"))),
               ),
             ],
